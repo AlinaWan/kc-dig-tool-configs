@@ -18,10 +18,9 @@
 |------|------------------------|------------------------|------------------------|
 | 1    | Prismatic Domino Crown | Cauldron Hat           | Ice Picks              |
 | 2    | Prismatic Domino Crown | Cauldron Hat           | Energy Apparatus       |
-| 3    | Cauldron Hat           | Ice Picks              | Energy Apparatus       |
+| 3    | Cauldron Hat           | Energy Apparatus       | Ice Picks              |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 ---
 
-This repository is licensed under the  
-[**Do What The Fuck You Want To Public License (WTFPL)**](LICENSE)
+This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you want. Just don't sue me.
