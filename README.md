@@ -13,6 +13,7 @@
 - **Best Enchant(s):** Strong
 - **Best Stat(s):** Strength
 - **Best Charm Sets:**
+
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
 | 1    | Prismatic Domino Crown | Cauldron Hat           | Ice Picks              |
