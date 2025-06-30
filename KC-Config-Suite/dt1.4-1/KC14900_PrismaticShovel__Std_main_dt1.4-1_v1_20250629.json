@@ -1,0 +1,46 @@
+{
+    "params": {
+        "line_sensitivity": 100,
+        "line_min_height": 100,
+        "zone_min_width": 100,
+        "saturation_threshold": 1.0,
+        "min_zone_height_percent": 100,
+        "sweet_spot_width_percent": 10,
+        "prediction_enabled": false,
+        "system_latency": 1337,
+        "max_prediction_time": 1337,
+        "min_velocity_threshold": 1337,
+        "prediction_confidence_threshold": 0.8,
+        "zone_smoothing_factor": 0.2,
+        "post_click_blindness": 1,
+        "max_zone_width_percent": 100,
+        "main_on_top": true,
+        "preview_on_top": true,
+        "debug_on_top": true,
+        "debug_clicks_enabled": false,
+        "auto_sell_enabled": false,
+        "sell_every_x_digs": 10,
+        "sell_delay": 3000,
+        "auto_walk_enabled": false,
+        "walk_duration": 500,
+        "user_id": "KC_Riri",
+        "webhook_url": "PrismaticShovel__Std_20250629_main_v1_dt1.4-1",
+        "milestone_interval": 14900,
+        "use_custom_cursor": false,
+        "include_discord_in_settings": true
+    },
+    "keybinds": {
+        "toggle_bot": "f1",
+        "toggle_gui": "f2",
+        "toggle_overlay": "f3"
+    },
+    "game_area": [
+        552,
+        860,
+        1367,
+        869
+    ],
+    "sell_button_position": null,
+    "cursor_position": null,
+    "walk_pattern": "circle"
+}

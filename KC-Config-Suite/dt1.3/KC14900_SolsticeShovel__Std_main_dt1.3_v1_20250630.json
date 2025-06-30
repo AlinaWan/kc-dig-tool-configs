@@ -1,0 +1,33 @@
+{
+    "params": {
+        "line_sensitivity": 100,
+        "line_min_height": 100,
+        "zone_min_width": 1,
+        "max_zone_width_percent": 80,
+        "min_zone_height_percent": 100,
+        "saturation_threshold": 0.2,
+        "zone_smoothing_factor": 0.8,
+        "sweet_spot_width_percent": 10,
+        "post_click_blindness": 10,
+        "prediction_enabled": false,
+        "system_latency": 0,
+        "max_prediction_time": 10,
+        "min_velocity_threshold": 300,
+        "prediction_confidence_threshold": 1.0,
+        "main_on_top": true,
+        "preview_on_top": true,
+        "debug_on_top": true,
+        "debug_clicks_enabled": false
+    },
+    "keybinds": {
+        "toggle_bot": "f1",
+        "toggle_gui": "f2",
+        "toggle_overlay": "f3"
+    },
+    "game_area": [
+        551,
+        852,
+        1372,
+        869
+    ]
+}
