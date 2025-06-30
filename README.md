@@ -9,6 +9,8 @@
 
 ## Best Enchants, Stats, and Charm Sets
 
+> Charm sets are ranked from best to less optimal.
+
 ### Prismatic Shovel
 - **Best Enchant(s):** Strong, Lucky
 - **Best Stat(s):** Strength
