@@ -21,7 +21,7 @@
 > [!NOTE]
 > - Enchant priority indicates the order of preference.
 > - Charm sets are ranked from best to less optimal.
-> - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
+> - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied and the shovel is used on its preferred ground.
 
 ### Prismatic Shovel
 - **Enchant Priority:** Strong, Lucky
