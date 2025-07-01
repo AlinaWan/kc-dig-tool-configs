@@ -9,8 +9,10 @@
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
-[⚙️ Configuration Files](KC-Config-Suite/)  
-[🚶‍➡️ Movement Patterns](KC-Config-Suite/Pattern_Suite/)
+[**⚙️ Configuration Files**](KC-Config-Suite/)  
+[**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)
+
+[📚 Official Dig Wiki](https://digtionary.org/wiki/Main_Page)
 
 ---
 
@@ -31,6 +33,23 @@
 | 2    | Prismatic Domino Crown | Cauldron Hat           | Energy Apparatus       |
 | 3    | Cauldron Hat           | Energy Apparatus       | Ice Picks              |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
+
+### Slayer Shovel
+- **Enchant Priority:** Sundering
+- **Stat Priority:** BossDamage
+- **Best Charm Sets:**
+
+| Rank | Charm 1                | Charm 2                | Charm 3                |
+|------|------------------------|------------------------|------------------------|
+| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
+| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
+| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
+| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
+| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+
+> [!TIP]
+> Replace **Charm 3** with **Magma Boots** to survive inside of Mount Charcoal.
+
 
 ### Starfire Shovel
 - **Enchant Priority:** Wumbo, Lucky, Strong
