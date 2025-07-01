@@ -19,12 +19,14 @@
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
-> Enchant priority indicates the order of preference.
-> Charm sets are ranked from best to less optimal.
+> - Enchant priority indicates the order of preference.
+> - Charm sets are ranked from best to less optimal.
+> - Optimal Hit Count means how many strong hits it should take to dig up an item with a perfect build.
 
 ### Prismatic Shovel
 - **Enchant Priority:** Strong, Lucky
 - **Stat Priority:** Strength
+- **Optimal Hit Count:** 3
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
@@ -37,6 +39,7 @@
 ### Slayer Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
+- **Optimal Hit Count:** 10
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
@@ -54,6 +57,7 @@
 ### Starfire Shovel
 - **Enchant Priority:** Wumbo, Lucky, Strong
 - **Stat Priority:** Strength
+- **Optimal Hit Count:** 2
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
