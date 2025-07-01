@@ -20,7 +20,19 @@
 > Charm sets are ranked from best to less optimal.
 
 ### Prismatic Shovel
-- **Best Enchant(s):** Strong, Lucky
+- **Enchant Priority:** Strong, Lucky
+- **Stat Priority:** Strength
+- **Best Charm Sets:**
+
+| Rank | Charm 1                | Charm 2                | Charm 3                |
+|------|------------------------|------------------------|------------------------|
+| 1    | Prismatic Domino Crown | Cauldron Hat           | Ice Picks              |
+| 2    | Prismatic Domino Crown | Cauldron Hat           | Energy Apparatus       |
+| 3    | Cauldron Hat           | Energy Apparatus       | Ice Picks              |
+| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
+
+### Starfire Shovel
+- **Enchant Priority:** Wumbo, Lucky, Strong
 - **Stat Priority:** Strength
 - **Best Charm Sets:**
 
