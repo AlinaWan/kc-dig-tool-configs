@@ -4,8 +4,8 @@
     📌 Hotkeys:
     - F4: Toggle the click loop ON or OFF.
           When ON, it will click both defined points every cycle.
-    - F5: Set the FIRST click point (waits for your next left click).
-    - F6: Set the SECOND click point (waits for your next left click).
+    - F5: Set the FIRST click point (waits for your next left click). This should be set on the orange pencil icon.
+    - F6: Set the SECOND click point (waits for your next left click). This should be set on the buy reroll button.
     - Esc: Exit the script immediately.
 
     🔁 Loop Behavior:
