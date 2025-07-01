@@ -1,6 +1,6 @@
 # DIG 💛 Optimization Guide
 
-## Overview
+## 🔗 Overview
 
 [![License][shield-license]][link-license]
 [![Markdown][shield-md]][link-md]
@@ -14,7 +14,7 @@
 
 ---
 
-## Best Enchants, Stat Priorities, and Charm Sets
+## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
 > Charm sets are ranked from best to less optimal.
