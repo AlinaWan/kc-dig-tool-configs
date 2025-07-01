@@ -9,6 +9,7 @@
 
 ## Best Enchants, Stat Priorities, and Charm Sets
 
+> [!NOTE]
 > Charm sets are ranked from best to less optimal.
 
 ### Prismatic Shovel
