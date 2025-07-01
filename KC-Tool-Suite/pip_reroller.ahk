@@ -6,11 +6,12 @@
           When ON, it will click both defined points every cycle.
     - F5: Set the FIRST click point (waits for your next left click). This should be set on the orange pencil icon.
     - F6: Set the SECOND click point (waits for your next left click). This should be set on the buy reroll button.
+    - F7: Manually perform one full click cycle immediately (without enabling the loop).
     - Esc: Exit the script immediately.
 
     🔁 Loop Behavior:
     - The script clicks both target positions once per loop cycle.
-    - Each loop has a fixed delay of 1000 milliseconds (1 second) between cycles.
+    - Each loop has a fixed delay of 1500 milliseconds (1.5 seconds) between cycles.
 
     ⚠️ Important:
     - This script does NOT detect which pips you get or track results.
@@ -39,9 +40,13 @@ return
 
 ClickLoop:
     Click, % click1[1] "," click1[2]
-    Sleep, 100
     Click, % click2[1] "," click2[2]
-    Sleep, 1000
+    Sleep, 1500
+return
+
+F7:: ; Manual one-time click loop
+    Click, % click1[1] "," click1[2]
+    Click, % click2[1] "," click2[2]
 return
 
 F5:: ; Set first click position
