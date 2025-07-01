@@ -26,7 +26,9 @@
 ### Prismatic Shovel
 - **Enchant Priority:** Strong, Lucky
 - **Stat Priority:** Strength
-- **Optimal Hit Count:** 3
+- **Optimal Hit Count:**
+  - **Rank 1:** 2 (Rock), 3 (Other)
+  - **Rank 2-4:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
@@ -57,7 +59,9 @@
 ### Starfire Shovel
 - **Enchant Priority:** Wumbo, Lucky, Strong
 - **Stat Priority:** Strength
-- **Optimal Hit Count:** 2 (Rock), 3 (Other)
+- **Optimal Hit Count:**
+  - **Rank 1-2:** 2 (Rock), 3 (Other)
+  - **Rank 3-4:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
