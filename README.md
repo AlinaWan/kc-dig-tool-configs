@@ -29,9 +29,9 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Prismatic Domino Crown | Cauldron Hat           | Ice Picks              |
-| 2    | Prismatic Domino Crown | Cauldron Hat           | Energy Apparatus       |
-| 3    | Cauldron Hat           | Energy Apparatus       | Ice Picks              |
+| 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
+| 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 ### Slayer Shovel
@@ -48,7 +48,7 @@
 | 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
 
 > [!TIP]
-> Replace **Charm 3** with **Magma Boots** to survive inside of Mount Charcoal.
+> Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
 
 ### Starfire Shovel
@@ -58,9 +58,9 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Prismatic Domino Crown | Cauldron Hat           | Ice Picks              |
-| 2    | Prismatic Domino Crown | Cauldron Hat           | Energy Apparatus       |
-| 3    | Cauldron Hat           | Energy Apparatus       | Ice Picks              |
+| 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
+| 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 ---
