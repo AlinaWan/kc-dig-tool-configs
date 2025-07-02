@@ -6,6 +6,8 @@ from pathlib import Path
 README = Path("README.md")
 TODAY = date.today().isoformat()
 
+TIMESTAMP_REGEX = r"<sub><sup>Last updated: \d{4}-\d{2}-\d{2}</sup></sub>"
+
 def get_changed_lines():
     """Return a set of line numbers in README.md that changed in the last commit."""
     diff_output = subprocess.run(
@@ -14,10 +16,8 @@ def get_changed_lines():
     ).stdout
 
     changed_lines = set()
-    # Parse diff hunk headers for line numbers of changes
     for line in diff_output.splitlines():
         if line.startswith("@@"):
-            # Example hunk line: @@ -24,0 +25,3 @@
             m = re.search(r"\+(\d+)(?:,(\d+))?", line)
             if m:
                 start = int(m.group(1))
@@ -37,24 +37,16 @@ def parse_shovel_sections(lines, footer_start):
     sections = []
     current_section = None
     for i, line in enumerate(lines):
-        # Stop parsing shovel sections if footer start reached
         if footer_start is not None and i >= footer_start:
             break
-
-        # Detect shovel subsection header (### ...), e.g. "### Glinted Shovel"
         if re.match(r"### .+", line):
-            # Close previous section
             if current_section:
                 current_section['end'] = i - 1
                 sections.append(current_section)
-            current_section = {'title': line.strip()[4:], 'start': i, 'end': None}
-
-    # Close last section before footer or EOF
+            current_section = {'title': line.strip()[4:].strip(), 'start': i, 'end': None}
     if current_section:
-        # If footer exists, end at line before footer; else at EOF
         current_section['end'] = (footer_start - 1) if footer_start is not None else len(lines) - 1
         sections.append(current_section)
-
     return sections
 
 def update_timestamps():
@@ -80,34 +72,34 @@ def update_timestamps():
     output_lines = []
     i = 0
     while i < len(lines):
-        # Stop appending shovel sections once footer reached, append footer and beyond as is
+        # If footer reached, append footer and beyond as is
         if footer_start is not None and i == footer_start:
-            # Append footer and everything after as is
             output_lines.extend(lines[i:])
             break
 
         line = lines[i]
         header_match = re.match(r"### (.+)", line)
         if header_match and (footer_start is None or i < footer_start):
-            shovel_title = header_match.group(1)
+            shovel_title = header_match.group(1).strip()
             output_lines.append(line)
             i += 1
 
-            # Gather section content
+            # Gather section content until next header or footer
             section_content = []
             while i < len(lines):
-                if (footer_start is not None and i >= footer_start) or re.match(r"### .+", lines[i]):
+                if footer_start is not None and i >= footer_start:
+                    break
+                if re.match(r"### .+", lines[i]):
                     break
                 section_content.append(lines[i])
                 i += 1
 
-            # Remove existing timestamp line if present at the end of section_content
-            if section_content and re.match(r"<sub><sup>Last updated: \d{4}-\d{2}-\d{2}</sup></sub>", section_content[-1]):
-                section_content.pop()
-
-            # Append new timestamp if this section changed
             if shovel_title in changed_sections:
-                # Ensure exactly one blank line before timestamp
+                # Remove existing timestamp line if present
+                if section_content and re.match(TIMESTAMP_REGEX, section_content[-1]):
+                    section_content.pop()
+
+                # Remove extra blank lines before adding timestamp
                 while section_content and section_content[-1].strip() == "":
                     section_content.pop()
                 section_content.append("")  # one blank line
