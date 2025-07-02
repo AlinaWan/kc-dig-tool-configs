@@ -41,7 +41,7 @@
 | 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
 | 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
 | 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         | 
+| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
 
 > [!IMPORTANT]
 > The **War Shield** and **Ninja Headband** charms synergize: if you successfully parry an attack using the War Shield,
@@ -68,7 +68,7 @@
 | 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
 | 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
-| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | 
+| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 <sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Slayer Shovel
@@ -84,7 +84,7 @@
 | 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
 | 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
 | 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         | 
+| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
 
 > [!IMPORTANT]
 > The **War Shield** and **Ninja Headband** charms synergize: if you successfully parry an attack using the War Shield,
@@ -111,7 +111,7 @@
 | 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
 | 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
-| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | 
+| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
@@ -153,5 +153,3 @@ This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you wan
 
 [shield-ghactions]: https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white
 [link-ghactions]: https://docs.github.com/en/actions
-
-<sub><sup>Last updated: 2025-07-02</sup></sub>

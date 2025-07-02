@@ -25,20 +25,36 @@ def get_changed_lines():
                 changed_lines.update(range(start, start + count))
     return changed_lines
 
-def parse_shovel_sections(lines):
-    """Parse shovel sections with their start and end line indexes."""
+def find_footer_start(lines):
+    """Return the line index where the footer comment starts, or None if not found."""
+    for i, line in enumerate(lines):
+        if "<!-- OPTIMIZATION FOOTER -->" in line:
+            return i
+    return None
+
+def parse_shovel_sections(lines, footer_start):
+    """Parse shovel sections bounded by '###' headers, ignoring lines after footer."""
     sections = []
     current_section = None
     for i, line in enumerate(lines):
+        # Stop parsing shovel sections if footer start reached
+        if footer_start is not None and i >= footer_start:
+            break
+
         # Detect shovel subsection header (### ...), e.g. "### Glinted Shovel"
         if re.match(r"### .+", line):
+            # Close previous section
             if current_section:
                 current_section['end'] = i - 1
                 sections.append(current_section)
             current_section = {'title': line.strip()[4:], 'start': i, 'end': None}
+
+    # Close last section before footer or EOF
     if current_section:
-        current_section['end'] = len(lines) - 1
+        # If footer exists, end at line before footer; else at EOF
+        current_section['end'] = (footer_start - 1) if footer_start is not None else len(lines) - 1
         sections.append(current_section)
+
     return sections
 
 def update_timestamps():
@@ -46,7 +62,8 @@ def update_timestamps():
     lines = text.splitlines()
 
     changed_lines = get_changed_lines()
-    sections = parse_shovel_sections(lines)
+    footer_start = find_footer_start(lines)
+    sections = parse_shovel_sections(lines, footer_start)
 
     # Determine which shovel sections have changed lines
     changed_sections = set()
@@ -63,9 +80,15 @@ def update_timestamps():
     output_lines = []
     i = 0
     while i < len(lines):
+        # Stop appending shovel sections once footer reached, append footer and beyond as is
+        if footer_start is not None and i == footer_start:
+            # Append footer and everything after as is
+            output_lines.extend(lines[i:])
+            break
+
         line = lines[i]
         header_match = re.match(r"### (.+)", line)
-        if header_match:
+        if header_match and (footer_start is None or i < footer_start):
             shovel_title = header_match.group(1)
             output_lines.append(line)
             i += 1
@@ -73,12 +96,12 @@ def update_timestamps():
             # Gather section content
             section_content = []
             while i < len(lines):
-                if re.match(r"### .+", lines[i]):
+                if (footer_start is not None and i >= footer_start) or re.match(r"### .+", lines[i]):
                     break
                 section_content.append(lines[i])
                 i += 1
 
-            # Remove existing timestamp line if present
+            # Remove existing timestamp line if present at the end of section_content
             if section_content and re.match(r"<sub><sup>Last updated: \d{4}-\d{2}-\d{2}</sup></sub>", section_content[-1]):
                 section_content.pop()
 
@@ -92,6 +115,7 @@ def update_timestamps():
 
             output_lines.extend(section_content)
         else:
+            # Lines outside shovel sections and before footer (if any)
             output_lines.append(line)
             i += 1
 
