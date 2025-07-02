@@ -55,9 +55,10 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-
 ### Starfire Shovel
-- **Enchant Priority:** Wumbo, Lucky, Strong
+- **Enchant Priority:**
+  - **Rank 1–2:** Wumbo, Lucky
+  - **Rank 3–4:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
   - **Rank 1-2:** 2 (Rock), 3 (Other)
@@ -75,6 +76,8 @@
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Rank 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 > - Rank 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit on rock
+>
+> If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
 ---
 
