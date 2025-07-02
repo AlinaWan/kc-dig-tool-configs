@@ -53,11 +53,18 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
+| 1a   | War Shield             | Ninja Headband         | Super Regen Coil       |
+| 1b   | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
 | 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
 | 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
 | 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
 | 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+
+> [!IMPORTANT]
+> The **War Shield** and **Ninja Headband** charms synergize: if you successfully parry an attack using the War Shield,
+> the Ninja Headband grants +10 damage for 2 minutes. This bonus stacks up to +250 damage. However, using the War Shield carries risk as it only blocks 50% of incoming attacks.
+> 
+> If you have completed 284+ **Combat Guild** quests, Charm Set 1b (all Radioactive Horns) becomes automatically better than 1a due to multipliers.
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
