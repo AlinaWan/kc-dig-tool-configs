@@ -111,7 +111,7 @@
 | 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
 | 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
-| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | 
+| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
