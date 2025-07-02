@@ -29,7 +29,9 @@
 > > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms
 
 ### Prismatic Shovel
-- **Enchant Priority:** Strong, Lucky
+- **Enchant Priority:**
+  - **Charm Set 1:** Wumbo
+  - **Charm Set 2-4:** Strong, Wumbo
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
   - **Charm Set 1:** 2 (All)
