@@ -70,7 +70,6 @@
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Slayer Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
@@ -123,7 +122,6 @@
 > [!TIP]
 > If you have around **+5 Strength** from Ice Picks (3SS), Charm Set 1 or 2 can 2-hit on all terrain types when using the **Strong** enchant.
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 
 ---
