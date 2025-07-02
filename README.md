@@ -81,7 +81,7 @@
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
 > [!TIP]
-> If you have close to **+6 Strength** from Ice Picks (max 3SS), Charm Set 1 or 2 can 2-hit on all terrain types when using the **Strong** enchant.
+> If you have around **+5 Strength** from Ice Picks (3SS), Charm Set 1 or 2 can 2-hit on all terrain types when using the **Strong** enchant.
 
 ---
 
