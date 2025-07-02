@@ -27,8 +27,8 @@
 - **Enchant Priority:** Strong, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Rank 1:** 2 (Rock), 3 (Other)
-  - **Rank 2-4:** 3 (All)
+  - **Charm Set 1:** 2 (Rock), 3 (Other)
+  - **Charm Set 2-4:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
@@ -57,12 +57,12 @@
 
 ### Starfire Shovel
 - **Enchant Priority:**
-  - **Rank 1–2:** Wumbo, Lucky
-  - **Rank 3–4:** Strong, Wumbo, Lucky
+  - **Charm Set 1–2:** Wumbo, Lucky
+  - **Charm Set 3–4:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Rank 1-2:** 2 (Rock), 3 (Other)
-  - **Rank 3-4:** 3 (All)
+  - **Charm Set 1-2:** 2 (Rock), 3 (Other)
+  - **Charm Set 3-4:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
@@ -74,8 +74,8 @@
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
-> - Rank 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
-> - Rank 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit on rock
+> - Charm Set 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
+> - Charm Set 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit on rock
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
