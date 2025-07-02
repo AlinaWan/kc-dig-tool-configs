@@ -28,7 +28,7 @@
 - **Enchant Priority:** Strong, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Charm Set 1:** 2 (Rock), 3 (Other)
+  - **Charm Set 1:** 2 (All)
   - **Charm Set 2-4:** 3 (All)
 - **Best Charm Sets:**
 
@@ -58,7 +58,7 @@
 
 ### Starfire Shovel
 - **Enchant Priority:**
-  - **Charm Set 1–2:** Wumbo, Lucky
+  - **Charm Set 1–2:** Wumbo, Lucky, Strong
   - **Charm Set 3–4:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
