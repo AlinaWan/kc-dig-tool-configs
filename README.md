@@ -26,7 +26,8 @@
 > - Enchant priority indicates the order of preference.
 > - Charm sets are ranked from best to less optimal.
 > - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
-> > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms
+> > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms  
+> > **Tip:** Use <kbd>Ctrl</kbd> + <kbd>F</kbd> to quickly search for and find a shovel.
 
 ### Glinted Shovel
 - **Enchant Priority:** Sundering
