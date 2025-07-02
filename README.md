@@ -71,6 +71,11 @@
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
+> [!IMPORTANT]
+> - Rank 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit
+> - Rank 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit
+> > Assumes Cauldron has **+17% Strength** (max SS) and Imp Horns has **+12% Strength** (max SS)
+
 ---
 
 This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you want. Just don't sue me.
