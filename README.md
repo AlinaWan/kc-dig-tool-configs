@@ -5,7 +5,11 @@
 [![License][shield-license]][link-license]
 [![Markdown][shield-md]][link-md]
 [![JSON][shield-json]][link-json]
+[![AutoHotkey][shield-autohotkey]][link-autohotkey]
+[![Python][shield-python]][link-python]
 [![Git][shield-git]][link-git]
+[![GitHub][shield-github]][link-github]
+[![GitHub Actions][shield-ghactions]][link-ghactions]
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
@@ -97,5 +101,17 @@ This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you wan
 [shield-json]: https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff
 [link-json]: https://www.json.org/json-en.html
 
+[shield-autohotkey]: https://img.shields.io/badge/AutoHotkey-green?logo=autohotkey&logoColor=white
+[link-autohotkey]: https://www.autohotkey.com/
+
+[shield-python]: https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff
+[link-python]: https://www.python.org/
+
 [shield-git]: https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff
 [link-git]: https://git-scm.com/
+
+[shield-github]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
+[link-github]: https://github.com/
+
+[shield-ghactions]: https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white
+[link-ghactions]: https://docs.github.com/en/actions
