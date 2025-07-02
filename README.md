@@ -72,9 +72,9 @@
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
+> Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Rank 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 > - Rank 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit on rock
-> > Assumes Cauldron has **+17% Strength** (max SS) and Imp Horns has **+12% Strength** (max SS)
 
 ---
 
