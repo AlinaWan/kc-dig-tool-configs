@@ -22,8 +22,16 @@
 
 ## 📖 Table of Contents
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [🪄 Best Enchants, Stat Priorities, and Charm Sets](#-best-enchants-stat-priorities-and-charm-sets)
+  - [Glinted Shovel](#glinted-shovel)
+  - [Prismatic Shovel](#prismatic-shovel)
+  - [Slayer Shovel](#slayer-shovel)
+  - [Starfire Shovel](#starfire-shovel)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 > **Tip:** Use <kbd>Ctrl</kbd> + <kbd>F</kbd> to quickly search for and find a shovel.
 
