@@ -52,6 +52,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
+<sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Prismatic Shovel
 - **Enchant Priority:**
   - **Charm Set 1:** Wumbo, Strong
@@ -69,6 +70,7 @@
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | 
 
+<sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Slayer Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
@@ -93,6 +95,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
+<sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Starfire Shovel
 - **Enchant Priority:**
   - **Charm Set 1–2:** Wumbo, Lucky, Strong
@@ -150,3 +153,5 @@ This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you wan
 
 [shield-ghactions]: https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white
 [link-ghactions]: https://docs.github.com/en/actions
+
+<sub><sup>Last updated: 2025-07-02</sup></sub>
