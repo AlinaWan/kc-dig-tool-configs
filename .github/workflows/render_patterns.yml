@@ -1,0 +1,80 @@
+name: Render Latest Pattern GIFs on Latest Version JSON Update
+
+on:
+  push:
+    paths:
+      - 'KC-Config-Suite/Pattern_Suite/**'
+  workflow_dispatch:
+
+jobs:
+  render-gifs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Find latest pattern JSON file
+        id: find-latest
+        run: |
+          latest_file=$(python .github/scripts/find_latest_pattern.py KC-Config-Suite/Pattern_Suite)
+          echo "latest_file=$latest_file" >> $GITHUB_OUTPUT
+
+      - name: Check if latest file changed
+        id: check-latest
+        run: |
+          echo "Latest file: ${{ steps.find-latest.outputs.latest_file }}"
+          latest=${{ steps.find-latest.outputs.latest_file }}
+
+          # If no latest file, skip
+          if [ -z "$latest" ]; then
+            echo "No latest file found, skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Get changed files in this push (diff between before and after commits)
+          git fetch origin ${{ github.event.before }} --depth=1 || true
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+          echo "Changed files:"
+          echo "$changed_files"
+
+          # Check if latest file is in changed files
+          if echo "$changed_files" | grep -Fxq "$latest"; then
+            echo "Latest pattern JSON was changed."
+            echo "skip=false" >> $GITHUB_OUTPUT
+          else
+            echo "Latest pattern JSON was NOT changed."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Stop if no latest file change
+        if: steps.check-latest.outputs.skip == 'true'
+        run: |
+          echo "No changes to the latest pattern JSON file. Skipping generation."
+          exit 0
+
+      - name: Install Pillow
+        if: steps.check-latest.outputs.skip == 'false'
+        run: pip install pillow
+
+      - name: Generate GIFs and update README
+        if: steps.check-latest.outputs.skip == 'false'
+        run: python assets/scripts/visualize_paths.py
+
+      - name: Commit and push generated GIFs and README
+        if: steps.check-latest.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add KC-Config-Suite/Pattern_Suite/README.md assets/pattern_suite/path_visualizations/*.gif
+          git diff --cached --quiet || git commit -m "chore: auto-render latest pattern GIFs [skip ci]"
+          git push
