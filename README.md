@@ -28,6 +28,30 @@
 > - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
 > > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms
 
+### Glinted Shovel
+- **Enchant Priority:** Sundering
+- **Stat Priority:** BossDamage
+- **Optimal Hit Count:** 9 (All)
+- **Best Charm Sets:**
+
+| Rank | Charm 1                | Charm 2                | Charm 3                |
+|------|------------------------|------------------------|------------------------|
+| 1a   | War Shield             | Ninja Headband         | Super Regen Coil       |
+| 1b   | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
+| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
+| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
+| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
+| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+
+> [!IMPORTANT]
+> The **War Shield** and **Ninja Headband** charms synergize: if you successfully parry an attack using the War Shield,
+> the Ninja Headband grants +10 damage for 2 minutes. This bonus stacks up to +250 damage. However, using the War Shield carries risk as it only blocks 50% of incoming attacks.
+> 
+> If you have completed 274+ **Combat Guild** quests, Charm Set 1b (all Radioactive Horns) becomes automatically better than 1a due to multipliers.
+
+> [!TIP]
+> Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
+
 ### Prismatic Shovel
 - **Enchant Priority:**
   - **Charm Set 1:** Wumbo, Strong
