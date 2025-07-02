@@ -116,12 +116,12 @@
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Charm Set 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
-> - Charm Set 1 needs close to **+6 Strength** from Ice Picks (max 3SS) to 2-hit on rock
+> - Charm Set 1 needs at least **+5.3 Strength** from Ice Picks (3SS) to 2-hit on rock
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
 > [!TIP]
-> If you have around **+5 Strength** from Ice Picks (3SS), Charm Set 1 or 2 can 2-hit on all terrain types when using the **Strong** enchant.
+> If you have at least **+5.5 Strength** from Ice Picks (3SS), Charm Set 2 can 2-hit on **all** terrain types when using the **Strong** enchant.
 
 <sub><sup>Last updated: 2025-07-02</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
