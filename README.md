@@ -120,6 +120,8 @@
 > [!TIP]
 > If you have around **+5 Strength** from Ice Picks (3SS), Charm Set 1 or 2 can 2-hit on all terrain types when using the **Strong** enchant.
 
+<!-- OPTIMIZATION FOOTER -->
+
 ---
 
 This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you want. Just don't sue me.

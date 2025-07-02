@@ -6,83 +6,101 @@ from pathlib import Path
 README = Path("README.md")
 TODAY = date.today().isoformat()
 
-# Step 1: Get diff of README between previous and current commit
-diff_output = subprocess.run(
-    ["git", "diff", "HEAD~1", "HEAD", "--unified=0", "--", str(README)],
-    capture_output=True,
-    text=True,
-).stdout
+def get_changed_lines():
+    """Return a set of line numbers in README.md that changed in the last commit."""
+    diff_output = subprocess.run(
+        ["git", "diff", "HEAD~1", "HEAD", "-U0", "--", str(README)],
+        capture_output=True, text=True
+    ).stdout
 
-# Step 2: Find changed ### headings from the diff
-changed_sections = set(re.findall(r"^\+### (.+)", diff_output, re.MULTILINE))
+    changed_lines = set()
+    # Parse diff hunk headers for line numbers of changes
+    for line in diff_output.splitlines():
+        if line.startswith("@@"):
+            # Example hunk line: @@ -24,0 +25,3 @@
+            m = re.search(r"\+(\d+)(?:,(\d+))?", line)
+            if m:
+                start = int(m.group(1))
+                count = int(m.group(2)) if m.group(2) else 1
+                changed_lines.update(range(start, start + count))
+    return changed_lines
 
-if not changed_sections:
-    print("No subsection headings under ### changed — skipping update.")
-    exit(0)
+def parse_shovel_sections(lines):
+    """Parse shovel sections with their start and end line indexes."""
+    sections = []
+    current_section = None
+    for i, line in enumerate(lines):
+        # Detect shovel subsection header (### ...), e.g. "### Glinted Shovel"
+        if re.match(r"### .+", line):
+            if current_section:
+                current_section['end'] = i - 1
+                sections.append(current_section)
+            current_section = {'title': line.strip()[4:], 'start': i, 'end': None}
+    if current_section:
+        current_section['end'] = len(lines) - 1
+        sections.append(current_section)
+    return sections
 
-print(f"Detected changed subsections: {changed_sections}")
+def update_timestamps():
+    text = README.read_text(encoding="utf-8")
+    lines = text.splitlines()
 
-# Step 3: Read README content
-text = README.read_text(encoding="utf-8")
-lines = text.splitlines()
+    changed_lines = get_changed_lines()
+    sections = parse_shovel_sections(lines)
 
-# Step 4: Parse and rewrite tool sections
-output_lines = []
-inside_tools_section = False
-i = 0
+    # Determine which shovel sections have changed lines
+    changed_sections = set()
+    for section in sections:
+        if any(line_num >= section['start'] and line_num <= section['end'] for line_num in changed_lines):
+            changed_sections.add(section['title'])
 
-while i < len(lines):
-    line = lines[i]
+    if not changed_sections:
+        print("No shovel sections changed.")
+        return
 
-    # Activate parsing only after this heading
-    if line.strip() == "## 🪄 Best Enchants, Stat Priorities, and Charm Sets":
-        inside_tools_section = True
-        output_lines.append(line)
-        i += 1
-        continue
+    print(f"Changed shovel sections: {changed_sections}")
 
-    # While inside the tools section, look for ### subsections
-    if inside_tools_section and line.startswith("### "):
-        section_header = line
-        section_name = line[4:].strip()
-        output_lines.append(section_header)
-        i += 1
-
-        section_lines = []
-
-        while i < len(lines):
-            if lines[i].startswith("### ") or lines[i].startswith("## "):
-                break
-            section_lines.append(lines[i])
+    output_lines = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        header_match = re.match(r"### (.+)", line)
+        if header_match:
+            shovel_title = header_match.group(1)
+            output_lines.append(line)
             i += 1
 
-        # Remove trailing blank lines
-        while section_lines and section_lines[-1].strip() == "":
-            section_lines.pop()
+            # Gather section content
+            section_content = []
+            while i < len(lines):
+                if re.match(r"### .+", lines[i]):
+                    break
+                section_content.append(lines[i])
+                i += 1
 
-        # Remove existing update line if present
-        if section_lines and re.match(r"<sub><sup>Last updated: \d{4}-\d{2}-\d{2}</sup></sub>", section_lines[-1]):
-            section_lines.pop()
-            while section_lines and section_lines[-1].strip() == "":
-                section_lines.pop()
+            # Remove existing timestamp line if present
+            if section_content and re.match(r"<sub><sup>Last updated: \d{4}-\d{2}-\d{2}</sup></sub>", section_content[-1]):
+                section_content.pop()
 
-        # If this section changed, add a fresh timestamp
-        if section_name in changed_sections:
-            section_lines.append("")  # Required empty line
-            section_lines.append(f"<sub><sup>Last updated: {TODAY}</sup></sub>")
-            print(f"Updated timestamp for section: {section_name}")
+            # Append new timestamp if this section changed
+            if shovel_title in changed_sections:
+                # Ensure exactly one blank line before timestamp
+                while section_content and section_content[-1].strip() == "":
+                    section_content.pop()
+                section_content.append("")  # one blank line
+                section_content.append(f"<sub><sup>Last updated: {TODAY}</sup></sub>")
 
-        output_lines.extend(section_lines)
-        continue
+            output_lines.extend(section_content)
+        else:
+            output_lines.append(line)
+            i += 1
 
-    # If we're past the enchant section or before it, just copy lines
-    output_lines.append(line)
-    i += 1
+    new_text = "\n".join(output_lines) + "\n"
+    if new_text != text:
+        README.write_text(new_text, encoding="utf-8")
+        print("README.md updated with new timestamps.")
+    else:
+        print("README.md already up to date.")
 
-# Step 5: Write new content if changed
-new_text = "\n".join(output_lines) + "\n"
-if new_text != text:
-    README.write_text(new_text, encoding="utf-8")
-    print("README.md updated with new timestamps.")
-else:
-    print("README.md already up to date. No changes made.")
+if __name__ == "__main__":
+    update_timestamps()
