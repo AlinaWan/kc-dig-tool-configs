@@ -1,5 +1,8 @@
 name: Auto Timestamp Updated Shovel Sections
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
