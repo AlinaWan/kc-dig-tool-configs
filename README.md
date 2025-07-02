@@ -30,7 +30,7 @@
 
 ### Prismatic Shovel
 - **Enchant Priority:**
-  - **Charm Set 1:** Wumbo
+  - **Charm Set 1:** Wumbo, Strong
   - **Charm Set 2-4:** Strong, Wumbo
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
