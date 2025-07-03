@@ -29,7 +29,7 @@ jobs:
           for file in ${{ steps.changed_files.outputs.CHANGED_JSON }}; do
             echo "Validating $file"
             jq empty "$file" || {
-              echo "❌ Invalid JSON in $file"
+              echo "Invalid JSON in $file"
               exit 1
             }
           done
