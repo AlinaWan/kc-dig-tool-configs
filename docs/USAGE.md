@@ -1,7 +1,5 @@
 # 🥄 Dig Tool — Usage Guide
 
----
-
 ## 🔧 Table of Contents
 
 <!-- Run with: npx doctoc --maxlevel 3 docs/USAGE.md -->
@@ -103,7 +101,7 @@ You can import `.json` pattern files to define how your character walks during m
 | -------------------- | ------------------ |
 | Start / Stop Macro   | `F1`               |
 | Show / Hide Main GUI | `F2`               |
-| Show / Hide Overlay  | `F3`               |
+| Show / Hide Overlay  | `F3`               | 
 
 ---
 
