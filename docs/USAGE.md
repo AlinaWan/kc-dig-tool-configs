@@ -119,7 +119,7 @@ You can import `.json` pattern files to define how your character walks during m
 
 ## Troubleshooting
 
-### Macro stops walking or digging suddenly
+### ❌ Macro stops walking or digging suddenly
 
 This usually happens because the macro has mistakenly **locked onto the ground as a valid target**.
 
@@ -133,7 +133,7 @@ This usually happens because the macro has mistakenly **locked onto the ground a
 * Zoom your **in-game camera into your character’s head**, but **do not go into first-person view**.
 * This is usually enough to prevent the macro from detecting the ground as a valid target.
 
-### Walk patterns failed to import
+### ❌ Walk patterns failed to import
 
 When importing walk patterns, it may **look like the import failed**, but this is actually due to a known bug.
 
@@ -149,7 +149,7 @@ When importing walk patterns, it may **look like the import failed**, but this i
 3. Press the `Refresh List` button.
 4. The imported walk patterns should now appear as expected.
 
-### Windows Defender blocked or deleted the executable
+### ❌ Windows Defender blocked or deleted the executable
 
 Windows Defender may **incorrectly flag the macro as harmful** and block or delete the `.exe` file immediately after download.
 
@@ -167,7 +167,7 @@ Windows Defender may **incorrectly flag the macro as harmful** and block or dele
 > [!IMPORTANT]
 > This issue is a **false positive**. The macro does not contain any malicious code.
 
-### Hotkeys don’t do anything
+### ❌ Hotkeys don’t do anything
 
 Sometimes the macro’s hotkeys (e.g., <kbd>F1</kbd>, <kbd>F2</kbd>, <kbd>F3</kbd>) may stop responding or appear to do nothing.
 
@@ -176,7 +176,7 @@ Sometimes the macro’s hotkeys (e.g., <kbd>F1</kbd>, <kbd>F2</kbd>, <kbd>F3</kb
 * Simply **close and restart the program**.
   This usually restores full hotkey functionality.
 
-### Settings reverted after restart
+### ❌ Settings reverted after restart
 
 Settings **do not persist automatically** between sessions.
 
