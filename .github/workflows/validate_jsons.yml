@@ -21,29 +21,34 @@ jobs:
         run: |
           echo "Detecting changed JSON files..."
 
-          # Set base ref
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             BASE_REF="origin/${{ github.event.pull_request.base.ref }}"
           else
             BASE_REF="HEAD~1"
           fi
 
-          git fetch origin $BASE_REF --depth=1 || true
+          git fetch origin "$BASE_REF" --depth=1 || true
 
-          # Get changed .json files
-          CHANGED_JSON=$(git diff --name-only --diff-filter=ACMR $BASE_REF | grep '\.json$' || true)
+          CHANGED_JSON=$(git diff --name-only --diff-filter=ACMR "$BASE_REF" | grep '\.json$' || true)
 
           echo "Changed JSON files:"
           echo "$CHANGED_JSON"
 
-          echo "files<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGED_JSON" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Set output
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGED_JSON" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+        outputs:
+          files: ${{ steps.changed.outputs.files }}
 
       - name: Validate JSON
-        if: steps.changed.outputs.files != ''
         run: |
-          echo "${{ steps.changed.outputs.files }}" | while read file; do
+          echo "${{ steps.changed.outputs.files }}" | grep . || {
+            echo "No JSON files changed. Skipping validation."
+            exit 0
+          }
+
+          echo "${{ steps.changed.outputs.files }}" | while IFS= read -r file; do
             if [ -f "$file" ]; then
               echo "Validating $file"
               jq empty "$file" || { echo "Invalid JSON in $file"; exit 1; }
@@ -51,7 +56,3 @@ jobs:
               echo "File $file not found"
             fi
           done
-
-      - name: Skip if no JSON files changed
-        if: steps.changed.outputs.files == ''
-        run: echo "No JSON files changed. Skipping validation."
