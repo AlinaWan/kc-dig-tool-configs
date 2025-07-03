@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get list of changed JSON files
+      - name: Get changed JSON files
         id: changed
         run: |
           echo "Detecting changed JSON files..."
@@ -29,30 +29,30 @@ jobs:
 
           git fetch origin "$BASE_REF" --depth=1 || true
 
-          CHANGED_JSON=$(git diff --name-only --diff-filter=ACMR "$BASE_REF" | grep '\.json$' || true)
+          # Get list of added/modified JSON files (exclude deleted)
+          CHANGED_JSON=$(git diff --name-status "$BASE_REF" | awk '$1 ~ /A|M/ && $2 ~ /\.json$/ {print $2}')
 
           echo "Changed JSON files:"
           echo "$CHANGED_JSON"
 
-          # Set output
+          # Output list
           echo "files<<EOF" >> "$GITHUB_OUTPUT"
           echo "$CHANGED_JSON" >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
-        outputs:
-          files: ${{ steps.changed.outputs.files }}
 
-      - name: Validate JSON
+      - name: Validate JSON files
         run: |
-          echo "${{ steps.changed.outputs.files }}" | grep . || {
+          FILES="${{ steps.changed.outputs.files }}"
+          if [[ -z "$FILES" ]]; then
             echo "No JSON files changed. Skipping validation."
             exit 0
-          }
+          fi
 
-          echo "${{ steps.changed.outputs.files }}" | while IFS= read -r file; do
-            if [ -f "$file" ]; then
+          echo "$FILES" | while IFS= read -r file; do
+            if [[ -f "$file" ]]; then
               echo "Validating $file"
               jq empty "$file" || { echo "Invalid JSON in $file"; exit 1; }
             else
-              echo "File $file not found"
+              echo "Skipping missing file: $file"
             fi
           done
