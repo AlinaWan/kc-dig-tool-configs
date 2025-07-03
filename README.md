@@ -8,6 +8,7 @@
 [![GitHub Actions][shield-ghactions]][link-ghactions]
 [![JSON Validity][shield-json-validate]][link-json-validate]
 [![Pattern Suite CI][shield-pattern-suite-ci]][link-pattern-suite-ci]
+[![README CI][shield-readme-ci]][link-readme-ci]
 [![Markdown][shield-md]][link-md]
 [![JSON][shield-json]][link-json]
 [![Python][shield-python]][link-python]
@@ -169,6 +170,9 @@ This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you wan
 
 [shield-pattern-suite-ci]: https://img.shields.io/github/actions/workflow/status/AlinaWan/kc-dig-tool-configs/render_patterns.yml?label=Pattern%20Suite%20CI
 [link-pattern-suite-ci]: https://github.com/AlinaWan/kc-dig-tool-configs/actions/workflows/render_patterns.yml
+
+[shield-readme-ci]: https://img.shields.io/github/actions/workflow/status/AlinaWan/kc-dig-tool-configs/shovel_readme_update.yml?label=README%20CI
+[link-readme-ci]: https://github.com/AlinaWan/kc-dig-tool-configs/actions/workflows/shovel_readme_update.yml
 
 [shield-md]: https://img.shields.io/badge/Markdown-%23000000.svg?logo=markdown&logoColor=white
 [link-md]: https://www.markdownguide.org/basic-syntax/
