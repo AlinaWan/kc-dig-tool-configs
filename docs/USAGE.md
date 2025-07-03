@@ -146,13 +146,13 @@ If your macro walks correctly but **fails to get strong hits**, or **only gets t
 
 * **First**, make sure **Notifications Viewport** is **disabled** in the game’s settings:
 
-  * Open the **in-game settings menu**.
+  * Open the **in-game settings menu**.  
     ![Game Settings Button](/assets/docs/game_settings_button.png)
 
-  * Find the **"Notifications Viewport"** setting.
+  * Find the **"Notifications Viewport"** setting.  
     ![Notifications Viewport Slider](/assets/docs/notifications_viewport_slider.png)
 
-  * The slider should be to the **left** and appear **grey**.
+  * The slider should be to the **left** and appear **grey**.  
     ![Notifications Viewport Example](/assets/docs/notifications_viewport_disabled.png)
 
 * If Notifications Viewport is disabled but the preview still shows the **entire black area as the bounding box** (instead of the dig zone):
