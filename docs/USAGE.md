@@ -44,10 +44,10 @@
 2. **Select an area**
 
    - Click the `Select Area` button on the main GUI.  
-   ![Select Area Button](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/select_area_button.png)
+   ![Select Area Button](assets/docs/select_area_button.png)
 
    - Your screen will darken — click and drag to highlight your target dig area.  
-   ![Select Area Example](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/selection_area.png)
+   ![Select Area Example](assets/docs/selection_area.png)
 
 > [!IMPORTANT]
 > You must select the bottom half of the minigame bar.
@@ -67,11 +67,11 @@ Settings control your macro behavior such as detection, behavior, input delay, a
 ### Steps to Import Settings
 
 1. Open the `Settings` dropdown menu at the bottom of the main GUI.  
-![Settings Dropdown](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/settings_dropdown.png)
+![Settings Dropdown](assets/docs/settings_dropdown.png)
 2. Click `Load Settings`.  
-![Load Settings Button](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/load_settings_button.png)
+![Load Settings Button](assets/docs/load_settings_button.png)
 3. Choose a `.json` configuration file.  
-![Load File Dialog](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/load_filedialog.png)
+![Load File Dialog](assets/docs/load_filedialog.png)
 
 ---
 
@@ -82,15 +82,15 @@ You can import `.json` pattern files to define how your character walks during m
 ### Steps to Import Walk Patterns
 
 1. Open the `Behavior` dropdown menu on the main GUI.  
-![Behavior Dropdown](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/behavior_dropdown.png)
+![Behavior Dropdown](assets/docs/behavior_dropdown.png)
 2. Open the `Auto-Walk Settings` dropdown menu under that.  
-![Auto-Walk Settings Dropdown](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/autowalk_dropdown.png)
+![Auto-Walk Settings Dropdown](assets/docs/autowalk_dropdown.png)
 3. Click `Manage Custom Patterns`.  
-![Manage Custom Patterns Button](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/manage_patterns_button.png)
+![Manage Custom Patterns Button](assets/docs/manage_patterns_button.png)
 4. In the window that appears, click `Import Pattern`.  
-![Import Pattern](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/import_pattern_button.png)
+![Import Pattern](assets/docs/import_pattern_button.png)
 5. Choose a `.json` configuration file.  
-![Load File Dialog](https://raw.githubusercontent.com/AlinaWan/kc-dig-tool-configs/main/assets/docs/load_filedialog.png)
+![Load File Dialog](assets/docs/load_filedialog.png)
 
 ---
 
@@ -157,7 +157,7 @@ Windows Defender may **incorrectly flag the macro as harmful** and block or dele
 
 ### ❌ Hotkeys don’t do anything
 
-Sometimes the macro’s hotkeys (e.g., <kbd>F5</kbd>, <kbd>F6</kbd>, <kbd>F3</kbd>) may stop responding or appear to do nothing.
+Sometimes the macro’s hotkeys (e.g., <kbd>F1</kbd>, <kbd>F2</kbd>, <kbd>F3</kbd>) may stop responding or appear to do nothing.
 
 #### ✅ How to fix:
 
