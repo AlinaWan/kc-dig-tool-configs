@@ -1,10 +1,7 @@
-name: Validate Changed JSON Files
+name: Validate Changed JSON files
 
 on:
   push:
-    paths:
-      - '**/*.json'
-  pull_request:
     paths:
       - '**/*.json'
 
@@ -13,48 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Get changed JSON files
-        id: changed
+        id: changed_files
         run: |
-          echo "Detecting changed JSON files..."
-
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            BASE_REF="origin/${{ github.event.pull_request.base.ref }}"
-          else
-            BASE_REF="HEAD~1"
-          fi
-
-          git fetch origin "$BASE_REF" --depth=1 || true
-
-          # Get list of added/modified JSON files (exclude deleted)
-          CHANGED_JSON=$(git diff --name-status "$BASE_REF" | awk '$1 ~ /A|M/ && $2 ~ /\.json$/ {print $2}')
-
-          echo "Changed JSON files:"
-          echo "$CHANGED_JSON"
-
-          # Output list
-          echo "files<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$CHANGED_JSON" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "CHANGED_JSON=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }} | \
+            grep -E '^[AM]\s+.*\.json$' | \
+            awk '{print $2}' | \
+            tr '\n' ' ')" >> "$GITHUB_OUTPUT"
 
       - name: Validate JSON files
+        if: steps.changed_files.outputs.CHANGED_JSON != ''
         run: |
-          FILES="${{ steps.changed.outputs.files }}"
-          if [[ -z "$FILES" ]]; then
-            echo "No JSON files changed. Skipping validation."
-            exit 0
-          fi
-
-          echo "$FILES" | while IFS= read -r file; do
-            if [[ -f "$file" ]]; then
-              echo "Validating $file"
-              jq empty "$file" || { echo "Invalid JSON in $file"; exit 1; }
-            else
-              echo "Skipping missing file: $file"
-            fi
+          for file in ${{ steps.changed_files.outputs.CHANGED_JSON }}; do
+            echo "Validating $file"
+            jq empty "$file" || {
+              echo "❌ Invalid JSON in $file"
+              exit 1
+            }
           done
