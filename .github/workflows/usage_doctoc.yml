@@ -7,6 +7,10 @@ on:
   push:
     paths:
       - 'docs/USAGE.md'
+  pull_request:
+    paths:
+      - 'docs/USAGE.md'
+  workflow_dispatch:
 
 jobs:
   update-toc:

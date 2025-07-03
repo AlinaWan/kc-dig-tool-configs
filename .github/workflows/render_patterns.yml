@@ -7,6 +7,9 @@ on:
   push:
     paths:
       - 'KC-Config-Suite/Pattern_Suite/**'
+  pull_request:
+    paths:
+      - 'KC-Config-Suite/Pattern_Suite/**'
   workflow_dispatch:
 
 jobs:
