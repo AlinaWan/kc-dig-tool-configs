@@ -25,6 +25,14 @@ jobs:
         run: |
           python .github/scripts/sync_azerty_patterns.py
 
+      - name: Commit and push AZERTY sync updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add KC-Config-Suite/Pattern_Suite/AZERTY
+          git diff --cached --quiet || git commit -m "chore: sync AZERTY patterns from QWERTY [skip ci]"
+          git push
+
       - name: Find latest pattern JSON file
         id: find-latest
         run: |
