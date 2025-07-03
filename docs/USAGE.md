@@ -133,6 +133,45 @@ This usually happens because the macro has mistakenly **locked onto the ground a
 * Zoom your **in-game camera into your character’s head**, but **do not go into first-person view**.
 * This is usually enough to prevent the macro from detecting the ground as a valid target.
 
+### ❌ Macro fails to hit strong hits consistently
+
+If your macro walks correctly but **fails to get strong hits**, or **only gets them randomly**, this is usually due to a **visual detection issue** or **hardware performance limitation**.
+
+#### How to troubleshoot:
+
+1. Open the macro’s main GUI and click the `Show Preview` button.
+2. This displays what the macro sees during gameplay.
+
+#### What to check:
+
+* **First**, make sure **Notifications Viewport** is **disabled** in the game’s settings:
+
+  * Open the **in-game settings menu**.
+    ![Game Settings Button](/assets/docs/game_settings_button.png)
+
+  * Find the **"Notifications Viewport"** setting.
+    ![Notifications Viewport Slider](/assets/docs/notifications_viewport_slider.png)
+
+  * The slider should be to the **left** and appear **grey**.
+    ![Notifications Viewport Example](/assets/docs/notifications_viewport_disabled.png)
+
+* If Notifications Viewport is disabled but the preview still shows the **entire black area as the bounding box** (instead of the dig zone):
+
+  * This is a **known bug** with no current fix.
+  * The macro cannot accurately locate the sweet spot in this case.
+
+* If the bounding box **does follow the dig zone and sweet spot**, but strong hits are still rare or inconsistent:
+
+  * Make sure your **FPS is uncapped** in Roblox.
+  * In **Roblox settings**, set **`Maximum Frame Rate` to 240**.
+  * Try to reach **at least 150 FPS**, and ideally **200+ FPS**.
+
+#### Final step:
+
+* If your FPS is already high but strong hits still fail, your **CPU may be too slow** to keep up with the visual processing.
+
+  * Consider upgrading to a **faster CPU** if possible.
+
 ### ❌ Walk patterns failed to import
 
 When importing walk patterns, it may **look like the import failed**, but this is actually due to a known bug.
