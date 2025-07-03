@@ -21,6 +21,10 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Sync AZERTY patterns with QWERTY root
+        run: |
+          python .github/scripts/sync_azerty_patterns.py
+
       - name: Find latest pattern JSON file
         id: find-latest
         run: |
