@@ -3,13 +3,14 @@
 ## 🔗 Overview
 
 [![License][shield-license]][link-license]
+[![GitHub][shield-github]][link-github]
+[![Git][shield-git]][link-git]
+[![GitHub Actions][shield-ghactions]][link-ghactions]
+[![JSON Validity][shield-json-validate]][link-json-validate]
 [![Markdown][shield-md]][link-md]
 [![JSON][shield-json]][link-json]
-[![AutoHotkey][shield-autohotkey]][link-autohotkey]
 [![Python][shield-python]][link-python]
-[![Git][shield-git]][link-git]
-[![GitHub][shield-github]][link-github]
-[![GitHub Actions][shield-ghactions]][link-ghactions]
+[![AutoHotkey][shield-autohotkey]][link-autohotkey]
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
@@ -153,23 +154,27 @@ This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you wan
 [shield-license]: https://img.shields.io/github/license/AlinaWan/kc-dig-tool-configs
 [link-license]: LICENSE
 
+[shield-github]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
+[link-github]: https://github.com/
+
+[shield-git]: https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff
+[link-git]: https://git-scm.com/
+
+[shield-ghactions]: https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white
+[link-ghactions]: https://docs.github.com/en/actions
+
+[shield-json-validate]: https://img.shields.io/github/actions/workflow/status/AlinaWan/kc-dig-tool-configs/validate_jsons.yml
+[link-json-validate]: https://github.com/AlinaWan/kc-dig-tool-configs/actions/workflows/validate_jsons.yml
+
 [shield-md]: https://img.shields.io/badge/Markdown-%23000000.svg?logo=markdown&logoColor=white
 [link-md]: https://www.markdownguide.org/basic-syntax/
 
 [shield-json]: https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff
 [link-json]: https://www.json.org/json-en.html
 
-[shield-autohotkey]: https://img.shields.io/badge/AutoHotkey-green?logo=autohotkey&logoColor=white
-[link-autohotkey]: https://www.autohotkey.com/
-
 [shield-python]: https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff
 [link-python]: https://www.python.org/
 
-[shield-git]: https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff
-[link-git]: https://git-scm.com/
+[shield-autohotkey]: https://img.shields.io/badge/AutoHotkey-green?logo=autohotkey&logoColor=white
+[link-autohotkey]: https://www.autohotkey.com/
 
-[shield-github]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
-[link-github]: https://github.com/
-
-[shield-ghactions]: https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white
-[link-ghactions]: https://docs.github.com/en/actions
