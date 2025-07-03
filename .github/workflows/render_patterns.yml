@@ -1,5 +1,8 @@
 name: Render Latest Pattern GIFs on Latest Version JSON Update
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
