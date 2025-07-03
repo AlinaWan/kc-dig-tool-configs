@@ -14,7 +14,9 @@
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
 [**⚙️ Configuration Files**](KC-Config-Suite/)  
-[**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)
+[**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)  
+
+[**📖 How to use Dig Tool**](docs/USAGE.md)
 
 [📚 Official Dig Wiki](https://digtionary.org/wiki/Main_Page)
 
