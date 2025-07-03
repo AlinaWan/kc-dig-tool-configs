@@ -28,7 +28,7 @@
         "shovel_timeout": 1,
         "user_id": "From Riri, With Love <3",
         "webhook_url": "https://github.com/AlinaWan/kc-dig-tool-configs#prismatic-shovel",
-        "milestone_interval": 20250702,
+        "milestone_interval": 20250703,
         "use_custom_cursor": false,
         "include_discord_in_settings": true,
         "shovel_equip_mode": "double",
