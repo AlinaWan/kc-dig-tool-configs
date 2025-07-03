@@ -14,11 +14,11 @@
   - [Steps to Import Walk Patterns](#steps-to-import-walk-patterns)
 - [Basic Controls](#basic-controls)
 - [Troubleshooting](#troubleshooting)
-  - [Macro stops walking or digging suddenly](#macro-stops-walking-or-digging-suddenly)
-  - [Walk patterns failed to import](#walk-patterns-failed-to-import)
-  - [Windows Defender blocked or deleted the executable](#windows-defender-blocked-or-deleted-the-executable)
-  - [Hotkeys don’t do anything](#hotkeys-dont-do-anything)
-  - [Settings reverted after restart](#settings-reverted-after-restart)
+  - [❌ Macro stops walking or digging suddenly](#-macro-stops-walking-or-digging-suddenly)
+  - [❌ Walk patterns failed to import](#-walk-patterns-failed-to-import)
+  - [❌ Windows Defender blocked or deleted the executable](#-windows-defender-blocked-or-deleted-the-executable)
+  - [❌ Hotkeys don’t do anything](#-hotkeys-dont-do-anything)
+  - [❌ Settings reverted after restart](#-settings-reverted-after-restart)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
