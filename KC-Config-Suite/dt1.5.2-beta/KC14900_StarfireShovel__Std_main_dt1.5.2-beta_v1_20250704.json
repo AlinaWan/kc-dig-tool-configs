@@ -25,7 +25,7 @@
         "walk_duration": 300,
         "auto_shovel_enabled": true,
         "shovel_slot": 1,
-        "shovel_timeout": 0,
+        "shovel_timeout": 1,
         "user_id": "Forever yours, Riri \ud83d\udc8c",
         "webhook_url": "https://github.com/AlinaWan/kc-dig-tool-configs#starfire-shovel",
         "milestone_interval": 20250704,
