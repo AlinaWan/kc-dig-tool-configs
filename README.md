@@ -42,6 +42,7 @@
 
 ---
 
+<!-- DO NOT CHANGE THIS HEADER NAME WITHOUT UPDATING CI REFERENCE -->
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
@@ -49,6 +50,8 @@
 > - Charm sets are ranked from best to less optimal.
 > - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
 > > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms  
+
+<!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 
 ### Glinted Shovel
 - **Enchant Priority:** Sundering
@@ -133,6 +136,7 @@
 
 <sub><sup>Last updated: 2025-07-02</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
+<!-- DO NOT MOVE OR DELETE FOOTER, CI USES IT TO FIND EOS -->
 
 ---
 
