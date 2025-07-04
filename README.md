@@ -92,7 +92,7 @@
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Charm Set 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
+<sub><sup>Last updated: 2025-07-04</sup></sub>
 ### Slayer Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
@@ -134,7 +134,7 @@
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
+<sub><sup>Last updated: 2025-07-04</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 <!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
