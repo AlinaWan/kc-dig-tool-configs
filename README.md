@@ -67,7 +67,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
+<sub><sup>Last updated: 2025-07-04</sup></sub>
 ### Prismatic Shovel
 - **Enchant Priority:**
   - **Charm Set 1:** Wumbo, Strong
@@ -103,7 +103,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-02</sup></sub>
+<sub><sup>Last updated: 2025-07-04</sup></sub>
 ### Starfire Shovel
 - **Enchant Priority:**
   - **Charm Set 1–2:** Wumbo, Lucky, Strong
