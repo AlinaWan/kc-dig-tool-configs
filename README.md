@@ -42,7 +42,7 @@
 
 ---
 
-<!-- DO NOT CHANGE THIS HEADER NAME WITHOUT UPDATING CI REFERENCE -->
+<!-- DO NOT CHANGE THIS HEADER NAME WITHOUT UPDATING CI REFERENCE; CI USES THE EXACT NAME TO FIND SOS -->
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
@@ -73,7 +73,7 @@
 <sub><sup>Last updated: 2025-07-04</sup></sub>
 ### Prismatic Shovel
 - **Enchant Priority:**
-  - **Charm Set 1:** Wumbo, Strong
+  - **Charm Set 1:** Strong, Wumbo
   - **Charm Set 2-4:** Strong, Wumbo
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
@@ -87,6 +87,10 @@
 | 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | 
+
+> [!IMPORTANT]
+> Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
+> - Charm Set 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 
 <sub><sup>Last updated: 2025-07-02</sup></sub>
 ### Slayer Shovel
@@ -119,24 +123,20 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
-| 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 1    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 2    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
 | 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
 | 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
-> - Charm Set 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
-> - Charm Set 1 needs at least **+5.3 Strength** from Ice Picks (3SS) to 2-hit on rock
+> - Charm Set 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-> [!TIP]
-> If you have at least **+5.5 Strength** from Ice Picks (3SS), Charm Set 2 can 2-hit on **all** terrain types when using the **Strong** enchant.
-
 <sub><sup>Last updated: 2025-07-02</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
-<!-- DO NOT MOVE OR DELETE FOOTER, CI USES IT TO FIND EOS -->
+<!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
 ---
 
