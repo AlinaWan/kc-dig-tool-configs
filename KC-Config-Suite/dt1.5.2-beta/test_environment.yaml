@@ -1,0 +1,35 @@
+# test_environment.yaml
+# System configuration used during testing.
+# NOTE: These are not minimum or required specs.
+
+os:
+  name: Windows
+  version: 11
+  build: 26100
+
+cpu:
+  model: Intel Core i9-14900KF
+  cores: 24
+  threads: 32
+
+display:
+  resolution: 1920x1080
+  scale: 100%
+
+roblox_settings:
+  graphics_mode: Manual
+  graphics_quality: 10
+  max_frame_rate: 240
+  window_mode: Windowed
+
+  window_position: # Ignore this if you don't know what it means
+    screen:
+      x: -8
+      y: -8
+      width: 1936
+      height: 1048
+    client:
+      x: 0
+      y: 23
+      width: 1920
+      height: 1009
