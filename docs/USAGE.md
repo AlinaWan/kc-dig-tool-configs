@@ -216,7 +216,7 @@ If you try to import a `.json` file and see an error like:
 If you're using an AZERTY keyboard, consider using a **community fork that adds AZERTY support**:
 
 * **Download precompiled binaries** (no setup required):
-  [`https://github.com/AlinaWan/dig-tool-azerty-bin`](https://github.com/AlinaWan/dig-tool-azerty-bin/releases)
+  [`https://github.com/AlinaWan/dig-tool-azerty-bin/releases`](https://github.com/AlinaWan/dig-tool-azerty-bin/releases)
 
   > This is **just a binary mirror** of the fork below — useful if you don’t want to build it yourself.
 
