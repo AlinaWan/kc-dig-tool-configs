@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 alina
+Copyright (c) 2025 alina (Riri)
 Copyright (c) 2025 bobby
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
