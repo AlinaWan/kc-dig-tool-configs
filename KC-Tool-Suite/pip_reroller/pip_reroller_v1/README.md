@@ -9,13 +9,13 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 ## Usage
 
 1. **Select Area**  
-   Click the **Select Area** button, then drag on the screen to select the region containing the pip ranks (the small colored marks).  
+   Click the **Select Area** button, then drag on the screen to select the region containing the pip ranks (eg. SS, S, A).  
    ![Selection Example](/assets/kc-tool-suite/piprr_selection_example.png)
 > [!IMPORTANT]
-> The area should include only the pip rank display, not the stat value (See the example image above).
+> The area should include only the pip rank area, not the area where stat value is (see the example image above).
 
 2. **Set Chisel Button**  
-   Click **Set Chisel Button**, then click on the orange pencil icon on your screen.  
+   Click **Set Chisel Button**, then click on the orange pencil icon for the charm you want to reroll.  
    ![Chisel Button](/assets/kc-tool-suite/chisel_button.png)
 
 3. **Set Buy Button**  
