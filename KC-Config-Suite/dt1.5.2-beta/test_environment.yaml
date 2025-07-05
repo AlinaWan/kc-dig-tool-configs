@@ -12,6 +12,10 @@ cpu:
   cores: 24
   threads: 32
 
+gpu:
+  model: NVIDIA GeForce RTX 4070 SUPER
+  vram: 12
+
 display:
   resolution: 1920x1080
   scale: 100%
@@ -21,6 +25,10 @@ roblox_settings:
   graphics_quality: 10
   max_frame_rate: 240
   window_mode: Windowed
+
+  rendering_backend:
+    api: Direct3D
+    version: 11.1
 
   window_position: # Ignore this if you don't know what it means
     screen:
@@ -33,3 +41,25 @@ roblox_settings:
       y: 23
       width: 1920
       height: 1009
+
+game_settings:
+  place_version: 260
+  performance:
+    low_graphics: false
+    shadows: true
+    bloom: true
+    notifications_viewport: false
+  preferences:
+    field_of_view: 70
+    minigame_dimming: 1
+    back_visibility: 0
+    quest_ui_size_modifier: 0
+    minimum_auto_sell_tier: "All"
+    high_pitch_voice: false
+    excess_saturation: false
+    excess_brightness: false
+    trading_enabled: false
+    event_3d_headers: true
+    'abbreviate_$_on_topbar': false
+    season_color_correction: true
+    personal_dig_streaks: true
