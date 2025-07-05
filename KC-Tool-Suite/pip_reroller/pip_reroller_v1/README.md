@@ -11,8 +11,8 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 1. **Select Area**
    Click the **Select Area** button, then drag on the screen to select the region containing the pip ranks (the small colored marks).  
    ![Selection Example](/assets/kc-tool-suite/piprr_selection_example.png)
-   > [!IMPORTANT]
-   > The area should include only the pip rank display, not the stat value (See the example image above).
+> [!IMPORTANT]
+> The area should include only the pip rank display, not the stat value (See the example image above).
 
 2. **Set Chisel Button**
    Click **Set Chisel Button**, then click on the orange pencil icon on your screen.  
@@ -27,8 +27,8 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
    * **Stop at \<int\> SS:** This sets the minimum number of **SS stats** (detected objects) at which the tool will stop rerolling.
         * If you enter **1**, the tool will stop as soon as **1 or more** SS stats are detected.
         * If you enter **3**, the tool will continue rerolling until it finds **3 or more** SS stats, then stop.
-   > [!NOTE]
-   >This tool does not evaluate the stat values themselves. It only detects whether a pip is of SS rank based on its visual appearance (color).
+> [!NOTE]
+> This tool does not evaluate the stat values themselves. It only detects whether a pip is of SS rank based on its visual appearance (color).
    * **Delay Between Clicks (ms):** Milliseconds to wait between clicking the chisel and buy buttons.
    * **Object Tolerance (px):** Pixel distance threshold to merge close detected bounding boxes into a single object.
 
