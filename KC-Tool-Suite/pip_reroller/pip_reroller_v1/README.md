@@ -33,10 +33,10 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 > [!NOTE]
 > This tool does not evaluate the stat values themselves. It only detects whether a pip is of SS rank based on its visual appearance (color).
 
-5. **Start Preview**
+5. **Start Preview**  
    Use **Start Preview** to see bounding boxes around detected objects in real time in a separate window. Press **Q** in the preview window to exit.
 
-6. **Start/Stop Automation**
+6. **Start/Stop Automation**  
    Press **F5** to toggle the automation running state. The status text on the GUI indicates whether the tool is **Running** or **Suspended**.
 
 ---
