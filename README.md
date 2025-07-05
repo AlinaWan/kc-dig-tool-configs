@@ -138,7 +138,7 @@
 
 ---
 
-This repository is licensed under the [WTFPL](LICENSE). Do what the fuck you want. Just don't sue me.
+Unless otherwise stated, this repository is licensed under the [WTFPL](LICENSE).
 
 <!-- Badge Variables -->
 [shield-license]: https://img.shields.io/github/license/AlinaWan/kc-dig-tool-configs
