@@ -112,6 +112,12 @@ Install dependencies with:
 pip install -r requirements.txt
 ```
 
+* If AutoHotkey.exe is not found on your PATH, you can likely resolve this error simply by installing the binary extra with the following command:
+
+```bash
+pip install "ahk[binary]"
+```
+
 ---
 
 ## Notes
