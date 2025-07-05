@@ -74,7 +74,7 @@ Suppose:
 #### Example Goal 1: You want to stop only if you get **A, A, SS**
 
 * Set **Minimum Objects** = 3
-  (because you want 3 good pips total)
+  (because you want 3 A+ pips total)
 * Set **Minimum Quality** = A
   (because you want all pips to be at least A)
 * Set **Minimum SS** = 1
