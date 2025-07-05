@@ -67,6 +67,37 @@ Suppose:
 | SS, SS, SS         | Yes    | 3 objects ≥C, all SS             |
 | D, D, D, SS        | No     | Only 1 ≥C, needs 3               |
 
+### Example Goal-Based Configurations
+
+> Want to build your configuration based on a *target outcome*? Here are some examples:
+
+#### Example Goal 1: You want to stop only if you get **A, A, SS**
+
+* Set **Minimum Objects** = 3
+  (because you want 3 good pips total)
+* Set **Minimum Quality** = A
+  (because you want all pips to be at least A)
+* Set **Minimum SS** = 1
+  (because you require at least one SS pip)
+
+> This ensures all pips are A or higher, and one must be SS before it stops.
+
+#### Example Goal 2: You want **at least 2 SS**, regardless of other pips
+
+* **Minimum Objects** = 2
+* **Minimum Quality** = F (or the lowest allowed)
+* **Minimum SS** = 2
+
+> Tool stops when there are at least 2 pips total, both of which are SS.
+
+#### Example Goal 3: You want **S+, but don’t care if SS appears**
+
+* **Minimum Objects** = 3
+* **Minimum Quality** = S
+* **Minimum SS** = 0
+
+> Will stop when at least 3 ranks are S or higher, even if SS is not present.
+
 ---
 
 ## Requirements
@@ -93,7 +124,7 @@ pip install -r requirements.txt
 
 ## License
 
-This script is licensed under the MIT License.
+This script is licensed under the [MIT License](LICENSE.txt).
 
 ---
 
