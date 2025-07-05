@@ -60,12 +60,12 @@ Suppose:
 | Detected Ranks     | Stops? | Reason                           |
 |--------------------|--------|----------------------------------|
 | SS, F, F           | No     | Only 1 ≥C, needs 3               |
-| SS, C, F           | Yes    | 3 objects ≥C, at least 1 SS      |
+| SS, C, F           | No     | Only 2 objects ≥C, at least 1 SS |
 | SS, SS             | No     | Only 2 objects                   |
 | A, B, B            | No     | 3 objects ≥C, but no SS          |
 | SS, C, B           | Yes    | 3 objects ≥C, at least 1 SS      |
 | SS, SS, SS         | Yes    | 3 objects ≥C, all SS             |
-| D, D, D, SS        | No     | Only 1 ≥C, needs 3               |
+| C, C, C, F         | Yes    | 3 objects ≥C                     |
 
 ### Example Goal-Based Configurations
 
