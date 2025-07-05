@@ -1,0 +1,19 @@
+KC Dig Tool Configs – Attribution
+=================================
+
+This project includes contributions and borrowed logic from the following individuals and sources. Each attribution corresponds to specific directories or components within the repository.
+
+---
+
+/KC-Tool-Suite/pip_reroller/pip_reroller_v1/
+- This folder borrows and adapts selection area handling and bounding box preview logic from iamnotbobby.
+- Original code licensed under the MIT License.
+
+/KC-Config-Suite/Pattern_Suite/
+- The pattern name "Nugget" is credited to Jax.
+
+---
+
+License Note:
+All third-party components are used in accordance with their respective licenses and attribution requirements. See each folder’s LICENSE file where applicable.
+Unless otherwise noted above, all code and assets in this repository are licensed under the repository’s primary license, as specified in the top-level LICENSE file.
