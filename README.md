@@ -75,7 +75,7 @@
 - **Enchant Priority:** Strong, Wumbo
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Charm Set 1:** 2 (All)
+  - **Charm Set 1:** 2 (Rock), 3 (All)
   - **Charm Set 2-4:** 3 (All)
 - **Best Charm Sets:**
 
