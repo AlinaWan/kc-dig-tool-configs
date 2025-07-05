@@ -65,7 +65,7 @@ Suppose:
 | A, B, B            | No     | 3 objects ≥C, but no SS          |
 | SS, C, B           | Yes    | 3 objects ≥C, at least 1 SS      |
 | SS, SS, SS         | Yes    | 3 objects ≥C, all SS             |
-| C, C, C, F         | Yes    | 3 objects ≥C                     |
+| SS, C, C, F        | Yes    | 3 objects ≥C, at least 1 SS      |
 
 ### Example Goal-Based Configurations
 
