@@ -33,11 +33,11 @@ from PIL import ImageGrab
 from pynput import keyboard  # for F5 listening
 from ahk import AHK  # AHK for clicking
 
-class BBoxPreviewApp:
+class PipRerollerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("BBox Detector Preview")
-        self.root.geometry("420x370")
+        self.root.title("Pip Reroller by Riri")
+        self.root.geometry("420x330")
         self.root.configure(bg="#222222")
         self.root.attributes("-topmost", True)
 
@@ -398,5 +398,5 @@ class BBoxPreviewApp:
 
 if __name__ == '__main__':
     root = tk.Tk()
-    app = BBoxPreviewApp(root)
+    app = PipRerollerApp(root)
     root.mainloop()
