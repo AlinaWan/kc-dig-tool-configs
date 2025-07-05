@@ -1,13 +1,25 @@
 """
 Pip Reroller v1.1.0
-===============
-Some area selection and bounding box logic adapted from iambobby (MIT licensed).
-This script is licensed under the MIT License.
-===============
+
+Automates the process of rerolling pips (stat ranks) in Dig by detecting rank-colored objects
+within a user-selected screen area and clicking configured UI buttons, stopping when user-defined
+quality and count conditions are met.
+
+Features:
+- Interactive GUI for selecting detection area, pip rank quality, and minimum object requirements.
+- Real-time preview window with bounding box overlays for detected ranks.
+- Per-rank live debug count display in the GUI.
+- Flexible color tolerance and object merging for robust detection under various conditions.
+- Simulates mouse clicks via AutoHotkey for compatibility with games.
+- Fully configurable stop conditions, supporting minimum quality, object count, and SS rank gating.
+- Built with OpenCV, tkinter, PIL, pynput, and ahk.
+
 MIT License
 
 Copyright (c) 2025 alina (Riri)
 Copyright (c) 2025 bobby
+
+Some detection and selection logic adapted from iamnotbobby (MIT licensed).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -502,9 +514,16 @@ class PipRerollerApp:
             filtered_objs = [obj for obj in detected_objs if RANK_ORDER[obj['rank']] >= min_rank_idx]
             ss_objs = [obj for obj in detected_objs if obj['rank'] == "SS"]
 
-            if len(filtered_objs) >= self.min_objects and len(ss_objs) >= self.stop_at_ss:
+            if self.stop_at_ss > 0:
+                should_stop = (len(filtered_objs) >= self.min_objects and len(ss_objs) >= self.stop_at_ss)
+            else:
+                should_stop = (len(filtered_objs) >= self.min_objects)
+
+            if should_stop:
                 self.message_var.set(
-                    f"Min: {self.min_quality} x{self.min_objects}, SS: {self.stop_at_ss} met. Stopping."
+                    f"Min: {self.min_quality} x{self.min_objects}" +
+                    (f", SS: {self.stop_at_ss}" if self.stop_at_ss > 0 else "") +
+                    " met. Stopping."
                 )
                 self.running = False
                 self.update_status(False)
@@ -515,7 +534,9 @@ class PipRerollerApp:
                 self.click_at(*self.buy_button_pos)
                 time.sleep(self.click_delay_ms / 1000)
                 self.message_var.set(
-                    f"Detected: {len(filtered_objs)} ≥{self.min_quality}, {len(ss_objs)} SS. Rolling..."
+                    f"Detected: {len(filtered_objs)} ≥{self.min_quality}" +
+                    (f", {len(ss_objs)} SS" if self.stop_at_ss > 0 else "") +
+                    ". Rolling..."
                 )
             time.sleep(0.1)
 
