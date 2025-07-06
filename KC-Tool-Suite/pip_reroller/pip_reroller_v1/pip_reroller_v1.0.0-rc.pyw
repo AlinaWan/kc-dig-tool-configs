@@ -306,7 +306,7 @@ class PipRerollerApp:
 
         self.tolerance = 10
         self.stop_at_ss = 0
-        self.click_delay_ms = 100
+        self.click_delay_ms = 250
         self.object_tolerance = 10
         self.image_poll_delay_ms = 10 # How often the image processor polls
 
