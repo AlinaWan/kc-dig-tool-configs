@@ -21,13 +21,14 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 3. **Set Buy Button**  
    Click **Set Buy Button**, then click on the confirmation "Yes" button that appears after clicking the chisel button.
 
-4. **Adjust Input Fields**
+4. **(Optional) Adjust Input Fields**
 
    * **Color Tolerance:** How close a pixel’s color must be to the target rank color for it to be detected (higher = more lenient).
    * **Minimum SS:** The minimum number of **SS** ranks required to stop rerolling. For example, if set to **1**, the tool stops when at least one SS is found.
    * **Minimum Quality:** Select the lowest rank (F, D, C, B, A, S, SS) you accept for stopping. Only pips **at least this rank** or higher are counted toward the minimum objects condition.
    * **Minimum Objects:** The minimum number of detected objects of at least the chosen minimum quality required to stop.
-   * **Delay Between Clicks (ms):** Milliseconds to wait between clicking the chisel and buy buttons.
+   * **Click Delay (ms):** Milliseconds to wait between clicking the chisel and buy buttons.
+   * **Image Poll Delay (ms):** How frequently the script captures and processes a new screenshot. Lower values mean faster detection but higher CPU usage.
    * **Object Tolerance (px):** Pixel distance threshold for merging close detected bounding boxes into a single object.
   
 > [!NOTE]
