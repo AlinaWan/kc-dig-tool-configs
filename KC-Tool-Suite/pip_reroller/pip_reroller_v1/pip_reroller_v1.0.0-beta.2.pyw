@@ -1,5 +1,5 @@
 """
-Pip Reroller v1.1.0
+Pip Reroller v1.0.0-beta.2
 
 Automates the process of rerolling pips (stat ranks) in Dig by detecting rank-colored objects
 within a user-selected screen area and clicking configured UI buttons, stopping when user-defined
