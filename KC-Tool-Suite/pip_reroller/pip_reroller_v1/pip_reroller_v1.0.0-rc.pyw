@@ -629,7 +629,7 @@ class PipRerollerApp:
         # --- Activate the game window (Crucial for reliable clicks) ---
         target_title = self.game_window_title.get()
         if not target_title:
-            self.message_var.set("Please enter a Game Window Title.")
+            self.message_var.set("Please enter a Game Window Title.") # This logic is here if we ever decide to extend support for bootstrappers that might not have the same window title
             return
 
         if not self.ahk.win_exists(target_title):
