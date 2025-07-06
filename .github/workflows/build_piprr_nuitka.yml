@@ -47,6 +47,7 @@ jobs:
             --python-flag=no_site `
             --windows-disable-console `
             --windows-icon-from-ico="$icon" `
+            --assume-yes-for-downloads 
 
       - name: Compute SHA256
         id: checksum
