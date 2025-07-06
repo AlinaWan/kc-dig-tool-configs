@@ -1,5 +1,5 @@
-numpy
 opencv-python
-pillow
+numpy
+pywin32
 pynput
 ahk
