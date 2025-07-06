@@ -1,5 +1,5 @@
 """
-Pip Reroller v1.0.0
+Pip Reroller v1.0.0-beta
 ===============
 
 This module automates the rerolling of pips (stat ranks) in a game interface by:
