@@ -1,5 +1,5 @@
-numpy
-opencv-python
-pillow
-pynput
-ahk
+ahk==1.8.4
+numpy==2.1.3
+opencv-python==4.11.0.86
+pynput==1.7.7
+pywin32==308
