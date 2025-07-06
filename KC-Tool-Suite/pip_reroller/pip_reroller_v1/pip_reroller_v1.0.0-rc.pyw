@@ -1,5 +1,6 @@
 """
 Pip Reroller v1.0.0-rc
+- Clicking the 'Show Preview' button again while the preview is already active can sometimes cause the program to crash.
 
 Automates the process of rerolling pips (stat ranks) in Dig by detecting rank-colored objects
 within a user-selected screen area and clicking configured UI buttons, stopping when user-defined
