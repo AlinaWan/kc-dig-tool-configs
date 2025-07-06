@@ -36,22 +36,20 @@ jobs:
       - name: Build with Nuitka
         run: |
           $script = "${{ github.event.inputs.script_path }}"
-          $basename = [System.IO.Path]::GetFileNameWithoutExtension($script)
-          $icon_path = "assets/kc-tool-suite/PIPRR_Icon_Variable.ico"
-
+          $icon = "assets/kc-tool-suite/PIPRR_Icon_Variable.ico"
+      
           python -m nuitka `
             "$script" `
             --standalone `
             --onefile `
-            --nofollow-imports `
             --enable-plugin=tk-inter `
-            --windows-icon-from-ico="$icon_path" `
+            --no-debug `
+            --follow-imports `
+            --python-flag=no_site `
             --windows-disable-console `
-            --remove-output `
-            --assume-yes-for-downloads `
-            --noinclude-dlls=*
-          
-          echo "::set-output name=exe_name::$basename.exe"
+            --windows-icon-from-ico="$icon" `
+            --show-progress `
+            --verbose
 
       - name: Compute SHA256
         id: checksum
