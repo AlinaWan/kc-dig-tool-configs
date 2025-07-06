@@ -43,13 +43,10 @@ jobs:
             --standalone `
             --onefile `
             --enable-plugin=tk-inter `
-            --no-debug `
             --follow-imports `
             --python-flag=no_site `
             --windows-disable-console `
             --windows-icon-from-ico="$icon" `
-            --show-progress `
-            --verbose
 
       - name: Compute SHA256
         id: checksum
