@@ -7,3 +7,6 @@
 *.vssscc
 *.dbmdl
 *.sln.docstates
+
+# Ruff
+.ruff_cache/

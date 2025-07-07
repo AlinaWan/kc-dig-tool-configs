@@ -259,6 +259,25 @@ class ImageProcessor(threading.Thread):
 
                 # If conditions are met AND the main loop is currently running, signal it to stop
                 if should_stop and self.app.running:
+                    # Only log if logging is enabled and there is at least one detected object (of any rank)
+                    if getattr(self.app, "enable_logging", False) and detected_objs:
+                        self.app.log_event(
+                            filtered_objs,
+                            self.current_rank_counts.copy(),
+                            {
+                                "min_quality": self.app.min_quality,
+                                "min_objects": self.app.min_objects,
+                                "stop_at_ss": self.app.stop_at_ss,
+                                "tolerance": self.app.tolerance,
+                                "object_tolerance": self.app.object_tolerance,
+                                "click_delay_ms": self.app.click_delay_ms,
+                                "image_poll_delay_ms": self.app.image_poll_delay_ms,
+                                "game_area": self.app.game_area,
+                                "chisel_button_pos": self.app.chisel_button_pos,
+                                "buy_button_pos": self.app.buy_button_pos,
+                            },
+                            decision=f"StopConditionMet: Signalling reroll thread to suspend"
+                        )
                     self.app.root.after(0, lambda: self.app.message_var.set(
                         f"Min: {self.app.min_quality} x{self.app.min_objects}" +
                         (f", SS: {self.app.stop_at_ss}" if self.app.stop_at_ss > 0 else "") +
@@ -322,6 +341,12 @@ class PipRerollerApp:
         self.status_var = StringVar(value="Status: Suspended")
         self.message_var = StringVar(value="")
         self.status_color = "#ff5555"
+
+        # [DEBUG] Enable/disable logging
+        self.enable_logging = False  # Set to True to enable logging
+        self.log_buffer = []
+        self.log_button = None
+        self.last_detected_objs = [] # Prevent attribute errors if the reroll loop runs before detections
 
         # Thread management
         self.image_processor_thread = None
@@ -487,6 +512,50 @@ class PipRerollerApp:
 
         # Ensure threads are cleanly stopped on app close
         self.root.protocol("WM_DELETE_WINDOW", self._on_closing)
+
+        if self.enable_logging:
+            def log_event(self, objects, rank_counts, settings, decision):
+                import datetime
+                if not objects:
+                    return
+                now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+                total_objs = len(objects)
+                obj_str = "; ".join(
+                    f"{o['rank']}@({o['rect'][0]},{o['rect'][1]},{o['rect'][2]},{o['rect'][3]})"
+                    for o in objects
+                )
+                counts_str = ", ".join(f"{rank}:{rank_counts[rank]}" for rank in rank_counts)
+                settings_str = ", ".join(f"{k}={v}" for k, v in settings.items())
+                log_line = (
+                    f"{now} | Objects Counted To Stop Condition: {total_objs} | Locations: {obj_str} | Counts: {counts_str} | "
+                    f"Settings: {settings_str} | Decision: {decision}"
+                )
+                self.log_buffer.append(log_line)
+        
+            def dump_logs(self):
+                import datetime
+                if not self.log_buffer:
+                    self.message_var.set("No logs to write.")
+                    return
+                filename = f"pip_reroller_log_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+                with open(filename, "w", encoding="utf-8") as f:
+                    for line in self.log_buffer:
+                        f.write(line + "\n")
+                self.message_var.set(f"Logs written to {filename}")
+                self.log_buffer.clear()
+        
+            # Attach methods to the instance
+            self.log_event = log_event.__get__(self)
+            self.dump_logs = dump_logs.__get__(self)
+        
+            # Show the log button
+            self.log_button = tk.Button(
+                root, text="DEBUG: Dump Logs", command=self.dump_logs,
+                bg="#222222", fg="#ffcc00", font=("Arial", 9, "bold")
+            )
+            self.log_button.place(x=5, y=5)
+        else:
+            self.log_event = lambda *a, **k: None
 
     def _on_closing(self):
         """Handles graceful shutdown of threads and resources when the app closes."""
@@ -709,6 +778,7 @@ class PipRerollerApp:
         Updates the rank counts displayed in the GUI.
         This method is called safely from the ImageProcessor thread via root.after().
         """
+        self.last_detected_objs = detected_objs # Store latest detected objects for logging
         # Reset counts for all ranks
         for rank in self.rank_count_vars:
             self.rank_counts[rank] = 0
@@ -891,6 +961,29 @@ class PipRerollerApp:
             # If stop_reroll_event is set by ImageProcessor, this will immediately unblock.
             if self.stop_reroll_event.wait(timeout=0.01): # Wait for 10ms
                 break # Exit the loop if stop is signaled
+
+            # --- LOGGING: Only log if objects detected and logging is enabled ---
+            min_rank_idx = RANK_ORDER[self.min_quality]
+            detected_objs = getattr(self, "last_detected_objs", [])
+            filtered_objs = [obj for obj in detected_objs if RANK_ORDER[obj["rank"]] >= min_rank_idx]
+            if self.enable_logging and filtered_objs:
+                self.log_event(
+                    filtered_objs,
+                    self.image_processor_thread.get_current_rank_counts(),
+                    {
+                        "min_quality": self.min_quality,
+                        "min_objects": self.min_objects,
+                        "stop_at_ss": self.stop_at_ss,
+                        "tolerance": self.tolerance,
+                        "object_tolerance": self.object_tolerance,
+                        "click_delay_ms": self.click_delay_ms,
+                        "image_poll_delay_ms": self.image_poll_delay_ms,
+                        "game_area": self.game_area,
+                        "chisel_button_pos": self.chisel_button_pos,
+                        "buy_button_pos": self.buy_button_pos,
+                    },
+                    decision="Rolling"
+                )
 
             # If not stopped, perform the reroll clicks
             self.click_at(*self.chisel_button_pos)
