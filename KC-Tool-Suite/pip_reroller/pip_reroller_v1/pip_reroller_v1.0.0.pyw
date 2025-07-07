@@ -116,6 +116,16 @@ class ScreenCapture:
     :rtype: None
     """
     def __init__(self):
+        """
+        Initialize the ScreenCapture object and set up internal state.
+
+        Obtains a handle to the desktop window using ``win32gui.GetDesktopWindow()``,
+        and initializes internal attributes related to GDI device contexts and screen capture.
+        Capture resources (DCs and bitmap) are not created until ``_initialize_dc`` is called.
+
+        :raises win32gui.error: If obtaining the desktop window handle fails.
+        :rtype: None
+        """
         self.hwnd = win32gui.GetDesktopWindow() # Handle to the desktop window
         self.hwindc = None
         self.srcdc = None
