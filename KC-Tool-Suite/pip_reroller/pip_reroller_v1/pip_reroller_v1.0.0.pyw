@@ -59,7 +59,7 @@ def set_dpi_awareness():
     On non-Windows systems, this function does nothing.
 
     :raises Exception: If setting DPI awareness fails for an unexpected reason
-                       (other than missing API on older Windows versions).
+        (other than missing API on older Windows versions).
     :rtype: None
     """
     if os.name == 'nt':  # Check if the OS is Windows
@@ -79,32 +79,38 @@ def set_dpi_awareness():
 # --- ScreenCapture Class ---
 class ScreenCapture:
     """
-    Provides optimized screen capture functionality for Windows using `win32gui` and `win32ui`.
+    Provides optimized screen capture functionality for Windows using ``win32gui`` and ``win32ui``.
 
     This class manages low-level Windows GDI resources such as Device Contexts (DC) and bitmaps
     to enable fast and efficient screen captures. It is designed for repeated capturing operations
     with minimal overhead.
 
-    Attributes
-    ----------
-    hwnd : int
-        Handle to the desktop window.
-    hwindc : PyHANDLE or None
-        Handle to the window device context.
-    srcdc : PyCDC or None
-        Source device context obtained from the window DC.
-    memdc : PyCDC or None
-        Memory device context compatible with the source DC.
-    bmp : PyCBitmap or None
-        Bitmap object used for storing captured image data.
-    _initialized : bool
-        Indicates whether the capture resources have been initialized.
-    _last_bbox : tuple or None
-        Stores the bounding box of the last capture (left, top, right, bottom).
-    _last_width : int
-        Width of the last captured area in pixels.
-    _last_height : int
-        Height of the last captured area in pixels.
+    :ivar hwnd: Handle to the desktop window.
+    :vartype hwnd: int
+
+    :ivar hwindc: Handle to the window device context.
+    :vartype hwindc: PyHANDLE or None
+
+    :ivar srcdc: Source device context obtained from the window DC.
+    :vartype srcdc: PyCDC or None
+
+    :ivar memdc: Memory device context compatible with the source DC.
+    :vartype memdc: PyCDC or None
+
+    :ivar bmp: Bitmap object used for storing captured image data.
+    :vartype bmp: PyCBitmap or None
+
+    :ivar _initialized: Indicates whether the capture resources have been initialized.
+    :vartype _initialized: bool
+
+    :ivar _last_bbox: Stores the bounding box of the last capture (left, top, right, bottom).
+    :vartype _last_bbox: tuple or None
+
+    :ivar _last_width: Width of the last captured area in pixels.
+    :vartype _last_width: int
+
+    :ivar _last_height: Height of the last captured area in pixels.
+    :vartype _last_height: int
 
     :raises win32gui.error: If obtaining the desktop window handle fails.
     :rtype: None
