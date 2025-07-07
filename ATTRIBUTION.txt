@@ -10,7 +10,7 @@ This project includes contributions and borrowed logic from the following indivi
 - Original code licensed under the MIT License.
 
 /KC-Config-Suite/Pattern_Suite/
-- The pattern name "Nugget" is credited to Jax.
+- The "Nugget" pattern was named and conceptually framed by Jax.
 
 ---
 
