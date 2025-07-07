@@ -1,5 +1,6 @@
 """
 Pip Reroller v1.0.0-rc.3
+- Add logging. Set self.enable_logging to True in the main class __init__ to enable.
 - Testers: Please report any issues via the Discord server before production release.
 - Please PR any bug fixes or improvements to the GitHub repository.
 
@@ -262,7 +263,7 @@ class ImageProcessor(threading.Thread):
                     # Only log if logging is enabled and there is at least one detected object (of any rank)
                     if getattr(self.app, "enable_logging", False) and detected_objs:
                         self.app.log_event(
-                            filtered_objs,
+                            detected_objs,
                             self.current_rank_counts.copy(),
                             {
                                 "min_quality": self.app.min_quality,
@@ -527,7 +528,7 @@ class PipRerollerApp:
                 counts_str = ", ".join(f"{rank}:{rank_counts[rank]}" for rank in rank_counts)
                 settings_str = ", ".join(f"{k}={v}" for k, v in settings.items())
                 log_line = (
-                    f"{now} | Objects Counted To Stop Condition: {total_objs} | Locations: {obj_str} | Counts: {counts_str} | "
+                    f"{now} | Objects Detected: {total_objs} | Object Locations: {obj_str} | Counts: {counts_str} | "
                     f"Settings: {settings_str} | Decision: {decision}"
                 )
                 self.log_buffer.append(log_line)
@@ -966,9 +967,9 @@ class PipRerollerApp:
             min_rank_idx = RANK_ORDER[self.min_quality]
             detected_objs = getattr(self, "last_detected_objs", [])
             filtered_objs = [obj for obj in detected_objs if RANK_ORDER[obj["rank"]] >= min_rank_idx]
-            if self.enable_logging and filtered_objs:
+            if self.enable_logging and detected_objs:
                 self.log_event(
-                    filtered_objs,
+                    detected_objs,
                     self.image_processor_thread.get_current_rank_counts(),
                     {
                         "min_quality": self.min_quality,
