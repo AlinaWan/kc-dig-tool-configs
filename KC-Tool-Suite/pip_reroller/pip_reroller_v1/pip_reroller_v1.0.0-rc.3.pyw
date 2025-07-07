@@ -544,6 +544,23 @@ class PipRerollerApp:
                         f.write(line + "\n")
                 self.message_var.set(f"Logs written to {filename}")
                 self.log_buffer.clear()
+
+            self.log_count_label = tk.Label(
+                root, text="Logs ready to dump: 0", 
+                bg="#222222", fg="#ffcc00", font=("Arial", 9, "bold")
+            )
+            self.log_count_label.place(relx=1.0, y=5, anchor='ne')  # top right
+        
+            def update_log_count_label():
+                # Update label text with current number of logs in buffer
+                count = len(self.log_buffer)
+                self.log_count_label.config(text=f"Logs ready to dump: {count}")
+        
+                # Schedule to run again after 1000 ms (1 second)
+                root.after(1000, update_log_count_label)
+        
+            # Start the periodic update loop
+            update_log_count_label()
         
             # Attach methods to the instance
             self.log_event = log_event.__get__(self)
