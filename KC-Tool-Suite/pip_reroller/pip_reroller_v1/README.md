@@ -39,7 +39,7 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 > If the **post reroll delay** is too short, the charm underneath may get deleted or rerolled.  
 > This happens because the old charm briefly disappears from your inventory before the new one is added, and during that time, the charm below it can temporarily take its place for a few milliseconds.
 
-5. **Start Preview**  
+5. **(Optional) Start Preview**  
    Use **Start Preview** to see bounding boxes around detected objects in real time in a separate window. Press **Q** in the preview window to exit.
 
 6. **Start/Stop Automation**  
