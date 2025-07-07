@@ -23,35 +23,27 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 
 4. **(Optional) Adjust Input Fields**
 
-   * **Color Tolerance:** How close a pixel’s color must be to the target rank color for it to be detected (higher = more lenient).
-   * **Minimum SS:** The minimum number of **SS** ranks required to stop rerolling. For example, if set to **1**, the tool stops when at least one SS is found.
-   * **Minimum Quality:** Select the lowest rank (F, D, C, B, A, S, SS) you accept for stopping. Only pips **at least this rank** or higher are counted toward the minimum objects condition.
-   * **Minimum Objects:** The minimum number of detected objects of at least the chosen minimum quality required to stop.
    * **Click Delay (ms):** Milliseconds to wait between clicking the chisel and buy buttons.
+   * **Post Reroll Delay (ms):** Extra time to wait after buying a reroll, before continuing. Helps prevent accidental rerolls or deletion caused by inventory shifting if the game or network is slow.
    * **Image Poll Delay (ms):** How frequently the script captures and processes a new screenshot. Lower values mean faster detection but higher CPU usage.
+   * **Color Tolerance:** How close a pixel’s color must be to the target rank color for it to be detected (higher = more lenient).
    * **Object Tolerance (px):** Pixel distance threshold for merging close detected bounding boxes into a single object.
+   * **Minimum SS:** The minimum number of **SS** ranks required to stop rerolling. For example, if set to **1**, the tool stops when at least one SS is found.
+   * **Minimum Objects:** The minimum number of detected objects of at least the chosen minimum quality required to stop.
+   * **Minimum Quality:** Select the lowest rank (F, D, C, B, A, S, SS) you accept for stopping. Only pips **at least this rank** or higher are counted toward the minimum objects condition.
   
 > [!NOTE]
 > This tool does not evaluate stat values themselves. It only detects each pip's visual rank based on color.
+
+> [!CAUTION]
+> If the **post reroll delay** is too short, the charm underneath may get deleted or rerolled.  
+> This happens because the old charm briefly disappears from your inventory before the new one is added, and during that time, the charm below it can temporarily take its place for a few milliseconds.
 
 5. **Start Preview**  
    Use **Start Preview** to see bounding boxes around detected objects in real time in a separate window. Press **Q** in the preview window to exit.
 
 6. **Start/Stop Automation**  
    Press **F5** to toggle the automation running state. The status text on the GUI indicates whether the tool is **Running** or **Suspended**.
-
-> [!CAUTION]
-> **Risk of Charm Deletion or Accidental Rerolling**  
-> If the tool rerolls *too quickly*, it can accidentally **reroll or DELETE the charm underneath** the one you intended.  
-> This happens because the game briefly removes the rerolled charm from your inventory before adding the new one, and during that short time, the charm below it may shift upward and become the next target until the server returns the updated charm.
->
-> **To prevent rerolling** the charm underneath, simply equip it. Equipped charms **cannot be rerolled**.  
-> **However, this does *not* prevent deletion**. If the charm underneath is **deletable**, equipping it **does *not* protect it from being deleted** by the tool.
->
-> Best Practices to Minimize Risk:
-> - **Slow down rerolling** by increasing the Click Delay
-> - **Ensure low ping** and avoid rerolling when your connection is unstable  
-> - **Only reroll charms that sit above non-deletable ones**
 
 ---
 
