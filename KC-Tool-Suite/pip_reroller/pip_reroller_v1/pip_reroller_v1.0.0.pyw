@@ -474,7 +474,6 @@ class ImageProcessor(threading.Thread):
         self.stop_event.set()
         self.screen_capturer.close() # Close the screen capturer resources
 
-
 # --- Main PipReroller Application Class ---
 class PipRerollerApp:
     """
