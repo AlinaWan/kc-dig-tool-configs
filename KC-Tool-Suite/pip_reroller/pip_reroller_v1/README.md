@@ -40,6 +40,19 @@ Pip Reroller is a Python-based tool designed to automate the rerolling process b
 6. **Start/Stop Automation**  
    Press **F5** to toggle the automation running state. The status text on the GUI indicates whether the tool is **Running** or **Suspended**.
 
+> [!CAUTION]
+> **Risk of Charm Deletion or Accidental Rerolling**  
+> If the tool rerolls *too quickly*, it can accidentally **reroll or DELETE the charm underneath** the one you intended.  
+> This happens because the game briefly removes the rerolled charm from your inventory before adding the new one, and during that short time, the charm below it may shift upward and become the next target.
+>
+> **To prevent rerolling** the charm underneath, simply equip it. Equipped charms **cannot be rerolled**.  
+> **However, this does *not* prevent deletion**. If the charm underneath is **deletable**, equipping it **does *not* protect it from being deleted** by the tool.
+>
+> Best Practices:
+> - **Slow down rerolling** by increasing the Click Delay
+> - **Ensure low ping** and avoid rerolling when your connection is unstable  
+> - **Only reroll charms that sit above non-deletable ones**
+
 ---
 
 ## Stopping Logic: Condition Hierarchy
