@@ -16,8 +16,12 @@
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
+**Configuration Suite** (For Dig Tool):  
 [**⚙️ Configuration Files**](KC-Config-Suite/)  
 [**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)  
+
+**Tool Suite:**  
+[**🛠️ Utility Scripts & Macros**](KC-Tool-Suite/) 
 
 [**📖 How to use Dig Tool**](docs/USAGE.md)
 
