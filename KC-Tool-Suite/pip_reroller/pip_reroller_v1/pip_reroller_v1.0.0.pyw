@@ -25,7 +25,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
 import tkinter as tk
 from tkinter import Label, Entry, StringVar
 import threading
@@ -34,7 +33,9 @@ import numpy as np
 import time
 import os
 import ctypes # For DPI awareness
-import win32gui, win32ui, win32con # For optimized screen capture
+import win32gui
+import win32ui
+import win32con # For optimized screen capture
 from pynput import keyboard
 from ahk import AHK
 
@@ -47,8 +48,19 @@ PROCESS_PER_MONITOR_DPI_AWARE = 2
 
 def set_dpi_awareness():
     """
-    Sets the DPI awareness for the current process to ensure consistent
-    coordinate handling, especially on high-DPI displays.
+    Sets the DPI awareness for the current process on Windows systems.
+
+    This function configures the process to be DPI-aware, allowing it to scale
+    properly on high-DPI displays. It attempts to use per-monitor DPI awareness
+    on Windows 8.1 and later, falling back to system DPI awareness on earlier
+    versions. If an error occurs, a warning message is printed and the process
+    may experience display scaling issues.
+
+    On non-Windows systems, this function does nothing.
+
+    :raises Exception: If setting DPI awareness fails for an unexpected reason
+                       (other than missing API on older Windows versions).
+    :rtype: None
     """
     if os.name == 'nt':  # Check if the OS is Windows
         try:
@@ -67,8 +79,35 @@ def set_dpi_awareness():
 # --- ScreenCapture Class ---
 class ScreenCapture:
     """
-    Provides optimized screen capture functionality for Windows using win32gui/win32ui.
-    Manages Device Context (DC) and bitmap resources efficiently.
+    Provides optimized screen capture functionality for Windows using `win32gui` and `win32ui`.
+
+    This class manages low-level Windows GDI resources such as Device Contexts (DC) and bitmaps
+    to enable fast and efficient screen captures. It is designed for repeated capturing operations
+    with minimal overhead.
+
+    Attributes
+    ----------
+    hwnd : int
+        Handle to the desktop window.
+    hwindc : PyHANDLE or None
+        Handle to the window device context.
+    srcdc : PyCDC or None
+        Source device context obtained from the window DC.
+    memdc : PyCDC or None
+        Memory device context compatible with the source DC.
+    bmp : PyCBitmap or None
+        Bitmap object used for storing captured image data.
+    _initialized : bool
+        Indicates whether the capture resources have been initialized.
+    _last_bbox : tuple or None
+        Stores the bounding box of the last capture (left, top, right, bottom).
+    _last_width : int
+        Width of the last captured area in pixels.
+    _last_height : int
+        Height of the last captured area in pixels.
+
+    :raises win32gui.error: If obtaining the desktop window handle fails.
+    :rtype: None
     """
     def __init__(self):
         self.hwnd = win32gui.GetDesktopWindow() # Handle to the desktop window
@@ -82,7 +121,31 @@ class ScreenCapture:
         self._last_height = 0
 
     def _initialize_dc(self, width, height):
-        """Initializes GDI device contexts and bitmap for capturing."""
+        """
+        Initializes GDI device contexts and bitmap for screen capturing.
+    
+        This method sets up the required Windows GDI resources, including the source
+        device context, a compatible memory DC, and a compatible bitmap of the given
+        dimensions. These resources are required for fast and direct pixel access
+        during screen capture operations.
+    
+        If initialization fails, it cleans up any partially created resources and
+        returns False.
+    
+        Parameters
+        ----------
+        width : int
+            The width of the capture area in pixels.
+        height : int
+            The height of the capture area in pixels.
+    
+        Returns
+        -------
+        bool
+            True if initialization succeeded, False otherwise.
+    
+        :raises Exception: If there is an unexpected error during GDI setup.
+        """
         try:
             self.hwindc = win32gui.GetWindowDC(self.hwnd) # Get DC for the entire screen
             self.srcdc = win32ui.CreateDCFromHandle(self.hwindc) # Create a DC object from the screen DC
@@ -101,7 +164,20 @@ class ScreenCapture:
         return True
 
     def _cleanup(self):
-        """Cleans up and releases GDI resources."""
+        """
+        Releases and cleans up all allocated GDI resources.
+    
+        This method safely disposes of the memory DC, source DC, bitmap, and
+        window DC used during screen capture operations. It ensures no
+        resource leaks occur, even if some of the resources are already
+        released or failed to initialize.
+    
+        Exceptions during cleanup are caught and printed, but do not stop
+        the cleanup process. After execution, the internal state is marked
+        as uninitialized.
+    
+        :rtype: None
+        """
         try:
             if self.memdc:
                 self.memdc.DeleteDC()
@@ -126,9 +202,27 @@ class ScreenCapture:
 
     def capture(self, bbox=None):
         """
-        Captures a screenshot of the specified bounding box.
-        Re-initializes GDI objects only if the bounding box changes.
-        Returns a BGR NumPy array.
+        Captures a screenshot of the specified screen region.
+    
+        This method captures a portion of the screen defined by the given bounding box.
+        It manages GDI resource re-initialization if the bounding box or its dimensions
+        differ from the previous capture. The captured image is returned as a BGR NumPy
+        array suitable for use with OpenCV.
+    
+        If `bbox` is `None`, or if width/height are invalid or capture fails,
+        `None` is returned.
+    
+        Parameters
+        ----------
+        bbox : tuple[int, int, int, int], optional
+            The bounding box of the region to capture in the format (left, top, right, bottom).
+    
+        Returns
+        -------
+        numpy.ndarray or None
+            The captured image as a BGR NumPy array, or `None` if the capture failed.
+    
+        :raises Exception: If a GDI call fails unexpectedly during capture.
         """
         if not bbox: return None
         left, top, right, bottom = bbox
@@ -159,7 +253,15 @@ class ScreenCapture:
             return None
 
     def close(self):
-        """Public method to explicitly close and clean up resources."""
+        """
+        Releases all screen capture resources.
+    
+        Public method that explicitly cleans up all allocated GDI handles and internal
+        buffers used for capturing. This should be called when the `ScreenCapture`
+        instance is no longer needed to avoid leaking system resources.
+    
+        :rtype: None
+        """
         self._cleanup()
 
 # --- Class ranks, order, and their colors (BGR for OpenCV, HEX for Tkinter) ---
@@ -174,7 +276,25 @@ RANKS = [
 ]
 
 def bgr_to_rgb_hex(bgr):
-    """Converts a BGR color tuple to an RGB hex string."""
+    """
+    Converts a BGR color tuple to a hexadecimal RGB string.
+
+    This function takes a color in BGR (Blue, Green, Red) format and returns
+    the equivalent RGB hex string (e.g., `#rrggbb`) commonly used in web and
+    GUI color specifications.
+
+    Parameters
+    ----------
+    bgr : tuple[int, int, int]
+        A tuple representing a BGR color, with each component in the range 0–255.
+
+    Returns
+    -------
+    str
+        A string representing the color in `#rrggbb` RGB hex format.
+
+    :raises ValueError: If the input is not a tuple of three integers.
+    """
     b, g, r = bgr
     return f'#{r:02x}{g:02x}{b:02x}'
 
@@ -185,10 +305,37 @@ RANK_TK_HEX = {rank: bgr_to_rgb_hex(bgr) for rank, bgr, _ in RANKS}
 # --- ImageProcessor Thread ---
 class ImageProcessor(threading.Thread):
     """
-    Dedicated thread for continuously capturing screenshots, detecting pips,
-    and signaling the main reroll loop to stop when conditions are met.
+    Thread that continuously captures screenshots, detects pips, and signals when reroll conditions are met.
+
+    This class runs as a daemon thread to perform background image processing tasks
+    independently from the main application flow. It captures screen regions, processes
+    them to detect pip counts or ranks, updates shared state safely using threading locks,
+    and can signal the main reroll loop to stop based on detection results.
+
+    Attributes
+    ----------
+    app : object
+        Reference to the main application instance, used for interaction and callbacks.
+    stop_event : threading.Event
+        Event used to signal this thread to stop execution gracefully.
+    current_rank_counts : dict
+        Dictionary mapping ranks to their current detected counts.
+    lock : threading.Lock
+        Lock to synchronize access to shared data like rank counts.
+    screen_capturer : ScreenCapture
+        Instance of the ScreenCapture class used for optimized screenshot capture.
     """
     def __init__(self, app_ref):
+        """
+        Initializes the ImageProcessor thread.
+    
+        Parameters
+        ----------
+        app_ref : object
+            Reference to the main application instance.
+    
+        :rtype: None
+        """
         super().__init__(daemon=True) # Daemon thread exits when main program exits
         self.app = app_ref # Reference to the main app instance
         self.stop_event = threading.Event() # Event to signal this thread to stop
@@ -197,7 +344,25 @@ class ImageProcessor(threading.Thread):
         self.screen_capturer = ScreenCapture() # Instantiate the optimized screen capturer
 
     def run(self):
-        """Main loop for the image processing thread."""
+        """
+        Main loop for continuous image capturing and pip detection.
+    
+        This method runs in a dedicated daemon thread and performs the following:
+        - Continuously captures screenshots of the defined game area.
+        - Processes the captured images to detect and classify pips.
+        - Updates shared rank counts with thread-safe locking.
+        - Signals the main reroll loop to stop based on configurable stop conditions.
+        - Updates the GUI asynchronously using Tkinter's `after` method.
+        - Logs events if logging is enabled and conditions are met.
+    
+        The loop respects a polling delay and handles exceptions gracefully
+        by logging errors and preventing tight looping on repeated failures.
+    
+        The thread will stop running when `stop_event` is set or when the stop
+        conditions are satisfied and the main loop is signaled to stop.
+    
+        :rtype: None
+        """
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
         
         while not self.stop_event.is_set():
@@ -260,7 +425,7 @@ class ImageProcessor(threading.Thread):
                                 "chisel_button_pos": self.app.chisel_button_pos,
                                 "buy_button_pos": self.app.buy_button_pos,
                             },
-                            decision=f"StopConditionMet: Signalling reroll thread to suspend"
+                            decision="StopConditionMet: Signalling reroll thread to suspend"
                         )
                     self.app.root.after(0, lambda: self.app.message_var.set(
                         f"Min: {self.app.min_quality} x{self.app.min_objects}" +
@@ -280,12 +445,32 @@ class ImageProcessor(threading.Thread):
                 time.sleep(0.5) # Prevent tight loop on error
 
     def get_current_rank_counts(self):
-        """Safely retrieve the latest rank counts."""
+        """
+        Retrieve a thread-safe copy of the latest detected rank counts.
+    
+        This method acquires a lock to safely access the shared rank counts dictionary
+        and returns a copy to avoid race conditions.
+    
+        Returns
+        -------
+        dict
+            A copy of the current rank counts mapping ranks to their detected counts.
+    
+        :rtype: dict[str, int]
+        """
         with self.lock:
             return self.current_rank_counts.copy()
 
     def stop(self):
-        """Signals the image processing thread to stop and cleans up resources."""
+        """
+        Signals the image processing thread to stop and releases resources.
+    
+        This method sets the internal stop event, which causes the thread's
+        main loop to exit gracefully. It also closes the screen capturer,
+        cleaning up any allocated GDI resources.
+    
+        :rtype: None
+        """
         self.stop_event.set()
         self.screen_capturer.close() # Close the screen capturer resources
 
@@ -293,10 +478,99 @@ class ImageProcessor(threading.Thread):
 # --- Main PipReroller Application Class ---
 class PipRerollerApp:
     """
-    Main Tkinter application for the Pip Reroller, managing GUI,
-    user input, and orchestrating background threads.
+    Main Tkinter application for the Pip Reroller macro.
+
+    This class manages the graphical user interface (GUI), user input,
+    configuration settings, and background worker threads for
+    continuous image processing and reroll automation.
+
+    It handles:
+    - GUI layout and input widgets for user configuration.
+    - Thread-safe communication with background image processing and reroll threads.
+    - Event handling for keyboard and window actions.
+    - Logging of detected objects and application events (optional).
+
+    Attributes
+    ----------
+    root : tkinter.Tk
+        The main Tkinter root window instance.
+    game_area : tuple or None
+        Bounding box defining the screen region for pip detection.
+    chisel_button_pos : tuple or None
+        Screen coordinates of the chisel button.
+    buy_button_pos : tuple or None
+        Screen coordinates of the buy button.
+    preview_active : bool
+        Whether the preview mode is active.
+    running : bool
+        Whether the reroll process is currently running.
+    tolerance : int
+        Color tolerance used for pip detection.
+    stop_at_ss : int
+        Minimum number of SS-rank pips required to stop rerolling.
+    click_delay_ms : int
+        Delay in milliseconds between simulated clicks.
+    post_reroll_delay_ms : int
+        Delay in milliseconds after each reroll before next action.
+    object_tolerance : int
+        Pixel tolerance for merging detected objects.
+    image_poll_delay_ms : int
+        Interval in milliseconds between image processing polls.
+    min_quality : str
+        Minimum pip rank quality to accept (e.g., "F", "SS").
+    min_objects : int
+        Minimum number of pips of minimum quality required to stop rerolling.
+    game_window_title : tkinter.StringVar
+        Title of the game window to capture.
+    rank_counts : dict
+        Current counts of detected pips by rank, updated by background thread.
+    status_var : tkinter.StringVar
+        Text variable for status label in the GUI.
+    message_var : tkinter.StringVar
+        Text variable for message label in the GUI.
+    status_color : str
+        Color hex code for status label.
+    enable_logging : bool
+        Flag to enable or disable event logging.
+    log_buffer : list
+        Buffer holding log entries before dumping to file.
+    log_button : tkinter.Button or None
+        Button widget to manually dump logs when logging is enabled.
+    last_detected_objs : list
+        Cache of last detected objects to prevent attribute errors.
+    image_processor_thread : threading.Thread or None
+        Background thread for image processing.
+    reroll_loop_thread : threading.Thread or None
+        Background thread managing reroll automation.
+    preview_thread : threading.Thread or None
+        Background thread for preview mode.
+    stop_reroll_event : threading.Event
+        Event to signal stopping the reroll automation.
+    listener : pynput.keyboard.Listener
+        Keyboard listener for hotkey handling.
+    ahk : ahk.AHK
+        AutoHotkey interface for sending inputs to the game.
+
+    Methods
+    -------
+    __init__(root)
+        Initializes the GUI, variables, threads, and event bindings.
     """
     def __init__(self, root):
+        """
+        Initialize the Pip Reroller application.
+
+        Sets up the main window, GUI components, configuration variables,
+        threading constructs, and event listeners. Also initializes optional
+        logging mechanisms if enabled.
+
+        Parameters
+        ----------
+        root : tkinter.Tk
+            The main Tkinter window instance on which the application UI is built.
+
+        :rtype: None
+        """
         self.root = root
         self.root.title("Pip Reroller by Riri")
         self.root.geometry("440x550") # Increased height for new input field
@@ -348,6 +622,19 @@ class PipRerollerApp:
         pad_y = 5
 
         def make_label(text):
+            """
+            Create a styled Tkinter Label with predefined foreground and background colors.
+        
+            Parameters
+            ----------
+            text : str
+                The text to display on the label.
+        
+            Returns
+            -------
+            tkinter.Label
+                A Tkinter Label widget configured with preset colors.
+            """
             return tk.Label(root, text=text, fg=label_fg, bg="#222222")
 
         # Input fields
@@ -510,6 +797,27 @@ class PipRerollerApp:
 
         if self.enable_logging:
             def log_event(self, objects, rank_counts, settings, decision):
+                """
+                Logs a detection event with details about detected objects, counts, settings, and decisions.
+            
+                Each log entry includes a timestamp in UTC, the number of detected objects,
+                their ranks and screen locations, the current rank counts, relevant settings,
+                and the decision made by the application. Entries are appended to the internal
+                log buffer.
+            
+                Parameters
+                ----------
+                objects : list of dict
+                    List of detected objects, each containing keys like 'rank' and 'rect' (bounding box).
+                rank_counts : dict
+                    Dictionary mapping pip ranks to their counts at the time of logging.
+                settings : dict
+                    Dictionary of current application settings relevant to the detection.
+                decision : str
+                    Description of the decision or event that triggered the log entry.
+            
+                :rtype: None
+                """
                 import datetime
                 if not objects:
                     return
@@ -528,6 +836,16 @@ class PipRerollerApp:
                 self.log_buffer.append(log_line)
         
             def dump_logs(self):
+                """
+                Writes all buffered log entries to a timestamped text file and clears the buffer.
+            
+                If no logs are present, updates the GUI message variable to indicate there are no logs to write.
+                After successfully writing the logs, updates the message variable with the filename.
+            
+                The log file is saved in the current working directory with a name including the current date and time.
+            
+                :rtype: None
+                """
                 import datetime
                 if not self.log_buffer:
                     self.message_var.set("No logs to write.")
@@ -546,6 +864,14 @@ class PipRerollerApp:
             self.log_count_label.place(relx=1.0, y=5, anchor='ne')  # top right
         
             def update_log_count_label():
+                """
+                Periodically updates the GUI label displaying the number of logs currently buffered.
+            
+                This function schedules itself to run every 1000 milliseconds (1 second)
+                to refresh the label text, reflecting the latest count of logs waiting to be written.
+            
+                :rtype: None
+                """
                 # Update label text with current number of logs in buffer
                 count = len(self.log_buffer)
                 self.log_count_label.config(text=f"Logs ready to dump: {count}")
@@ -570,7 +896,15 @@ class PipRerollerApp:
             self.log_event = lambda *a, **k: None
 
     def _on_closing(self):
-        """Handles graceful shutdown of threads and resources when the app closes."""
+        """
+        Handle graceful shutdown when the application window is closed.
+    
+        This method stops background threads such as the image processor and keyboard listener,
+        waits briefly for the image processor thread to finish, signals the main reroll loop to stop,
+        and finally destroys the main Tkinter window.
+    
+        :rtype: None
+        """
         self.stop_running_async() # Ensure main reroll loop stops
         if self.image_processor_thread and self.image_processor_thread.is_alive():
             self.image_processor_thread.stop() # Tell image processor to stop and cleanup
@@ -579,7 +913,19 @@ class PipRerollerApp:
         self.root.destroy()
 
     def select_quality(self, rank):
-        """Updates the selected minimum quality rank in the GUI."""
+        """
+        Update the selected minimum pip quality in the GUI.
+    
+        Adjusts the internal `min_quality` state and visually updates the quality selection buttons,
+        highlighting the selected rank and resetting the others to default appearance.
+    
+        Parameters
+        ----------
+        rank : str
+            The rank string to select as the minimum quality (e.g., "F", "SS").
+    
+        :rtype: None
+        """
         self.min_quality = rank
         for r, btn in self.quality_buttons.items():
             if r == rank:
@@ -588,7 +934,19 @@ class PipRerollerApp:
                 btn.config(relief="raised", bg="#333333", fg="#ffffff")
 
     def update_tolerance(self, event=None):
-        """Updates color tolerance from GUI input."""
+        """
+        Update the color tolerance value based on user input from the GUI.
+    
+        Reads the value from the tolerance entry widget, validates that it is an integer between 0 and 255,
+        and updates the internal `tolerance` attribute accordingly. Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            The event object from the GUI, not used in processing.
+    
+        :rtype: None
+        """
         try:
             val = int(self.tolerance_entry.get())
             if 0 <= val <= 255:
@@ -597,7 +955,19 @@ class PipRerollerApp:
             pass
 
     def update_stop_at(self, event=None):
-        """Updates minimum SS rank count from GUI input."""
+        """
+        Update the minimum SS-rank pip count required to stop rerolling based on GUI input.
+    
+        Reads the value from the stop_at entry widget, validates that it is a non-negative integer,
+        and updates the internal `stop_at_ss` attribute accordingly. Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            The event object from the GUI, not used in processing.
+    
+        :rtype: None
+        """
         try:
             val = int(self.stop_at_entry.get())
             if val >= 0:
@@ -606,7 +976,20 @@ class PipRerollerApp:
             pass
 
     def update_min_objects(self, event=None):
-        """Updates minimum object count from GUI input."""
+        """
+        Update the minimum number of objects required to stop rerolling from GUI input.
+    
+        Reads the value from the `min_objects_entry` widget, validates that it is an integer
+        greater than or equal to 1, and updates the internal `min_objects` attribute.
+        Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            Event object from the GUI callback, not used.
+    
+        :rtype: None
+        """
         try:
             val = int(self.min_objects_entry.get())
             if val >= 1:
@@ -615,7 +998,20 @@ class PipRerollerApp:
             pass
 
     def update_click_delay(self, event=None):
-        """Updates click delay from GUI input."""
+        """
+        Update the click delay (in milliseconds) from GUI input.
+    
+        Reads the value from the `click_delay_entry` widget, validates that it is a non-negative integer,
+        and updates the internal `click_delay_ms` attribute.
+        Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            Event object from the GUI callback, not used.
+    
+        :rtype: None
+        """
         try:
             val = int(self.click_delay_entry.get())
             if val >= 0:
@@ -624,7 +1020,20 @@ class PipRerollerApp:
             pass
 
     def update_post_reroll_delay(self, event=None):
-        """Updates post reroll delay from GUI input."""
+        """
+        Update the post-reroll delay (in milliseconds) from GUI input.
+    
+        Reads the value from the `post_reroll_delay_entry` widget, validates that it is a non-negative integer,
+        and updates the internal `post_reroll_delay_ms` attribute.
+        Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            Event object from the GUI callback, not used.
+    
+        :rtype: None
+        """
         try:
             val = int(self.post_reroll_delay_entry.get())
             if val >= 0:
@@ -633,7 +1042,20 @@ class PipRerollerApp:
             pass
 
     def update_image_poll_delay(self, event=None):
-        """Updates image polling delay from GUI input."""
+        """
+        Update the image polling delay (in milliseconds) from GUI input.
+    
+        Reads the value from the `image_poll_delay_entry` widget, validates that it is a non-negative integer,
+        and updates the internal `image_poll_delay_ms` attribute.
+        Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            Event object from the GUI callback, not used.
+    
+        :rtype: None
+        """
         try:
             val = int(self.image_poll_delay_entry.get())
             if val >= 0:
@@ -642,7 +1064,20 @@ class PipRerollerApp:
             pass
 
     def update_object_tolerance(self, event=None):
-        """Updates object merging tolerance from GUI input."""
+        """
+        Update the object merging tolerance (in pixels) from GUI input.
+    
+        Reads the value from the `object_tolerance_entry` widget, validates that it is a non-negative integer,
+        and updates the internal `object_tolerance` attribute.
+        Invalid inputs are ignored.
+    
+        Parameters
+        ----------
+        event : tkinter.Event, optional
+            Event object from the GUI callback, not used.
+    
+        :rtype: None
+        """
         try:
             val = int(self.object_tolerance_entry.get())
             if val >= 0:
@@ -651,7 +1086,15 @@ class PipRerollerApp:
             pass
 
     def start_area_selection(self):
-        """Initiates screen area selection for pip detection."""
+        """
+        Initiate the screen area selection process for pip detection.
+    
+        Minimizes the main application window and creates a transparent, fullscreen overlay
+        window with a crosshair cursor. This overlay captures mouse events to allow the user
+        to drag and select a rectangular area of the screen for detection.
+    
+        :rtype: None
+        """
         self.root.iconify() # Minimize main window
         self.selection_overlay = tk.Toplevel() # Create a transparent overlay window
         self.selection_overlay.attributes('-fullscreen', True, '-alpha', 0.2, '-topmost', True)
@@ -663,12 +1106,36 @@ class PipRerollerApp:
         self.selection_overlay.bind('<ButtonRelease-1>', self.on_drag_end)
 
     def on_drag_start(self, event):
-        """Handles the start of a drag event for area selection."""
+        """
+        Handle the beginning of a mouse drag event during area selection.
+    
+        Records the initial cursor position in screen coordinates and places a minimal
+        selection rectangle at the drag start location.
+    
+        Parameters
+        ----------
+        event : tkinter.Event
+            The mouse button press event triggering the drag start.
+    
+        :rtype: None
+        """
         self.drag_start = (event.x_root, event.y_root)
         self.selection_rect.place(x=event.x, y=event.y, width=1, height=1)
 
     def on_drag_motion(self, event):
-        """Handles mouse motion during area selection drag."""
+        """
+        Handle mouse movement while dragging to select an area.
+    
+        Updates the size and position of the selection rectangle based on
+        the current cursor position relative to the drag start point.
+    
+        Parameters
+        ----------
+        event : tkinter.Event
+            The mouse motion event during the drag.
+    
+        :rtype: None
+        """
         x1, y1 = self.drag_start
         x2, y2 = event.x_root, event.y_root
         x, y = self.selection_overlay.winfo_rootx(), self.selection_overlay.winfo_rooty()
@@ -676,7 +1143,20 @@ class PipRerollerApp:
                                   width=abs(x1 - x2), height=abs(y1 - y2))
 
     def on_drag_end(self, event):
-        """Handles the end of a drag event, setting the game area."""
+        """
+        Handle the end of the drag event to finalize the selected screen area.
+    
+        Calculates the bounding box from the drag start and end coordinates,
+        stores it in `game_area`, destroys the overlay window, restores the main window,
+        and updates the GUI message to confirm the selection.
+    
+        Parameters
+        ----------
+        event : tkinter.Event
+            The mouse button release event signaling the end of the drag.
+    
+        :rtype: None
+        """
         x1, y1 = self.drag_start
         x2, y2 = event.x_root, event.y_root
         self.game_area = (min(x1, x2), min(y1, y2), max(x1, x2), max(y1, y2))
@@ -685,15 +1165,41 @@ class PipRerollerApp:
         self.message_var.set("Game area set.")
 
     def start_chisel_button_selection(self):
-        """Initiates selection for the 'Chisel' button position."""
+        """
+        Initiate the selection process for the 'Chisel' button position.
+    
+        Minimizes the main window and launches an overlay allowing the user to
+        click and set the screen coordinates for the chisel button.
+    
+        :rtype: None
+        """
         self._start_button_selection("chisel")
 
     def start_buy_button_selection(self):
-        """Initiates selection for the 'Buy' button position."""
+        """
+        Initiate the selection process for the 'Buy' button position.
+    
+        Minimizes the main window and launches an overlay allowing the user to
+        click and set the screen coordinates for the buy button.
+    
+        :rtype: None
+        """
         self._start_button_selection("buy")
 
     def _start_button_selection(self, button_type):
-        """Helper to create an overlay for button position selection."""
+        """
+        Helper method to create a fullscreen overlay for button position selection.
+    
+        The overlay is semi-transparent with a crosshair cursor and prompts the user
+        to click to set either the "chisel" or "buy" button position, depending on the argument.
+    
+        Parameters
+        ----------
+        button_type : str
+            The type of button to select, expected values are "chisel" or "buy".
+    
+        :rtype: None
+        """
         self.root.iconify()
         overlay = tk.Toplevel()
         overlay.attributes('-fullscreen', True, '-alpha', 0.3, '-topmost', True)
@@ -709,7 +1215,23 @@ class PipRerollerApp:
         overlay.bind('<Button-1>', lambda e: self.set_button_position(e, button_type, overlay))
 
     def set_button_position(self, event, button_type, overlay):
-        """Sets the coordinates for the selected button."""
+        """
+        Set the screen coordinates for the specified button based on user click.
+    
+        Stores the (x_root, y_root) screen coordinates for the given button type,
+        destroys the selection overlay, restores the main window, and updates the GUI message.
+    
+        Parameters
+        ----------
+        event : tkinter.Event
+            The mouse click event containing the cursor position.
+        button_type : str
+            The button type being set, either "chisel" or "buy".
+        overlay : tkinter.Toplevel
+            The overlay window used for selection, which will be destroyed.
+    
+        :rtype: None
+        """
         pos = (event.x_root, event.y_root)
         if button_type == "chisel":
             self.chisel_button_pos = pos
@@ -720,7 +1242,19 @@ class PipRerollerApp:
         self.message_var.set(f"{button_type.capitalize()} button set at {pos}")
 
     def on_key_press(self, key):
-        """Handles F5 hotkey to toggle reroller on/off."""
+        """
+        Handle keyboard key presses, toggling reroller on/off when F5 is pressed.
+    
+        If the F5 key is detected, starts the rerolling loop if it is not running,
+        otherwise stops the running loop.
+    
+        Parameters
+        ----------
+        key : pynput.keyboard.Key
+            The key event to handle.
+    
+        :rtype: None
+        """
         if key == keyboard.Key.f5:
             if not self.running:
                 self.start_running_async()
@@ -729,8 +1263,16 @@ class PipRerollerApp:
 
     def start_running_async(self):
         """
-        Starts the reroller automation by validating settings, activating game window,
-        and launching background threads.
+        Starts the reroller automation asynchronously.
+    
+        Validates that required settings (game area, chisel and buy button positions)
+        are set, activates the target game window, clears stop signals, and
+        launches background threads for image processing and the reroll loop.
+    
+        If any validation fails or the game window cannot be found, sets an appropriate
+        error message in the GUI and aborts starting.
+    
+        :rtype: None
         """
         # --- Input validation ---
         if self.game_area is None:
@@ -778,7 +1320,15 @@ class PipRerollerApp:
             self.reroll_loop_thread.start()
 
     def stop_running_async(self):
-        """Signals all active threads to stop and updates GUI status."""
+        """
+        Signals all active automation threads to stop and updates GUI status.
+    
+        Sets the internal running flag to False, updates the GUI status label,
+        sets the stop event for the reroll loop thread, and signals the image
+        processor thread to stop if it is active.
+    
+        :rtype: None
+        """
         self.running = False
         self.update_status(False)
         self.stop_reroll_event.set() # Signal the reroll loop to stop
@@ -786,7 +1336,14 @@ class PipRerollerApp:
             self.image_processor_thread.stop() # Signal the image processor to stop
 
     def update_status(self, running):
-        """Updates the status label in the GUI."""
+        """
+        Update the status label in the GUI.
+    
+        Changes the status text and color based on whether the reroller is running.
+    
+        :param bool running: True if running, False if suspended.
+        :rtype: None
+        """
         if running:
             self.status_var.set("Status: Running")
             self.status_label.config(fg="#55ff55")
@@ -796,8 +1353,13 @@ class PipRerollerApp:
 
     def update_rank_counts_gui(self, detected_objs):
         """
-        Updates the rank counts displayed in the GUI.
-        This method is called safely from the ImageProcessor thread via root.after().
+        Update the rank count display in the GUI.
+    
+        Called from the ImageProcessor thread via root.after() to safely update GUI elements.
+        Updates internal counts and refreshes the Tkinter StringVars to reflect detected pip counts.
+    
+        :param list detected_objs: List of detected pip objects with 'rank' keys.
+        :rtype: None
         """
         self.last_detected_objs = detected_objs # Store latest detected objects for logging
         # Reset counts for all ranks
@@ -812,7 +1374,14 @@ class PipRerollerApp:
             self.rank_count_vars[rank].set(str(self.rank_counts[rank]))
 
     def start_preview(self):
-        """Toggles the real-time bounding box preview window."""
+        """
+        Toggle the real-time bounding box preview window.
+    
+        Starts a background thread to capture and display pip detections live.
+        If the preview is already active, stops it.
+    
+        :rtype: None
+        """
         if self.game_area is None:
             self.message_var.set("Please select area first to start preview.")
             return
@@ -829,8 +1398,13 @@ class PipRerollerApp:
 
     def preview_loop(self):
         """
-        Continuously captures screenshots, detects pips, and displays them
-        with bounding boxes in an OpenCV window for debugging.
+        Background loop for live preview of pip detection.
+    
+        Continuously captures screenshots of the game area, detects pips,
+        draws bounding boxes with labels, and displays them in an OpenCV window.
+        Runs until preview is deactivated.
+    
+        :rtype: None
         """
         preview_capturer = ScreenCapture()
         cv2.namedWindow("BBox Preview", cv2.WINDOW_AUTOSIZE)
@@ -869,8 +1443,16 @@ class PipRerollerApp:
 
     def detect_and_classify(self, frame):
         """
-        Detects and classifies pip objects within a given image frame.
-        Applies color masks, morphological operations, and contour detection.
+        Detect and classify pip objects within an image frame.
+    
+        Processes the input frame by applying color masks for each rank,
+        performs morphological operations to clean the mask,
+        detects contours, filters by area, merges close rectangles,
+        and returns a sorted list of detected pip objects with their rank and bounding box.
+    
+        :param numpy.ndarray frame: The image frame to process (BGR color).
+        :return: List of detected objects, each a dict with keys 'rank', 'rect', and 'cv2color'.
+        :rtype: list of dict
         """
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
         detected = []
@@ -895,7 +1477,16 @@ class PipRerollerApp:
 
     def rank_mask(self, frame, color_bgr, tolerance):
         """
-        Creates a binary mask for pixels within a certain color tolerance of a target BGR color.
+        Create a binary mask of pixels within color tolerance of a target BGR color.
+    
+        Computes a mask where pixels in the frame are within the specified tolerance
+        of the target color, across all BGR channels.
+    
+        :param numpy.ndarray frame: The image frame (BGR).
+        :param numpy.ndarray color_bgr: Target BGR color as a NumPy array.
+        :param int tolerance: Maximum allowed absolute difference per channel.
+        :return: Binary mask image with 255 where pixels match, 0 elsewhere.
+        :rtype: numpy.ndarray
         """
         # Calculate absolute difference between frame pixels and target color
         diff = np.abs(frame.astype(np.int16) - color_bgr)
@@ -905,14 +1496,31 @@ class PipRerollerApp:
 
     def merge_rectangles(self, rects, max_distance):
         """
-        Merges rectangles that are close to each other, useful for combining
-        fragmented detections of a single object.
+        Merge rectangles that are close to each other into combined bounding boxes.
+    
+        Useful for merging fragmented detections of the same object by expanding bounding boxes
+        that are within the specified max_distance of each other.
+    
+        :param list rects: List of rectangles as (x, y, w, h) tuples.
+        :param float max_distance: Maximum distance between rectangles to consider merging.
+        :return: List of merged rectangles as (x, y, w, h) tuples.
+        :rtype: list of tuples
         """
         merged = []
         used = [False] * len(rects)
 
         def rect_distance(r1, r2):
-            """Calculates the Euclidean distance between the closest points of two rectangles."""
+            """
+            Calculate the shortest Euclidean distance between the edges of two rectangles.
+        
+            Each rectangle is defined as (x, y, width, height). The distance is zero if the rectangles overlap
+            or touch. Otherwise, it returns the straight-line distance between the closest edges.
+        
+            :param tuple r1: First rectangle (x, y, w, h).
+            :param tuple r2: Second rectangle (x, y, w, h).
+            :return: Euclidean distance between closest points of the rectangles.
+            :rtype: float
+            """
             x1, y1, w1, h1 = r1
             x2, y2, w2, h2 = r2
 
@@ -967,14 +1575,32 @@ class PipRerollerApp:
         return merged
 
     def click_at(self, x, y):
-        """Simulates a mouse click at the given screen coordinates using AHK."""
+        """Simulates a mouse click at the specified screen coordinates using AutoHotkey (AHK).
+    
+        Moves the mouse instantly to (x, y) and performs a left-click (down and up).
+        
+        :param int x: The x-coordinate on the screen.
+        :param int y: The y-coordinate on the screen.
+        """
         self.ahk.mouse_move(x, y, speed=0) # Instant move
         self.ahk.click() # Left click down & up
 
     def reroll_loop(self):
         """
-        The main automation loop that performs clicks.
-        It is highly responsive to stop signals from the ImageProcessor thread.
+        Main automation loop for performing the reroll clicks with responsiveness to stop signals.
+    
+        This loop continuously performs the following steps until a stop event is signaled:
+        - Checks for a stop event to exit early.
+        - Logs detected objects if logging is enabled.
+        - Clicks the 'Chisel' button and waits a configured delay.
+        - Checks for stop event again to allow immediate cancellation.
+        - Clicks the 'Buy' button and waits a configured delay.
+        - Checks for stop event again.
+        - Waits a post-reroll delay to prevent game state glitches.
+        - Updates the GUI message with the current detected pip counts.
+        - Waits briefly to throttle the loop and let image processing catch up.
+    
+        The function uses thread-safe event waits to react quickly to stop signals from other threads.
         """
         while not self.stop_reroll_event.is_set():
             # Check if image processor has signaled a stop.
@@ -1047,7 +1673,21 @@ class PipRerollerApp:
             time.sleep(0.01) # This is a general loop delay, not a click delay
 
 class Tooltip:
+    """
+    Creates a tooltip for a given Tkinter widget that appears after a delay
+    when the mouse hovers over the widget.
+
+    The tooltip follows the mouse cursor while it is over the widget
+    and disappears when the mouse leaves.
+    """
     def __init__(self, widget, text, delay=500):
+        """
+        Initializes the Tooltip.
+
+        :param widget: The Tkinter widget to attach the tooltip to.
+        :param text: The text to display inside the tooltip.
+        :param delay: Delay in milliseconds before showing the tooltip after mouse enters the widget.
+        """
         self.widget = widget
         self.text = text
         self.delay = delay  # milliseconds
@@ -1058,15 +1698,27 @@ class Tooltip:
         self.widget.bind("<Motion>", self.move)
 
     def schedule(self, event=None):
+        """
+        Schedule the tooltip to be shown after the specified delay.
+        Cancels any previously scheduled show event.
+        """
         self.unschedule()
         self.id = self.widget.after(self.delay, self.show)
 
     def unschedule(self):
+        """
+        Cancel any scheduled tooltip show event if it exists.
+        """
         if self.id:
             self.widget.after_cancel(self.id)
             self.id = None
 
     def show(self, event=None):
+        """
+        Display the tooltip near the widget, unless it's already visible
+        or there is no text to show.
+        Positions the tooltip offset slightly from the widget or text insertion point.
+        """
         if self.tipwindow or not self.text:
             return
         x, y, _, _ = self.widget.bbox("insert") if self.widget.winfo_class() == 'Entry' else (0, 0, 0, 0)
@@ -1082,12 +1734,19 @@ class Tooltip:
         label.pack(ipadx=4, ipady=2)
 
     def hide(self, event=None):
+        """
+        Hide and destroy the tooltip window, and cancel any scheduled show events.
+        """
         self.unschedule()
         if self.tipwindow:
             self.tipwindow.destroy()
             self.tipwindow = None
 
     def move(self, event):
+        """
+        Move the tooltip window to follow the mouse cursor,
+        offset slightly from the cursor position.
+        """
         if self.tipwindow:
             x = event.x_root + 10
             y = event.y_root + 10
