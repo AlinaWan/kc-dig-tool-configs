@@ -4,6 +4,12 @@ Pip Reroller v1.0.0-rc.3
 - Testers: Please report any issues via the Discord server before production release.
 - Please PR any bug fixes or improvements to the GitHub repository.
 
+TO FIX BEFORE PRODUCTON:
+> If the tool rerolls *too quickly*, it can accidentally **reroll or DELETE the charm underneath** the one you intended.  
+> This happens because the game briefly removes the rerolled charm from your inventory before adding the new one, and during
+> that short time, the charm below it may shift upward and become the next target until the server returns the updated charm.
+> This is heavily ping dependent
+
 Automates the process of rerolling pips (stat ranks) in Dig by detecting rank-colored objects
 within a user-selected screen area and clicking configured UI buttons, stopping when user-defined
 quality and count conditions are met.
