@@ -132,18 +132,10 @@ class ScreenCapture:
         If initialization fails, it cleans up any partially created resources and
         returns False.
     
-        Parameters
-        ----------
-        width : int
-            The width of the capture area in pixels.
-        height : int
-            The height of the capture area in pixels.
-    
-        Returns
-        -------
-        bool
-            True if initialization succeeded, False otherwise.
-    
+        :param int width: The width of the capture area in pixels.
+        :param int height: The height of the capture area in pixels.
+        :returns: True if initialization succeeded, False otherwise.
+        :rtype: bool
         :raises Exception: If there is an unexpected error during GDI setup.
         """
         try:
@@ -212,16 +204,10 @@ class ScreenCapture:
         If `bbox` is `None`, or if width/height are invalid or capture fails,
         `None` is returned.
     
-        Parameters
-        ----------
-        bbox : tuple[int, int, int, int], optional
-            The bounding box of the region to capture in the format (left, top, right, bottom).
-    
-        Returns
-        -------
-        numpy.ndarray or None
-            The captured image as a BGR NumPy array, or `None` if the capture failed.
-    
+        :param tuple[int, int, int, int] bbox: Optional. The bounding box of the region to
+            capture in the format (left, top, right, bottom).
+        :returns: The captured image as a BGR NumPy array, or ``None`` if the capture failed.
+        :rtype: numpy.ndarray or None
         :raises Exception: If a GDI call fails unexpectedly during capture.
         """
         if not bbox: return None
@@ -280,19 +266,13 @@ def bgr_to_rgb_hex(bgr):
     Converts a BGR color tuple to a hexadecimal RGB string.
 
     This function takes a color in BGR (Blue, Green, Red) format and returns
-    the equivalent RGB hex string (e.g., `#rrggbb`) commonly used in web and
+    the equivalent RGB hex string (e.g., ``#rrggbb``) commonly used in web and
     GUI color specifications.
 
-    Parameters
-    ----------
-    bgr : tuple[int, int, int]
-        A tuple representing a BGR color, with each component in the range 0–255.
-
-    Returns
-    -------
-    str
-        A string representing the color in `#rrggbb` RGB hex format.
-
+    :param tuple[int, int, int] bgr: A tuple representing a BGR color, with each
+        component in the range 0–255.
+    :returns: A string representing the color in ``#rrggbb`` RGB hex format.
+    :rtype: str
     :raises ValueError: If the input is not a tuple of three integers.
     """
     b, g, r = bgr
@@ -312,28 +292,26 @@ class ImageProcessor(threading.Thread):
     them to detect pip counts or ranks, updates shared state safely using threading locks,
     and can signal the main reroll loop to stop based on detection results.
 
-    Attributes
-    ----------
-    app : object
-        Reference to the main application instance, used for interaction and callbacks.
-    stop_event : threading.Event
-        Event used to signal this thread to stop execution gracefully.
-    current_rank_counts : dict
-        Dictionary mapping ranks to their current detected counts.
-    lock : threading.Lock
-        Lock to synchronize access to shared data like rank counts.
-    screen_capturer : ScreenCapture
-        Instance of the ScreenCapture class used for optimized screenshot capture.
+    :ivar app: Reference to the main application instance, used for interaction and callbacks.
+    :vartype app: object
+
+    :ivar stop_event: Event used to signal this thread to stop execution gracefully.
+    :vartype stop_event: threading.Event
+
+    :ivar current_rank_counts: Dictionary mapping ranks to their current detected counts.
+    :vartype current_rank_counts: dict
+
+    :ivar lock: Lock to synchronize access to shared data like rank counts.
+    :vartype lock: threading.Lock
+
+    :ivar screen_capturer: Instance of the ScreenCapture class used for optimized screenshot capture.
+    :vartype screen_capturer: ScreenCapture
     """
     def __init__(self, app_ref):
         """
         Initializes the ImageProcessor thread.
     
-        Parameters
-        ----------
-        app_ref : object
-            Reference to the main application instance.
-    
+        :param object app_ref: Reference to the main application instance.
         :rtype: None
         """
         super().__init__(daemon=True) # Daemon thread exits when main program exits
@@ -451,11 +429,7 @@ class ImageProcessor(threading.Thread):
         This method acquires a lock to safely access the shared rank counts dictionary
         and returns a copy to avoid race conditions.
     
-        Returns
-        -------
-        dict
-            A copy of the current rank counts mapping ranks to their detected counts.
-    
+        :returns: A copy of the current rank counts mapping ranks to their detected counts.
         :rtype: dict[str, int]
         """
         with self.lock:
@@ -484,90 +458,111 @@ class PipRerollerApp:
     continuous image processing and reroll automation.
 
     It handles:
+
     - GUI layout and input widgets for user configuration.
     - Thread-safe communication with background image processing and reroll threads.
     - Event handling for keyboard and window actions.
     - Logging of detected objects and application events (optional).
 
-    Attributes
-    ----------
-    root : tkinter.Tk
-        The main Tkinter root window instance.
-    game_area : tuple or None
-        Bounding box defining the screen region for pip detection.
-    chisel_button_pos : tuple or None
-        Screen coordinates of the chisel button.
-    buy_button_pos : tuple or None
-        Screen coordinates of the buy button.
-    preview_active : bool
-        Whether the preview mode is active.
-    running : bool
-        Whether the reroll process is currently running.
-    tolerance : int
-        Color tolerance used for pip detection.
-    stop_at_ss : int
-        Minimum number of SS-rank pips required to stop rerolling.
-    click_delay_ms : int
-        Delay in milliseconds between simulated clicks.
-    post_reroll_delay_ms : int
-        Delay in milliseconds after each reroll before next action.
-    object_tolerance : int
-        Pixel tolerance for merging detected objects.
-    image_poll_delay_ms : int
-        Interval in milliseconds between image processing polls.
-    min_quality : str
-        Minimum pip rank quality to accept (e.g., "F", "SS").
-    min_objects : int
-        Minimum number of pips of minimum quality required to stop rerolling.
-    game_window_title : tkinter.StringVar
-        Title of the game window to capture.
-    rank_counts : dict
-        Current counts of detected pips by rank, updated by background thread.
-    status_var : tkinter.StringVar
-        Text variable for status label in the GUI.
-    message_var : tkinter.StringVar
-        Text variable for message label in the GUI.
-    status_color : str
-        Color hex code for status label.
-    enable_logging : bool
-        Flag to enable or disable event logging.
-    log_buffer : list
-        Buffer holding log entries before dumping to file.
-    log_button : tkinter.Button or None
-        Button widget to manually dump logs when logging is enabled.
-    last_detected_objs : list
-        Cache of last detected objects to prevent attribute errors.
-    image_processor_thread : threading.Thread or None
-        Background thread for image processing.
-    reroll_loop_thread : threading.Thread or None
-        Background thread managing reroll automation.
-    preview_thread : threading.Thread or None
-        Background thread for preview mode.
-    stop_reroll_event : threading.Event
-        Event to signal stopping the reroll automation.
-    listener : pynput.keyboard.Listener
-        Keyboard listener for hotkey handling.
-    ahk : ahk.AHK
-        AutoHotkey interface for sending inputs to the game.
+    :ivar root: The main Tkinter root window instance.
+    :vartype root: tkinter.Tk
 
-    Methods
-    -------
-    __init__(root)
-        Initializes the GUI, variables, threads, and event bindings.
+    :ivar game_area: Bounding box defining the screen region for pip detection.
+    :vartype game_area: tuple or None
+
+    :ivar chisel_button_pos: Screen coordinates of the chisel button.
+    :vartype chisel_button_pos: tuple or None
+
+    :ivar buy_button_pos: Screen coordinates of the buy button.
+    :vartype buy_button_pos: tuple or None
+
+    :ivar preview_active: Whether the preview mode is active.
+    :vartype preview_active: bool
+
+    :ivar running: Whether the reroll process is currently running.
+    :vartype running: bool
+
+    :ivar tolerance: Color tolerance used for pip detection.
+    :vartype tolerance: int
+
+    :ivar stop_at_ss: Minimum number of SS-rank pips required to stop rerolling.
+    :vartype stop_at_ss: int
+
+    :ivar click_delay_ms: Delay in milliseconds between simulated clicks.
+    :vartype click_delay_ms: int
+
+    :ivar post_reroll_delay_ms: Delay in milliseconds after each reroll before next action.
+    :vartype post_reroll_delay_ms: int
+
+    :ivar object_tolerance: Pixel tolerance for merging detected objects.
+    :vartype object_tolerance: int
+
+    :ivar image_poll_delay_ms: Interval in milliseconds between image processing polls.
+    :vartype image_poll_delay_ms: int
+
+    :ivar min_quality: Minimum pip rank quality to accept (e.g., "F", "SS").
+    :vartype min_quality: str
+
+    :ivar min_objects: Minimum number of pips of minimum quality required to stop rerolling.
+    :vartype min_objects: int
+
+    :ivar game_window_title: Title of the game window to capture.
+    :vartype game_window_title: tkinter.StringVar
+
+    :ivar rank_counts: Current counts of detected pips by rank, updated by background thread.
+    :vartype rank_counts: dict
+
+    :ivar status_var: Text variable for status label in the GUI.
+    :vartype status_var: tkinter.StringVar
+
+    :ivar message_var: Text variable for message label in the GUI.
+    :vartype message_var: tkinter.StringVar
+
+    :ivar status_color: Color hex code for status label.
+    :vartype status_color: str
+
+    :ivar enable_logging: Flag to enable or disable event logging.
+    :vartype enable_logging: bool
+
+    :ivar log_buffer: Buffer holding log entries before dumping to file.
+    :vartype log_buffer: list
+
+    :ivar log_button: Button widget to manually dump logs when logging is enabled.
+    :vartype log_button: tkinter.Button or None
+
+    :ivar last_detected_objs: Cache of last detected objects to prevent attribute errors.
+    :vartype last_detected_objs: list
+
+    :ivar image_processor_thread: Background thread for image processing.
+    :vartype image_processor_thread: threading.Thread or None
+
+    :ivar reroll_loop_thread: Background thread managing reroll automation.
+    :vartype reroll_loop_thread: threading.Thread or None
+
+    :ivar preview_thread: Background thread for preview mode.
+    :vartype preview_thread: threading.Thread or None
+
+    :ivar stop_reroll_event: Event to signal stopping the reroll automation.
+    :vartype stop_reroll_event: threading.Event
+
+    :ivar listener: Keyboard listener for hotkey handling.
+    :vartype listener: pynput.keyboard.Listener
+
+    :ivar ahk: AutoHotkey interface for sending inputs to the game.
+    :vartype ahk: ahk.AHK
+
+    :meth __init__: Initializes the GUI, variables, threads, and event bindings.
     """
     def __init__(self, root):
         """
         Initialize the Pip Reroller application.
-
+    
         Sets up the main window, GUI components, configuration variables,
         threading constructs, and event listeners. Also initializes optional
         logging mechanisms if enabled.
-
-        Parameters
-        ----------
-        root : tkinter.Tk
-            The main Tkinter window instance on which the application UI is built.
-
+    
+        :param root: The main Tkinter window instance on which the application UI is built.
+        :type root: tkinter.Tk
         :rtype: None
         """
         self.root = root
@@ -623,16 +618,11 @@ class PipRerollerApp:
         def make_label(text):
             """
             Create a styled Tkinter Label with predefined foreground and background colors.
-        
-            Parameters
-            ----------
-            text : str
-                The text to display on the label.
-        
-            Returns
-            -------
-            tkinter.Label
-                A Tkinter Label widget configured with preset colors.
+            
+            :param str text: The text to display on the label.
+            
+            :returns: A Tkinter Label widget configured with preset colors.
+            :rtype: tkinter.Label
             """
             return tk.Label(root, text=text, fg=label_fg, bg="#222222")
 
@@ -804,17 +794,10 @@ class PipRerollerApp:
                 and the decision made by the application. Entries are appended to the internal
                 log buffer.
             
-                Parameters
-                ----------
-                objects : list of dict
-                    List of detected objects, each containing keys like 'rank' and 'rect' (bounding box).
-                rank_counts : dict
-                    Dictionary mapping pip ranks to their counts at the time of logging.
-                settings : dict
-                    Dictionary of current application settings relevant to the detection.
-                decision : str
-                    Description of the decision or event that triggered the log entry.
-            
+                :param list[dict] objects: List of detected objects, each containing keys like 'rank' and 'rect' (bounding box).
+                :param dict rank_counts: Dictionary mapping pip ranks to their counts at the time of logging.
+                :param dict settings: Dictionary of current application settings relevant to the detection.
+                :param str decision: Description of the decision or event that triggered the log entry.
                 :rtype: None
                 """
                 import datetime
@@ -914,15 +897,11 @@ class PipRerollerApp:
     def select_quality(self, rank):
         """
         Update the selected minimum pip quality in the GUI.
-    
+        
         Adjusts the internal `min_quality` state and visually updates the quality selection buttons,
         highlighting the selected rank and resetting the others to default appearance.
-    
-        Parameters
-        ----------
-        rank : str
-            The rank string to select as the minimum quality (e.g., "F", "SS").
-    
+        
+        :param str rank: The rank string to select as the minimum quality (e.g., "F", "SS").
         :rtype: None
         """
         self.min_quality = rank
@@ -935,15 +914,12 @@ class PipRerollerApp:
     def update_tolerance(self, event=None):
         """
         Update the color tolerance value based on user input from the GUI.
-    
+        
         Reads the value from the tolerance entry widget, validates that it is an integer between 0 and 255,
         and updates the internal `tolerance` attribute accordingly. Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            The event object from the GUI, not used in processing.
-    
+        
+        :param event: The event object from the GUI, not used in processing.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -956,15 +932,12 @@ class PipRerollerApp:
     def update_stop_at(self, event=None):
         """
         Update the minimum SS-rank pip count required to stop rerolling based on GUI input.
-    
+        
         Reads the value from the stop_at entry widget, validates that it is a non-negative integer,
         and updates the internal `stop_at_ss` attribute accordingly. Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            The event object from the GUI, not used in processing.
-    
+        
+        :param event: The event object from the GUI, not used in processing.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -977,16 +950,13 @@ class PipRerollerApp:
     def update_min_objects(self, event=None):
         """
         Update the minimum number of objects required to stop rerolling from GUI input.
-    
-        Reads the value from the `min_objects_entry` widget, validates that it is an integer
-        greater than or equal to 1, and updates the internal `min_objects` attribute.
+        
+        Reads the value from the ``min_objects_entry`` widget, validates that it is an integer
+        greater than or equal to 1, and updates the internal ``min_objects`` attribute.
         Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            Event object from the GUI callback, not used.
-    
+        
+        :param event: Event object from the GUI callback, not used.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -999,16 +969,13 @@ class PipRerollerApp:
     def update_click_delay(self, event=None):
         """
         Update the click delay (in milliseconds) from GUI input.
-    
+        
         Reads the value from the `click_delay_entry` widget, validates that it is a non-negative integer,
         and updates the internal `click_delay_ms` attribute.
         Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            Event object from the GUI callback, not used.
-    
+        
+        :param event: Event object from the GUI callback, not used.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -1021,16 +988,13 @@ class PipRerollerApp:
     def update_post_reroll_delay(self, event=None):
         """
         Update the post-reroll delay (in milliseconds) from GUI input.
-    
+        
         Reads the value from the `post_reroll_delay_entry` widget, validates that it is a non-negative integer,
         and updates the internal `post_reroll_delay_ms` attribute.
         Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            Event object from the GUI callback, not used.
-    
+        
+        :param event: Event object from the GUI callback, not used.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -1043,16 +1007,13 @@ class PipRerollerApp:
     def update_image_poll_delay(self, event=None):
         """
         Update the image polling delay (in milliseconds) from GUI input.
-    
-        Reads the value from the `image_poll_delay_entry` widget, validates that it is a non-negative integer,
-        and updates the internal `image_poll_delay_ms` attribute.
+        
+        Reads the value from the ``image_poll_delay_entry`` widget, validates that it is a non-negative integer,
+        and updates the internal ``image_poll_delay_ms`` attribute.
         Invalid inputs are ignored.
-    
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            Event object from the GUI callback, not used.
-    
+        
+        :param event: Event object from the GUI callback, not used.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -1070,11 +1031,8 @@ class PipRerollerApp:
         and updates the internal `object_tolerance` attribute.
         Invalid inputs are ignored.
     
-        Parameters
-        ----------
-        event : tkinter.Event, optional
-            Event object from the GUI callback, not used.
-    
+        :param event: Event object from the GUI callback, not used.
+        :type event: tkinter.Event, optional
         :rtype: None
         """
         try:
@@ -1107,15 +1065,12 @@ class PipRerollerApp:
     def on_drag_start(self, event):
         """
         Handle the beginning of a mouse drag event during area selection.
-    
+        
         Records the initial cursor position in screen coordinates and places a minimal
         selection rectangle at the drag start location.
-    
-        Parameters
-        ----------
-        event : tkinter.Event
-            The mouse button press event triggering the drag start.
-    
+        
+        :param event: The mouse button press event triggering the drag start.
+        :type event: tkinter.Event
         :rtype: None
         """
         self.drag_start = (event.x_root, event.y_root)
@@ -1124,15 +1079,12 @@ class PipRerollerApp:
     def on_drag_motion(self, event):
         """
         Handle mouse movement while dragging to select an area.
-    
+        
         Updates the size and position of the selection rectangle based on
         the current cursor position relative to the drag start point.
-    
-        Parameters
-        ----------
-        event : tkinter.Event
-            The mouse motion event during the drag.
-    
+        
+        :param event: The mouse motion event during the drag.
+        :type event: tkinter.Event
         :rtype: None
         """
         x1, y1 = self.drag_start
@@ -1144,16 +1096,13 @@ class PipRerollerApp:
     def on_drag_end(self, event):
         """
         Handle the end of the drag event to finalize the selected screen area.
-    
+        
         Calculates the bounding box from the drag start and end coordinates,
-        stores it in `game_area`, destroys the overlay window, restores the main window,
+        stores it in ``game_area``, destroys the overlay window, restores the main window,
         and updates the GUI message to confirm the selection.
-    
-        Parameters
-        ----------
-        event : tkinter.Event
-            The mouse button release event signaling the end of the drag.
-    
+        
+        :param event: The mouse button release event signaling the end of the drag.
+        :type event: tkinter.Event
         :rtype: None
         """
         x1, y1 = self.drag_start
@@ -1188,15 +1137,12 @@ class PipRerollerApp:
     def _start_button_selection(self, button_type):
         """
         Helper method to create a fullscreen overlay for button position selection.
-    
+        
         The overlay is semi-transparent with a crosshair cursor and prompts the user
         to click to set either the "chisel" or "buy" button position, depending on the argument.
-    
-        Parameters
-        ----------
-        button_type : str
-            The type of button to select, expected values are "chisel" or "buy".
-    
+        
+        :param button_type: The type of button to select, expected values are "chisel" or "buy".
+        :type button_type: str
         :rtype: None
         """
         self.root.iconify()
@@ -1216,19 +1162,16 @@ class PipRerollerApp:
     def set_button_position(self, event, button_type, overlay):
         """
         Set the screen coordinates for the specified button based on user click.
-    
+        
         Stores the (x_root, y_root) screen coordinates for the given button type,
         destroys the selection overlay, restores the main window, and updates the GUI message.
-    
-        Parameters
-        ----------
-        event : tkinter.Event
-            The mouse click event containing the cursor position.
-        button_type : str
-            The button type being set, either "chisel" or "buy".
-        overlay : tkinter.Toplevel
-            The overlay window used for selection, which will be destroyed.
-    
+        
+        :param event: The mouse click event containing the cursor position.
+        :type event: tkinter.Event
+        :param button_type: The button type being set, either "chisel" or "buy".
+        :type button_type: str
+        :param overlay: The overlay window used for selection, which will be destroyed.
+        :type overlay: tkinter.Toplevel
         :rtype: None
         """
         pos = (event.x_root, event.y_root)
@@ -1243,15 +1186,12 @@ class PipRerollerApp:
     def on_key_press(self, key):
         """
         Handle keyboard key presses, toggling reroller on/off when F5 is pressed.
-    
+        
         If the F5 key is detected, starts the rerolling loop if it is not running,
         otherwise stops the running loop.
-    
-        Parameters
-        ----------
-        key : pynput.keyboard.Key
-            The key event to handle.
-    
+        
+        :param key: The key event to handle.
+        :type key: pynput.keyboard.Key
         :rtype: None
         """
         if key == keyboard.Key.f5:
@@ -1337,10 +1277,11 @@ class PipRerollerApp:
     def update_status(self, running):
         """
         Update the status label in the GUI.
-    
+        
         Changes the status text and color based on whether the reroller is running.
-    
-        :param bool running: True if running, False if suspended.
+        
+        :param running: True if running, False if suspended.
+        :type running: bool
         :rtype: None
         """
         if running:
@@ -1357,7 +1298,8 @@ class PipRerollerApp:
         Called from the ImageProcessor thread via root.after() to safely update GUI elements.
         Updates internal counts and refreshes the Tkinter StringVars to reflect detected pip counts.
     
-        :param list detected_objs: List of detected pip objects with 'rank' keys.
+        :param detected_objs: List of detected pip objects with 'rank' keys.
+        :type detected_objs: list
         :rtype: None
         """
         self.last_detected_objs = detected_objs # Store latest detected objects for logging
@@ -1449,8 +1391,9 @@ class PipRerollerApp:
         detects contours, filters by area, merges close rectangles,
         and returns a sorted list of detected pip objects with their rank and bounding box.
     
-        :param numpy.ndarray frame: The image frame to process (BGR color).
-        :return: List of detected objects, each a dict with keys 'rank', 'rect', and 'cv2color'.
+        :param frame: The image frame to process (BGR color).
+        :type frame: numpy.ndarray
+        :returns: List of detected objects, each a dict with keys 'rank', 'rect', and 'cv2color'.
         :rtype: list of dict
         """
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
@@ -1481,10 +1424,13 @@ class PipRerollerApp:
         Computes a mask where pixels in the frame are within the specified tolerance
         of the target color, across all BGR channels.
     
-        :param numpy.ndarray frame: The image frame (BGR).
-        :param numpy.ndarray color_bgr: Target BGR color as a NumPy array.
-        :param int tolerance: Maximum allowed absolute difference per channel.
-        :return: Binary mask image with 255 where pixels match, 0 elsewhere.
+        :param frame: The image frame (BGR).
+        :type frame: numpy.ndarray
+        :param color_bgr: Target BGR color as a NumPy array.
+        :type color_bgr: numpy.ndarray
+        :param tolerance: Maximum allowed absolute difference per channel.
+        :type tolerance: int
+        :returns: Binary mask image with 255 where pixels match, 0 elsewhere.
         :rtype: numpy.ndarray
         """
         # Calculate absolute difference between frame pixels and target color
@@ -1500,9 +1446,11 @@ class PipRerollerApp:
         Useful for merging fragmented detections of the same object by expanding bounding boxes
         that are within the specified max_distance of each other.
     
-        :param list rects: List of rectangles as (x, y, w, h) tuples.
-        :param float max_distance: Maximum distance between rectangles to consider merging.
-        :return: List of merged rectangles as (x, y, w, h) tuples.
+        :param rects: List of rectangles as (x, y, w, h) tuples.
+        :type rects: list of tuples
+        :param max_distance: Maximum distance between rectangles to consider merging.
+        :type max_distance: float
+        :returns: List of merged rectangles as (x, y, w, h) tuples.
         :rtype: list of tuples
         """
         merged = []
@@ -1515,9 +1463,11 @@ class PipRerollerApp:
             Each rectangle is defined as (x, y, width, height). The distance is zero if the rectangles overlap
             or touch. Otherwise, it returns the straight-line distance between the closest edges.
         
-            :param tuple r1: First rectangle (x, y, w, h).
-            :param tuple r2: Second rectangle (x, y, w, h).
-            :return: Euclidean distance between closest points of the rectangles.
+            :param r1: First rectangle (x, y, w, h).
+            :type r1: tuple
+            :param r2: Second rectangle (x, y, w, h).
+            :type r2: tuple
+            :returns: Euclidean distance between closest points of the rectangles.
             :rtype: float
             """
             x1, y1, w1, h1 = r1
@@ -1578,8 +1528,10 @@ class PipRerollerApp:
     
         Moves the mouse instantly to (x, y) and performs a left-click (down and up).
         
-        :param int x: The x-coordinate on the screen.
-        :param int y: The y-coordinate on the screen.
+        :param x: The x-coordinate on the screen.
+        :type x: int
+        :param y: The y-coordinate on the screen.
+        :type y: int
         """
         self.ahk.mouse_move(x, y, speed=0) # Instant move
         self.ahk.click() # Left click down & up
@@ -1600,6 +1552,8 @@ class PipRerollerApp:
         - Waits briefly to throttle the loop and let image processing catch up.
     
         The function uses thread-safe event waits to react quickly to stop signals from other threads.
+
+        :rtype: None
         """
         while not self.stop_reroll_event.is_set():
             # Check if image processor has signaled a stop.
@@ -1684,8 +1638,11 @@ class Tooltip:
         Initializes the Tooltip.
 
         :param widget: The Tkinter widget to attach the tooltip to.
+        :type widget: tkinter.Widget
         :param text: The text to display inside the tooltip.
+        :type text: str
         :param delay: Delay in milliseconds before showing the tooltip after mouse enters the widget.
+        :type delay: int
         """
         self.widget = widget
         self.text = text
