@@ -15,13 +15,11 @@
 [![AutoHotkey][shield-autohotkey]][link-autohotkey]
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
+[🔁 Pip Reroller by Yours Truly, Riri 💝](https://github.com/AlinaWan/pip-reroller)  
 
 **Configuration Suite** (For Dig Tool):  
 [**⚙️ Configuration Files**](KC-Config-Suite/)  
 [**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)  
-
-**Tool Suite:**  
-[**🛠️ Utility Scripts & Macros**](KC-Tool-Suite/) 
 
 [**📖 How to use Dig Tool**](docs/USAGE.md)
 
