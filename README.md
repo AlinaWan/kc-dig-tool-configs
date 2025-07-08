@@ -50,12 +50,28 @@
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
-> - Enchant priority indicates the order of preference.
-> - Charm sets are ranked from best to less optimal.
-> - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
-> - All charm sets assume the maximum of 60 Combat Guild Quests have been completed for their passive bonuses.
+> - **Enchant priority** indicates the order of preference.
+> - **Charm sets** are ranked from best to less optimal.
+> - **Optimal Hit Count** means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
+> - All charm sets assume the maximum of **60 Combat Guild Quests** have been completed for their passive bonuses.
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
+
+### Beast Slayer
+- **Enchant Priority:** Sundering
+- **Stat Priority:** BossDamage
+- **Optimal Hit Count:** 9 (All)
+- **Best Charm Sets:**
+
+| Rank | Charm 1                | Charm 2                | Charm 3                |
+|------|------------------------|------------------------|------------------------|
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Boss Apparatus         | Boss Apparatus         | Ninja Headband         |
+
+> [!NOTE]
+> The Beast Slayer's synergy effect is actual hot garbage.
 
 ### Glinted Shovel
 - **Enchant Priority:** Sundering
@@ -65,11 +81,10 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
-| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
-| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
-| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
@@ -103,11 +118,10 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
-| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
-| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
-| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
