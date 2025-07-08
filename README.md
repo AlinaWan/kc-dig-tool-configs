@@ -61,7 +61,7 @@
 ### Beast Slayer
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
-- **Optimal Hit Count:** 9 (All)
+- **Optimal Hit Count:** 9 (Rock), 11 (Other)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
