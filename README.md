@@ -35,6 +35,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [🪄 Best Enchants, Stat Priorities, and Charm Sets](#-best-enchants-stat-priorities-and-charm-sets)
+  - [Beast Slayer](#beast-slayer)
   - [Glinted Shovel](#glinted-shovel)
   - [Prismatic Shovel](#prismatic-shovel)
   - [Slayer Shovel](#slayer-shovel)
@@ -73,6 +74,7 @@
 > [!NOTE]
 > The Beast Slayer's synergy effect is actual hot garbage.
 
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Glinted Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
@@ -89,7 +91,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Prismatic Shovel
 - **Enchant Priority:** Strong, Wumbo
 - **Stat Priority:** Strength
@@ -126,7 +128,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Starfire Shovel
 - **Enchant Priority:**
   - **Charm Set 1–2:** Wumbo, Lucky, Strong
