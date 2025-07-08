@@ -53,7 +53,7 @@
 > - Enchant priority indicates the order of preference.
 > - Charm sets are ranked from best to less optimal.
 > - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
-> > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms  
+> - All charm sets assume the maximum of 60 Combat Guild Quests have been completed for their passive bonuses.
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 
