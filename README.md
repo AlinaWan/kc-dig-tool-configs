@@ -131,7 +131,7 @@
 - **Enchant Priority:**
   - **Charm Set 1:** Wumbo, Lucky
   - **Charm Set 2:** Wumbo, Lucky, Strong
-  - **Charm Set 31–5:** Strong, Wumbo, Lucky
+  - **Charm Set 3–5:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
   - **Charm Set 1:** 3 (Rock), 4 (Other)
