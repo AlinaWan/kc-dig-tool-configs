@@ -4,8 +4,8 @@ from pathlib import Path
 
 def parse_version(filename):
     # Expected filename example:
-    # _KC_Pattern_Suite_dt2.x_v4_20250630.json
-    pattern = re.compile(r'_KC_Pattern_Suite_dt(\d+)\.x_v(\d+)_\d+\.json')
+    # _KC_Pattern_Suite_dtcp2.x_v4_20250630.json
+    pattern = re.compile(r'_KC_Pattern_Suite_dtcp(\d+)\.x_v(\d+)_\d+\.json')
     m = pattern.match(filename)
     if not m:
         return None
@@ -14,7 +14,7 @@ def parse_version(filename):
     return (dt, v)
 
 def find_latest_file(directory):
-    files = list(Path(directory).glob('_KC_Pattern_Suite_dt*.json'))
+    files = list(Path(directory).glob('_KC_Pattern_Suite_dtcp*.json'))
     parsed_files = []
     for f in files:
         ver = parse_version(f.name)
