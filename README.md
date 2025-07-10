@@ -153,7 +153,7 @@
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-10</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 <!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
