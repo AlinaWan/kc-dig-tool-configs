@@ -129,24 +129,27 @@
 <sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Starfire Shovel
 - **Enchant Priority:**
-  - **Charm Set 1–2:** Wumbo, Lucky, Strong
-  - **Charm Set 3–4:** Strong, Wumbo, Lucky
+  - **Charm Set 1:** Wumbo, Lucky
+  - **Charm Set 2:** Wumbo, Lucky, Strong
+  - **Charm Set 31–5:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Charm Set 1-2:** 2 (Rock), 3 (Other)
-  - **Charm Set 3-4:** 3 (All)
+  - **Charm Set 1:** 3 (Rock), 4 (Other)
+  - **Charm Set 2:** 2 (Rock), 3 (Other)
+  - **Charm Set 3-5:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Imp Horns              | Cauldron Hat           | Ice Picks              |
-| 2    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
-| 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
-| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
+| 1    | Prismatic Domino Crown | Imp Horns              | Flower Crown           |
+| 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 3    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
+| 4    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
+| 5    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
-> - Charm Set 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
+> - Charm Set 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
