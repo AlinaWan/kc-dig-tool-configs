@@ -15,13 +15,11 @@
 [![AutoHotkey][shield-autohotkey]][link-autohotkey]
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
+[🔁 Pip Reroller by Yours Truly, Riri 💝](https://github.com/AlinaWan/pip-reroller)  
 
 **Configuration Suite** (For Dig Tool):  
 [**⚙️ Configuration Files**](KC-Config-Suite/)  
 [**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)  
-
-**Tool Suite:**  
-[**🛠️ Utility Scripts & Macros**](KC-Tool-Suite/) 
 
 [**📖 How to use Dig Tool**](docs/USAGE.md)
 
@@ -35,6 +33,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [🪄 Best Enchants, Stat Priorities, and Charm Sets](#-best-enchants-stat-priorities-and-charm-sets)
+  - [Beast Slayer](#beast-slayer)
   - [Glinted Shovel](#glinted-shovel)
   - [Prismatic Shovel](#prismatic-shovel)
   - [Slayer Shovel](#slayer-shovel)
@@ -50,13 +49,30 @@
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
-> - Enchant priority indicates the order of preference.
-> - Charm sets are ranked from best to less optimal.
-> - Optimal Hit Count means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
-> > Min-maxing in Dig is significantly more complex than in Fisch due to the wide variety and stacking effects of charms  
+> - **Enchant priority** indicates the order of preference.
+> - **Charm sets** are ranked from best to less optimal.
+> - **Optimal Hit Count** means how many strong hits it should take to dig up an item with perfect charms, assuming the first priority enchant is applied.
+> - All charm sets assume the maximum of **60 Combat Guild Quests** have been completed for their passive bonuses.
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 
+### Beast Slayer
+- **Enchant Priority:** Sundering
+- **Stat Priority:** BossDamage
+- **Optimal Hit Count:** 9 (Rock), 11 (Other)
+- **Best Charm Sets:**
+
+| Rank | Charm 1                | Charm 2                | Charm 3                |
+|------|------------------------|------------------------|------------------------|
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Boss Apparatus         | Boss Apparatus         | Ninja Headband         |
+
+> [!NOTE]
+> The Beast Slayer's synergy effect is actual hot garbage.
+
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Glinted Shovel
 - **Enchant Priority:** Sundering
 - **Stat Priority:** BossDamage
@@ -65,16 +81,15 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
-| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
-| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
-| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Prismatic Shovel
 - **Enchant Priority:** Strong, Wumbo
 - **Stat Priority:** Strength
@@ -103,40 +118,42 @@
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
-| 2    | Radioactive Horns      | Radioactive Horns      | Blueshroom Cap         |
-| 3    | Radioactive Horns      | Blueshroom Cap         | Ninja Headband         |
-| 4    | Radioactive Horns      | Ninja Headband         | Ninja Headband         |
-| 5    | Blueshroom Cap         | Ninja Headband         | Ninja Headband         |
+| 1    | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         |
+| 2    | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      |
+| 3    | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      |
+| 4    | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-08</sup></sub>
 ### Starfire Shovel
 - **Enchant Priority:**
-  - **Charm Set 1–2:** Wumbo, Lucky, Strong
-  - **Charm Set 3–4:** Strong, Wumbo, Lucky
+  - **Charm Set 1:** Wumbo, Lucky
+  - **Charm Set 2:** Wumbo, Lucky, Strong
+  - **Charm Set 3–5:** Strong, Wumbo, Lucky
 - **Stat Priority:** Strength
 - **Optimal Hit Count:**
-  - **Charm Set 1-2:** 2 (Rock), 3 (Other)
-  - **Charm Set 3-4:** 3 (All)
+  - **Charm Set 1:** 3 (Rock), 4 (Other)
+  - **Charm Set 2:** 2 (Rock), 3 (Other)
+  - **Charm Set 3-5:** 3 (All)
 - **Best Charm Sets:**
 
 | Rank | Charm 1                | Charm 2                | Charm 3                |
 |------|------------------------|------------------------|------------------------|
-| 1    | Imp Horns              | Cauldron Hat           | Ice Picks              |
-| 2    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
-| 3    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
-| 4    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
+| 1    | Prismatic Domino Crown | Imp Horns              | Flower Crown           |
+| 2    | Imp Horns              | Cauldron Hat           | Ice Picks              |
+| 3    | Prismatic Domino Crown | Imp Horns              | Ice Picks              |
+| 4    | Imp Horns              | Cauldron Hat           | Energy Apparatus       |
+| 5    | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       |
 
 > [!IMPORTANT]
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
-> - Charm Set 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
+> - Charm Set 2 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-<sub><sup>Last updated: 2025-07-04</sup></sub>
+<sub><sup>Last updated: 2025-07-10</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 <!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
