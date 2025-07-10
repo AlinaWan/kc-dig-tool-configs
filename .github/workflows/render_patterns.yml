@@ -86,7 +86,7 @@ jobs:
 
       - name: Generate GIFs and update README
         if: steps.check-latest.outputs.skip == 'false'
-        run: python assets/scripts/visualize_paths.py
+        run: python .github/scripts/visualize_paths.py
 
       - name: Commit and push generated GIFs and README
         if: steps.check-latest.outputs.skip == 'false'
