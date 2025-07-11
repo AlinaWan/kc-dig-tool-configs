@@ -206,4 +206,5 @@
   "auto_sell": "true",
   "sell_after": "28",
   "pattern_suite": "v6"
+  "dig_tool": "v1.5.3"
 }
