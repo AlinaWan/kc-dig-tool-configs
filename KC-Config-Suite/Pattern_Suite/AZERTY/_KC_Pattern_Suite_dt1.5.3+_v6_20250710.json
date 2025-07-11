@@ -32,7 +32,7 @@
       "click": false
     },
     {
-      "key": "​▶",
+      "key": "​SET",
       "duration": 0,
       "click": false
     },
@@ -202,7 +202,8 @@
       "click": true
     }
   ],
-  "type": "custom",
-  "exported_from": "Dig Tool Custom Patterns",
-  "version": "1.0"
+  "author": "Riri <https://github.com/AlinaWan>",
+  "auto_sell": "true",
+  "sell_after": "28",
+  "pattern_suite": "v6"
 }
