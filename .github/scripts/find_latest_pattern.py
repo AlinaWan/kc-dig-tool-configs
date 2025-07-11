@@ -5,7 +5,7 @@ from pathlib import Path
 def parse_version(filename):
     # Expected filename example:
     # _KC_Pattern_Suite_dtcp2.x_v4_20250630.json
-    pattern = re.compile(r'_KC_Pattern_Suite_dtcp(\d+)\.x_v(\d+)_\d+\.json')
+    pattern = re.compile(r'_KC_Pattern_Suite_dt1\.5\.3\+_v(\d+)_\d+\.json')
     m = pattern.match(filename)
     if not m:
         return None
