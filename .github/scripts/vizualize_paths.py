@@ -17,7 +17,7 @@ wasd_set = {"w", "a", "s", "d"}
 
 # Find the latest pattern JSON with "dtcp" in the name
 def find_latest_pattern_file():
-    pattern = re.compile(r'_KC_Pattern_Suite_dtcp(\d+)\.x_v(\d+)_\d+\.json')
+    pattern = re.compile(r'_KC_Pattern_Suite_dt1\.5\.3\+_v(\d+)_\d+\.json')
     best_file = None
     best_dt = -1
     best_v = -1
