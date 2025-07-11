@@ -14,7 +14,7 @@ def parse_version(filename):
     return (dt, v)
 
 def find_latest_file(directory):
-    files = list(Path(directory).glob('_KC_Pattern_Suite_dtcp*.json'))
+    files = list(Path(directory).glob('_KC_Pattern_Suite_dt1.5.3+*.json'))
     parsed_files = []
     for f in files:
         ver = parse_version(f.name)
