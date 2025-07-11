@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import re
 
 # Bidirectional mapping for conversions
 q2a = {"w": "z", "a": "q", "s": "s", "d": "d"}
@@ -15,30 +14,27 @@ def convert_key(key: str) -> str:
             c = p
             c_lower = c.lower()
             mapped = full_map.get(c_lower, c_lower)
-            # Preserve original case
             if c.isupper():
                 mapped = mapped.upper()
             new_parts.append(mapped)
         else:
-            # Leave multi-char parts as-is (modifiers or words)
             new_parts.append(p)
     return "+".join(new_parts)
 
-def convert_pattern_json(data):
-    # Only transform keys inside the "pattern" list
+def convert_pattern_json(data: dict) -> dict:
     if "pattern" in data and isinstance(data["pattern"], list):
         for entry in data["pattern"]:
             if "key" in entry:
                 entry["key"] = convert_key(entry["key"])
     return data
 
-def convert_simple_json(data):
-    # Old format: dict of sequences, convert characters one-way q2a
+def convert_simple_json(data: dict) -> dict:
     return {
         k: [q2a.get(c.lower(), c.lower()) for c in seq]
         for k, seq in data.items()
     }
 
+# Set up paths
 qwerty_dir = Path("KC-Config-Suite/Pattern_Suite")
 azerty_dir = qwerty_dir / "AZERTY"
 azerty_dir.mkdir(exist_ok=True)
@@ -46,9 +42,7 @@ azerty_dir.mkdir(exist_ok=True)
 qwerty_files = {f.name: f for f in qwerty_dir.glob("*.json")}
 azerty_files = {f.name: f for f in azerty_dir.glob("*.json")}
 
-# Regex to detect old simple style dt1.x filenames
-old_pattern_re = re.compile(r'dt1\.x')
-
+# Convert each QWERTY file to AZERTY
 for name, q_file in qwerty_files.items():
     az_file = azerty_dir / name
     try:
@@ -60,14 +54,13 @@ for name, q_file in qwerty_files.items():
         print("Offending content (first 20 lines):")
         print("\n".join(text.splitlines()[:20]))
         raise
-    
-    if old_pattern_re.search(name):
-        # Old simple dict-of-sequences format
-        converted = convert_simple_json(data)
-    else:
-        # New JSON pattern format with keys in "pattern" array
+
+    # Auto-detect format
+    if isinstance(data, dict) and "pattern" in data and isinstance(data["pattern"], list):
         converted = convert_pattern_json(data)
-    
+    else:
+        converted = convert_simple_json(data)
+
     az_file.write_text(json.dumps(converted, indent=2, ensure_ascii=False))
     print(f"Created/Updated: {az_file}")
 
