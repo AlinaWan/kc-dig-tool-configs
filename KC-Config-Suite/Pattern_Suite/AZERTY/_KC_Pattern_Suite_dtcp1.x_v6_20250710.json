@@ -1,0 +1,208 @@
+{
+  "name": "_KC_Panel_v1",
+  "pattern": [
+    {
+      "key": "​💝",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​BY",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​RIRI",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​​",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​💝",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​▶",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​AUTO",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​SELL",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​EVERY",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​28",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "​DIGS",
+      "duration": 0,
+      "click": false
+    },
+    {
+      "key": "SHIFT+Z",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "S",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "S",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "D",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "S",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Q",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "Z",
+      "duration": 150,
+      "click": true
+    },
+    {
+      "key": "SHIFT+Z",
+      "duration": 150,
+      "click": true
+    }
+  ],
+  "type": "custom",
+  "exported_from": "Dig Tool Custom Patterns",
+  "version": "1.0"
+}
