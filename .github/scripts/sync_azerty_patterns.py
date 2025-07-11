@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import re
 
 # Bidirectional mapping for conversions
 q2a = {"w": "z", "a": "q", "s": "s", "d": "d"}
@@ -45,16 +46,19 @@ azerty_dir.mkdir(exist_ok=True)
 qwerty_files = {f.name: f for f in qwerty_dir.glob("*.json")}
 azerty_files = {f.name: f for f in azerty_dir.glob("*.json")}
 
+# Regex to detect old simple style dt1.x filenames
+old_pattern_re = re.compile(r'dt1\.x')
+
 for name, q_file in qwerty_files.items():
     az_file = azerty_dir / name
     data = json.loads(q_file.read_text())
     
-    if "dtcp" in name:
-        # New JSON pattern format with keys in "pattern" array
-        converted = convert_pattern_json(data)
-    else:
+    if old_pattern_re.search(name):
         # Old simple dict-of-sequences format
         converted = convert_simple_json(data)
+    else:
+        # New JSON pattern format with keys in "pattern" array
+        converted = convert_pattern_json(data)
     
     az_file.write_text(json.dumps(converted, indent=2, ensure_ascii=False))
     print(f"Created/Updated: {az_file}")
