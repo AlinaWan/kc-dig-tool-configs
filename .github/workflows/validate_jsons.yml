@@ -1,4 +1,4 @@
-name: Validate Changed JSON files
+name: Validate All JSON files
 
 on:
   push:
@@ -15,24 +15,35 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Get changed JSON files
-        id: changed_files
+      - name: Find and validate all JSON files with error reasons
         run: |
-          echo "CHANGED_JSON=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }} | \
-            grep -E '^[AM]\s+.*\.json$' | \
-            awk '{print $2}' | \
-            tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+          files=$(git ls-files '*.json')
+          echo "Validating JSON files:"
+          echo "$files"
 
-      - name: Validate JSON files
-        if: steps.changed_files.outputs.CHANGED_JSON != ''
-        run: |
-          for file in ${{ steps.changed_files.outputs.CHANGED_JSON }}; do
+          failed=0
+          declare -A fail_reasons
+
+          for file in $files; do
             echo "Validating $file"
-            jq empty "$file" || {
-              echo "Invalid JSON in $file"
-              exit 1
-            }
+            # Capture jq stderr if any
+            error_msg=$(jq empty "$file" 2>&1 >/dev/null)
+            if [ $? -ne 0 ]; then
+              echo "❌ Invalid JSON in $file"
+              echo "Reason: $error_msg"
+              fail_reasons["$file"]="$error_msg"
+              failed=1
+            fi
           done
+
+          if [ $failed -ne 0 ]; then
+            echo
+            echo "Summary of JSON validation failures:"
+            for f in "${!fail_reasons[@]}"; do
+              echo "- $f : ${fail_reasons[$f]}"
+            done
+            exit 1
+          else
+            echo "All JSON files are valid."
+          fi
