@@ -51,7 +51,15 @@ old_pattern_re = re.compile(r'dt1\.x')
 
 for name, q_file in qwerty_files.items():
     az_file = azerty_dir / name
-    data = json.loads(q_file.read_text())
+    try:
+        text = q_file.read_text(encoding='utf-8-sig')
+        data = json.loads(text)
+    except json.JSONDecodeError as e:
+        print(f"✖ Failed to decode JSON in: {q_file}")
+        print(f"Reason: {e}")
+        print("Offending content (first 20 lines):")
+        print("\n".join(text.splitlines()[:20]))
+        raise
     
     if old_pattern_re.search(name):
         # Old simple dict-of-sequences format
