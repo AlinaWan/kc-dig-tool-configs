@@ -71,7 +71,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-08</sup></sub>
+<sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Glinted Shovel
 | Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -83,7 +83,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-08</sup></sub>
+<sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Prismatic Shovel
 | Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -101,7 +101,7 @@
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Build 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 
-<sub><sup>Last updated: 2025-07-05</sup></sub>
+<sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Slayer Shovel
 | Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -113,7 +113,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-08</sup></sub>
+<sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Starfire Shovel
 | Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -134,7 +134,7 @@
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-<sub><sup>Last updated: 2025-07-10</sup></sub>
+<sub><sup>Last updated: 2025-07-12</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 <!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
