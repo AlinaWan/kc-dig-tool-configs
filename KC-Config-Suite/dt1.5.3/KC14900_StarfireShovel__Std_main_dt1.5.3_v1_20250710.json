@@ -22,7 +22,7 @@
         "debug_clicks_enabled": false,
         "screenshot_fps": 240,
         "auto_sell_enabled": true,
-        "sell_every_x_digs": 28,
+        "sell_every_x_digs": 30,
         "sell_delay": 300,
         "use_otsu_detection": false,
         "otsu_min_area": 50,
