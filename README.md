@@ -94,7 +94,7 @@
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
-• Wumbo, Lucky, Storming
+• Wumbo, Chrono, Lucky, Storming
 </details>
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@
 ### Starfire Shovel
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1     | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, STR+, LCK% | 3R, 4       |
+| 1     | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
 | 2     | Wumbo                | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
 | 3     | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+       | 3           |
 | 4     | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
@@ -125,7 +125,7 @@
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
-• Strong, Lucky, Storming
+• Chrono, Strong, Lucky, Storming
 </details>
 
 > [!IMPORTANT]
