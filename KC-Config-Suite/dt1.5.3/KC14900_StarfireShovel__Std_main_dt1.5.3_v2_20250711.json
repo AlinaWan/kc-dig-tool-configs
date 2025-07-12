@@ -4,7 +4,7 @@
         "zone_min_width": 100,
         "saturation_threshold": 0.5,
         "min_zone_height_percent": 100,
-        "sweet_spot_width_percent": 25,
+        "sweet_spot_width_percent": 20,
         "velocity_based_width_enabled": false,
         "velocity_width_multiplier": 1.0,
         "velocity_max_factor": 2000.0,
