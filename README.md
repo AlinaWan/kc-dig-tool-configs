@@ -121,7 +121,7 @@
 | 2     | Wumbo                | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
 | 3     | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+       | 3           |
 | 4     | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
-| 4     | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
+| 5     | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
