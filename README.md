@@ -49,21 +49,21 @@
 ## 🪄 Best Enchants, Stat Priorities, and Charm Sets
 
 > [!NOTE]
+> - **Build**: The recommended builds, ranked from best to less optimal based on overall performance.
 > - **Enchant**: The order of preference in which enchant should be chosen.
 > - **Pip Priority**: The order of importance for individual charm stat rolls.
 > - **Hit Count**: The target number of strong hits to aim for to dig up an item efficiently.  
 >   Abbreviations: **R** = Rock, **D** = Dirt. If no abbreviation is listed, the hit count applies to all/other ground.
-> - **Rank**: The recommended builds, ranked from best to less optimal based on overall performance.
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 
 ### Beast Slayer
-| Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
-|------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1    | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9R, 11      |
-| 2    | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 9R, 11      |
-| 3    | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 9R, 11      |
-| 4    | Sundering            | Boss Apparatus         | Boss Apparatus         | Ninja Headband         | DMG%             | 9R, 11      |
+| Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| 1     | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9R, 11      |
+| 2     | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 9R, 11      |
+| 3     | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 9R, 11      |
+| 4     | Sundering            | Boss Apparatus         | Boss Apparatus         | Ninja Headband         | DMG%             | 9R, 11      |
 
 > [!NOTE]
 > The Beast Slayer's synergy effect is hot garbage.
@@ -73,24 +73,24 @@
 
 <sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Glinted Shovel
-| Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
-|------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1    | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9           |
-| 2    | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 9           |
-| 3    | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 9           |
-| 4    | Sundering            | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      | DMG%             | 9           |
+| Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| 1     | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9           |
+| 2     | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 9           |
+| 3     | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 9           |
+| 4     | Sundering            | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      | DMG%             | 9           |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
 <sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Prismatic Shovel
-| Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
-|------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1    | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+, LCK% | 2R, 3       |
-| 2    | Strong               | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 3           |
-| 3    | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
-| 4    | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
+| Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| 1     | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+, LCK% | 2R, 3       |
+| 2     | Strong               | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 3           |
+| 3     | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
+| 4     | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
@@ -103,25 +103,25 @@
 
 <sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Slayer Shovel
-| Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
-|------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1    | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 10R, 12     |
-| 2    | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 10R, 12     |
-| 3    | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 10R, 12     |
-| 4    | Sundering            | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      | DMG%             | 10R, 12     |
+| Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| 1     | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 10R, 12     |
+| 2     | Sundering            | Boss Apparatus         | Boss Apparatus         | Radioactive Horns      | DMG%             | 10R, 12     |
+| 3     | Sundering            | Boss Apparatus         | Radioactive Horns      | Radioactive Horns      | DMG%             | 10R, 12     |
+| 4     | Sundering            | Radioactive Horns      | Radioactive Horns      | Radioactive Horns      | DMG%             | 10R, 12     |
 
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
 <sub><sup>Last updated: 2025-07-12</sup></sub>
 ### Starfire Shovel
-| Rank | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
-|------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1    | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, STR+, LCK% | 3R, 4       |
-| 2    | Wumbo                | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
-| 3    | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+       | 3           |
-| 4    | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
-| 4    | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
+| Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| 1     | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, STR+, LCK% | 3R, 4       |
+| 2     | Wumbo                | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
+| 3     | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+       | 3           |
+| 4     | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
+| 4     | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
