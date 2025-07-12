@@ -43,7 +43,7 @@
         "auto_shovel_enabled": true,
         "shovel_slot": 1,
         "shovel_timeout": 1,
-        "user_id": "Catch this kiss \\u2014 Riri \\ud83d\\udc98",
+        "user_id": "Catch this kiss \u2014 Riri \ud83d\udc98",
         "webhook_url": "https://github.com/AlinaWan/kc-dig-tool-configs#starfire-shovel",
         "milestone_interval": 20250711,
         "use_custom_cursor": false,
