@@ -33,6 +33,8 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [🪄 Best Enchants, Stat Priorities, and Charm Sets](#-best-enchants-stat-priorities-and-charm-sets)
+  - [Best for Money](#best-for-money)
+  - [Best for Boss Fights](#best-for-boss-fights)
   - [Beast Slayer](#beast-slayer)
   - [Glinted Shovel](#glinted-shovel)
   - [Prismatic Shovel](#prismatic-shovel)
@@ -63,6 +65,7 @@
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
 | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
 
+<sub><sup>Last updated: 2025-07-15</sup></sub>
 ### Best for Boss Fights
 **Beast Slayer**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
@@ -71,6 +74,7 @@
 
 ---
 
+<sub><sup>Last updated: 2025-07-15</sup></sub>
 ### Beast Slayer
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -85,7 +89,7 @@
 > [!TIP]
 > Replace **Charm 3** with **Magma Boots** or **Blazing Gauntlet** to survive inside of Mount Charcoal.
 
-<sub><sup>Last updated: 2025-07-12</sup></sub>
+<sub><sup>Last updated: 2025-07-15</sup></sub>
 ### Glinted Shovel
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
