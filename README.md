@@ -58,7 +58,6 @@
 >   Abbreviations: **R** = Rock, **D** = Dirt. If no abbreviation is listed, the hit count applies to all/other ground.
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
-
 ### Best for Money
 **Starfire Shovel**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
@@ -71,8 +70,6 @@
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
 | Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9R, 11      |
-
----
 
 <sub><sup>Last updated: 2025-07-15</sup></sub>
 ### Beast Slayer
