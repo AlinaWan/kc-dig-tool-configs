@@ -57,6 +57,20 @@
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 
+### Best for Money
+**Starfire Shovel**
+| Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
+
+### Best for Boss Fights
+**Beast Slayer**
+| Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
+|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
+| Sundering            | Boss Apparatus         | Boss Apparatus         | Boss Apparatus         | DMG%             | 9R, 11      |
+
+---
+
 ### Beast Slayer
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
