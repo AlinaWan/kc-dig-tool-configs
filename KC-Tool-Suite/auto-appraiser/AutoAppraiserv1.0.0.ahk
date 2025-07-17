@@ -73,3 +73,6 @@ UpdateStatusBar() {
     status := clicking ? "Running" : "Suspended"
     SB_SetText("F6: Toggle | Status: " status " | Delay: " clickDelay " ms")
 }
+
+GuiClose:
+ExitApp
