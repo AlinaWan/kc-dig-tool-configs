@@ -7,18 +7,19 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [Getting Started](#getting-started)
-- [Importing Configuration Settings](#importing-configuration-settings)
-  - [Steps to Import Settings](#steps-to-import-settings)
-- [Importing Custom Walk Patterns](#importing-custom-walk-patterns)
-  - [Steps to Import Walk Patterns](#steps-to-import-walk-patterns)
-- [Basic Controls](#basic-controls)
-- [Troubleshooting](#troubleshooting)
-  - [❌ Macro stops walking or digging suddenly](#-macro-stops-walking-or-digging-suddenly)
-  - [❌ Macro fails to hit strong hits consistently](#-macro-fails-to-hit-strong-hits-consistently)
-  - [❌ Windows Defender blocked or deleted the executable](#-windows-defender-blocked-or-deleted-the-executable)
-  - [❌ Hotkeys don’t do anything](#-hotkeys-dont-do-anything)
+  - [Getting Started](#getting-started)
+  - [Importing Configuration Settings](#importing-configuration-settings)
+    - [Steps to Import Settings](#steps-to-import-settings)
+  - [Importing Custom Walk Patterns](#importing-custom-walk-patterns)
+    - [Steps to Import Walk Patterns](#steps-to-import-walk-patterns)
+  - [Basic Controls](#basic-controls)
+  - [Troubleshooting](#troubleshooting)
+    - [❌ Macro stops walking or digging suddenly](#-macro-stops-walking-or-digging-suddenly)
+    - [❌ Macro fails to hit strong hits consistently](#-macro-fails-to-hit-strong-hits-consistently)
+- [<<<<<<< HEAD](#-head)
+    - [❌ Walk patterns failed to import](#-walk-patterns-failed-to-import)
+    - [❌ Windows Defender blocked or deleted the executable](#-windows-defender-blocked-or-deleted-the-executable)
+    - [❌ Hotkeys don’t do anything](#-hotkeys-dont-do-anything)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
