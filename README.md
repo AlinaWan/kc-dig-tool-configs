@@ -23,8 +23,6 @@
 
 [**📖 How to use Dig Tool**](docs/USAGE.md)
 
-[📚 Official Dig Wiki](https://digtionary.org/wiki/Main_Page)
-
 ---
 
 ## 📖 Table of Contents
