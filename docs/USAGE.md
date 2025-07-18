@@ -7,6 +7,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Getting Started](#getting-started)
 - [Importing Configuration Settings](#importing-configuration-settings)
   - [Steps to Import Settings](#steps-to-import-settings)
@@ -16,10 +17,8 @@
 - [Troubleshooting](#troubleshooting)
   - [❌ Macro stops walking or digging suddenly](#-macro-stops-walking-or-digging-suddenly)
   - [❌ Macro fails to hit strong hits consistently](#-macro-fails-to-hit-strong-hits-consistently)
-  - [❌ Walk patterns failed to import](#-walk-patterns-failed-to-import)
   - [❌ Windows Defender blocked or deleted the executable](#-windows-defender-blocked-or-deleted-the-executable)
   - [❌ Hotkeys don’t do anything](#-hotkeys-dont-do-anything)
-  - [❌ Settings reverted after restart](#-settings-reverted-after-restart)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -185,6 +184,8 @@ If your macro walks correctly but **fails to get strong hits**, or **only gets t
 
   * Consider upgrading to a **faster CPU** if possible.
 
+<<<<<<< HEAD
+=======
 ### ❌ Walk patterns failed to import
 
 When importing walk patterns, it may **look like the import failed**, but this is actually due to a known bug.
@@ -227,6 +228,7 @@ If you're using an AZERTY keyboard, consider using a **community fork that adds 
 
 > These versions are **community-maintained forks** and are **not official releases**. Use them at your own discretion.
 
+>>>>>>> 5e3d3a01fde2c64b3de88bf04a40ae33b2046438
 ### ❌ Windows Defender blocked or deleted the executable
 
 Windows Defender may **incorrectly flag the macro as harmful** and block or delete the `.exe` file immediately after download.
@@ -253,13 +255,3 @@ Sometimes the macro’s hotkeys (e.g., <kbd>F1</kbd>, <kbd>F2</kbd>, <kbd>F3</kb
 
 * Simply **close and restart the program**.
   This usually restores full hotkey functionality.
-
-### ❌ Settings reverted after restart
-
-Settings **do not persist automatically** between sessions.
-
-#### What to do:
-
-* If you want to keep your settings, make sure to **manually save them before closing the program**.
-* Alternatively, you can **load your saved settings file** each time you start the macro.
-
