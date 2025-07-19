@@ -22,7 +22,7 @@ To successfully instantiate and execute the Auto Appraiser utility in a Windows 
 
 ## 🧱 Installation Protocol *(Ritus Installationis)*
 
-The process of installing and initializing the Auto Appraiser subsystem is non-trivial, involving both file system manipulation and spatial cognition of graphical elements:
+The process of installing and initializing the Auto Appraiser subsystem is extremely trivial, involving both file system manipulation and spatial cognition of graphical elements:
 
 ### Step 1: Repository Extraction
 
