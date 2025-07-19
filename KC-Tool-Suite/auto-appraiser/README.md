@@ -79,6 +79,9 @@ In the **Target** tab, you'll see a list of mutations (e.g., Shiny, Gargantuan, 
 - ⚠️ **"Dark" Modifier Warning**:  
   The color `0x4F4F4F` is close to the hotbar background. This may cause false positives. Adjust **Tolerance** with care.
 
+- ⚠️ **"Gargantuan" and "Titanic" Color Overlap**:  
+  Both **Gargantuan** and **Titanic** share the exact same detection color. Please be aware when interpreting results. This is just how the game works, and there’s nothing I can do to fix it.
+
 - 🎨 **Color Tolerance**:  
   - Lower tolerance = stricter matching (less false positives, might miss slight color variations)  
   - Higher tolerance = more lenient (may detect wrong colors)
