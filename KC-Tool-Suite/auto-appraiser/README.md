@@ -1,6 +1,6 @@
 # Auto Appraiser by Riri
 
-This AutoHotkey (AHK) script is designed to automate clicking in Roblox, specifically for scenarios where you want to stop clicking when certain visual "mutations" (represented by specific colors) appear within predefined areas on your screen. This version operates on an inclusion-based system, meaning it only looks for the specified colors within the areas you define.
+This AutoHotkey (AHK) script is designed for auto appraising in Roblox by automating clicking and stopping automatically when your chosen modifier (such as Shiny, Gargantuan, or other visual traits) appears on screen. It uses an inclusion-based system, meaning it only searches for those specific modifier colors within the areas you define.
 
 ---
 
