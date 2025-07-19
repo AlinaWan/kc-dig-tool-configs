@@ -74,9 +74,8 @@ Each zone should **closely match the pixel bounds of the hotbar item** you're ap
 The included `inclusions.ini` is pre-set for:
 
 * 1920×1080 resolution
-* Roblox in **windowed mode**
-* **Windows 11**
-* Targeting the **6th hotbar slot**
+* Roblox in **windowed mode** on **Windows 11**
+* Targeting the **6th hotbar slot** with a full hotbar
 
 You will need to adjust the zones if you are using:
 
