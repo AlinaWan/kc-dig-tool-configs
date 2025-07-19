@@ -155,7 +155,8 @@
 
 ---
 
-Unless otherwise stated, this repository is licensed under the [WTFPL](LICENSE).
+Unless otherwise stated, this repository is licensed under the [WTFPL](LICENSE).  
+Some tools under the Tool Suite may have different licenses; please check individual tool directories for details.
 
 <!-- Badge Variables -->
 [shield-license]: https://img.shields.io/github/license/AlinaWan/kc-dig-tool-configs
