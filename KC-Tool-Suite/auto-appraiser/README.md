@@ -8,7 +8,7 @@
 
 Before using the script, ensure you have the following:
 
-* **AutoHotkey v1.1**
+* **AutoHotkey v1.1**  
   Download it from: [https://www.autohotkey.com](https://www.autohotkey.com)
 
 ---
