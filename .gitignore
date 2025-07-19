@@ -15,4 +15,4 @@
 **/pip_reroller_log_*.txt
 
 # Exclusions config file from Auto Appraiser
-**/exclusions.ini
+# **/exclusions.ini
