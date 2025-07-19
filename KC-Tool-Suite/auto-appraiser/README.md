@@ -65,7 +65,9 @@ Inclusion zones tell the script *where* to look for modifier colors.
 ### What Should a Zone Be?
 
 Each zone should **closely match the pixel bounds of the hotbar item** you're appraising (e.g., the 6th hotbar slot).
-**Avoid including any pixels outside the item square**, such as beyond the background UI, as they can interfere with detection.
+**Avoid including any pixels outside the item square**, such as beyond the background UI, as they can interfere with detection.  
+
+![Example Inclusion](example_inclusion.png)
 
 ### Default Configuration
 
