@@ -14,7 +14,7 @@ This AutoHotkey (AHK) script is designed for auto appraising in Roblox by automa
 ### Running the Script
 
 1. **Save the script**: Save the provided AHK code as a `.ahk` file (e.g., `AutoAppraiser.ahk`).
-2. **Place `inclusions.ini`**: Ensure the `inclusions.ini` file is in the same directory as your `.ahk` script.
+2. **Place `inclusions.ini`**: Ensure the `inclusions.ini` file is in the same directory as your `.ahk` script (If it doesn't exist yet, one will be created when adding an exclusion).
 3. **Run**: Double-click the `.ahk` file to run the script. A small GUI window will appear.
 
 ---
