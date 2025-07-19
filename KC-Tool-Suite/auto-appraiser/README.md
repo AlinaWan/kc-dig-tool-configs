@@ -138,8 +138,8 @@ You can switch between OR and AND using the radio group in the Main tab.
   If you change resolution, move the Roblox window, or switch displays, you must reconfigure your zones.
 
 * 🎨 **Target Color Codes**  
-  Changes made to the target colors in the GUI do not persist after closing the script.
-  The preset colors are already optimized for typical systems without unusual or irregular color variations, so manual edits are usually unnecessary.
+  Changes made to the target colors in the GUI do not persist after closing the script. This is intentional as the defaults are already optimized for typical systems.
+  You usually don’t need to change them unless using custom screen filters or displays.
 
 ---
 
