@@ -6,6 +6,8 @@
 
 This tool conducts an ongoing interrogatio chromatica (*color query cycle*) against bitmap data retrieved via synchronous screen polling over rectangular domains (*rectanguli inclusiones*), halting click emission **ipso facto** upon matching defined spectral signatures (*hexadecimales colorum*) under modal detection semantics.
 
+See also: [Auto Chiseler](https://github.com/AlinaWan/auto-chiseler)
+
 ---
 
 ## 🧩 Prerequisites *(Conditiones Praeviae: sine quibus non)*
