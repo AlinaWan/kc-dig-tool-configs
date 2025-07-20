@@ -74,7 +74,7 @@ The GUI is a tabbed interface constructed using AutoHotkey’s native GUI system
 
 | Tab            | Function                                                                                                                                                                |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Main**       | Aggregates global parameters. Configurable fields include: `clickDelay` (in ms), `colorTolerance` (ΔE tolerance for RGB hex), and `pollingInterval` (loop cycle delay). |
+| **Main**       | Aggregates global parameters. Configurable fields include: `clickDelay` (temporal actuation latency measured in milliseconds, defining the interclick Δt within the emission oscillator), `colorTolerance` (per-channel axis-aligned chromatic deviation bound τ, specifying admissibility within a cuboidal RGB₃ manifold centered on the target color vector), and `pollingInterval` (discrete sampling cadence τₚ, dictating the quantized frequency of raster interrogation cycles during the primary event loop). |
 | **Target**     | Represents a set of *checkbox + hex code* rows. These form the predicate set under which halting occurs.                                                                |
 | **Inclusions** | UI for defining screen-space rectangular zones. These are the only regions considered during pixel scanning operations.                                                 |
 | **Debug**      | Real-time console echo output. Logs function entry/exit, target matches, zone hits, and internal state toggles. Primarily for post hoc debugging.                       |
