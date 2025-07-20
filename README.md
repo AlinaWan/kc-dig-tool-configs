@@ -64,7 +64,7 @@
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
 | Chrono               | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
 
-<sub><sup>Last updated: 2025-07-15</sup></sub>
+<sub><sup>Last updated: 2025-07-20</sup></sub>
 ### Best for Boss Fights
 **Beast Slayer**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
@@ -116,7 +116,7 @@
 > Perfect pips on the **Ice Picks** charm are extremely difficult to roll.
 > - Build 1 needs at least **+4.5 Strength** from Ice Picks (3SS or 2SS1S) to 2-hit on rock
 
-<sub><sup>Last updated: 2025-07-12</sup></sub>
+<sub><sup>Last updated: 2025-07-20</sup></sub>
 ### Slayer Shovel
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
@@ -149,7 +149,7 @@
 >
 > If you can't reach this threshold, use the **Strong** enchant instead of Wumbo or Lucky.
 
-<sub><sup>Last updated: 2025-07-12</sup></sub>
+<sub><sup>Last updated: 2025-07-20</sup></sub>
 <!-- OPTIMIZATION FOOTER -->
 <!-- DO NOT MOVE OR DELETE FOOTER; CI USES IT TO FIND EOS -->
 
