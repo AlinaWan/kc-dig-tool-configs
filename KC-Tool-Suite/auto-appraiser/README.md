@@ -2,7 +2,7 @@
 
 > *“Fiat pixelum inquisitionis.”* — Riri, circa 2025
 
-**Auto Appraiser** is an extensible, configuration-bound, pixel-deterministic automation framework constructed atop the procedural runtime facilities provided by AutoHotkey v1.1. Its purpose, ostensibly simple—halt mouse interaction upon detection of a user-selected visual cue in the Roblox software experience *Dig!*—is in fact the result of a complex orchestration of stateful GUI interaction, color vector analysis, and mutex-based execution toggling.
+**Auto Appraiser** is an extensible, configuration-bound, pixel-deterministic automation framework constructed atop the procedural runtime facilities provided by AutoHotkey v1.1. Its purpose, ostensibly simple—halt mouse interaction upon detection of a user-selected visual cue in the Roblox software experience [*Dig!*](https://www.roblox.com/games/126244816328678)—is in fact the result of a complex orchestration of stateful GUI interaction, color vector analysis, and mutex-based execution toggling.
 
 This tool conducts an ongoing interrogatio chromatica (*color query cycle*) against bitmap data retrieved via synchronous screen polling over rectangular domains (*rectanguli inclusiones*), halting click emission **ipso facto** upon matching defined spectral signatures (*hexadecimales colorum*) under modal detection semantics.
 
@@ -24,7 +24,7 @@ To successfully instantiate and execute the Auto Appraiser utility in a Windows 
 
 ## 🧱 Installation Protocol *(Ritus Installationis)*
 
-The process of installing and initializing the Auto Appraiser subsystem is non-trivial, involving both file system manipulation and spatial cognition of graphical elements:
+The process of installing and initializing the Auto Appraiser subsystem is extremely trivial, involving both file system manipulation and spatial cognition of graphical elements:
 
 ### Step 1: Repository Extraction
 
@@ -76,10 +76,10 @@ The GUI is a tabbed interface constructed using AutoHotkey’s native GUI system
 
 | Tab            | Function                                                                                                                                                                |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Main**       | Aggregates global parameters. Configurable fields include: `clickDelay` (in ms), `colorTolerance` (ΔE tolerance for RGB hex), and `pollingInterval` (loop cycle delay). |
-| **Target**     | Represents a set of *checkbox + hex code* rows. These form the predicate set under which halting occurs.                                                                |
-| **Inclusions** | UI for defining screen-space rectangular zones. These are the only regions considered during pixel scanning operations.                                                 |
-| **Debug**      | Real-time console echo output. Logs function entry/exit, target matches, zone hits, and internal state toggles. Primarily for post hoc debugging.                       |
+| **Main**       | Aggregates global parameters. Configurable fields include: `clickDelay` (temporal actuation latency measured in milliseconds, defining the interclick Δt within the emission oscillator), `colorTolerance` (per-channel axis-aligned chromatic deviation bound τ, specifying admissibility within a cuboidal RGB₃ manifold centered on the target color vector), and `pollingInterval` (discrete sampling cadence τₚ, dictating the quantized frequency of raster interrogation cycles during the primary event loop). |
+| **Target**     | Constitutes a conjunctive assemblage of binary selector loci coalesced with chromatic hexadecimal vectors, collectively constituting the halting predicate ensemble. The predicate vector space defines the discrete chromatic loci whose detection within the rasterized visual manifold triggers the cessation protocol within the event-driven state machine.                                                                |
+| **Inclusions** | Facilitates the instantiation and parametric delineation of bidimensional Euclidean loci bounded by axis-aligned rectangular manifolds within screen-space topology. These loci delimit the spatial domain of pixel interrogation, thereby constricting the raster sampling function to a finite measure subset, ensuring computational tractability and spatial coherence of chromatic detection operations within the bounded viewport.                                                 |
+| **Debug**      | Implements a synchronous logging conduit yielding temporally-stamped echo artifacts documenting procedural ingress and egress, chromatic predicate satisfactions, inclusion zone intersections, and meta-state transitions. The log stream serves as a forensic telemetry feed for retroactive state-space reconstruction and anomaly analysis within the automated chromatic recognition subroutine. Primarily for post hoc debugging.                       |
 
 ---
 
