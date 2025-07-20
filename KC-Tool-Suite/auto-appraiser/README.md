@@ -114,6 +114,10 @@ Modifiers are organized into distinct groups: `𝐺 ∈ {Shiny, Ancient, Size, O
 
 Per the structural constraints of the *Dig* systema ludorum, no item may simultaneously exhibit more than one condition *intra* the same group. Id est, multiple modifiers from the same group never occur simultaneously and will never be detected together (exempli gratia, an entity cannot be both *Gigantic* and *Microscopic*).
 
+Thus:
+- **Inter-genus combinationes** (exempli gratia *Shiny + Ancient + Iridescent*) → Validus ✅
+- **Intra-genus mixturae** (exampli gratia *Titanic + Small*) → Nullitas logica ❌
+
 Selections must therefore observe *intra-genus* exclusivity. The co-selection of multiple conditions within a single group constitutes a logical nullity and will preclude detection, as such a composite state is *de facto* impossible within the source environment.
 
 ### 📐 Inclusion Zone Defaults & Configuration Protocol *(Configuratio Praedefinita et Modificatio Rectangulorum Inclusionis)*
