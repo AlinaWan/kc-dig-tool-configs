@@ -62,7 +62,7 @@
 **Starfire Shovel**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
+| Chrono               | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
 
 <sub><sup>Last updated: 2025-07-15</sup></sub>
 ### Best for Boss Fights
@@ -109,7 +109,7 @@
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
-• Wumbo, Chrono, Lucky, Storming
+• Chrono, Wumbo, Lucky, Storming
 </details>
 
 > [!IMPORTANT]
@@ -132,15 +132,15 @@
 ### Starfire Shovel
 | Build | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |-------|----------------------|------------------------|------------------------|------------------------|------------------|-------------|
-| 1     | Wumbo                | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
-| 2     | Wumbo                | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
+| 1     | Chrono               | Prismatic Domino Crown | Imp Horns              | Flower Crown           | STR%, LCK%       | 3R, 4       |
+| 2     | Chrono               | Imp Horns              | Cauldron Hat           | Ice Picks              | STR%, STR+       | 2R, 3       |
 | 3     | Strong               | Prismatic Domino Crown | Imp Horns              | Ice Picks              | STR%, STR+       | 3           |
 | 4     | Strong               | Imp Horns              | Cauldron Hat           | Energy Apparatus       | STR%, STR+       | 3           |
 | 5     | Strong               | Cauldron Hat           | Energy Apparatus       | Energy Apparatus       | STR%, STR+       | 3           |
 
 <details>
 <summary><strong>Alternative Enchants</strong></summary>
-• Chrono, Strong, Lucky, Storming
+• Wumbo, Strong, Lucky, Storming
 </details>
 
 > [!IMPORTANT]
