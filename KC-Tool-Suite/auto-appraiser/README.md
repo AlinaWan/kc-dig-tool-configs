@@ -1,4 +1,6 @@
-# Auto Appraiser by Riri – *Technica Exegesis ad Automatica Chromatica*
+<div align="center">
+  <h1>Auto Appraiser</h1>
+</div>
 
 > *“Fiat pixelum inquisitionis.”* — Riri, circa 2025
 
@@ -10,109 +12,124 @@ See also: [Auto Chiseler](https://github.com/AlinaWan/auto-chiseler)
 
 ---
 
-## 🧩 Prerequisites *(Conditiones Praeviae: sine quibus non)*
+## 📦 Requirements
 
-To successfully instantiate and execute the Auto Appraiser utility in a Windows environment, the host system must satisfy the following fundamental conditions:
+Before using the script, ensure you have the following:
 
-1. **AutoHotkey v1.1 Runtime Environment (32-bit)**
-   The script assumes the presence of the AutoHotkey v1.1 execution environment, preferably the Unicode build variant. AHK v2+ introduces syntactic breaking changes and deviates from legacy scoping behavior; as such, this implementation does not support it either **de facto** or **de jure**.
-
-2. **DirectX-accelerated GUI stack on Windows 10+**
-   While not explicitly required, performance and color fidelity are assumed to match the Windows 10/11 compositor pipeline under DWM (Desktop Window Manager) with default gamma calibration.
+* **AutoHotkey v1.1**  
+  Download it from: [https://www.autohotkey.com](https://www.autohotkey.com)
 
 ---
 
-## 🧱 Installation Protocol *(Ritus Installationis)*
+### 🛠️ Installation & Setup
 
-The process of installing and initializing the Auto Appraiser subsystem is extremely trivial, involving both file system manipulation and spatial cognition of graphical elements:
+Follow these steps to get started:
 
-### Step 1: Repository Extraction
+1. **Download the script**
 
-Users may opt for:
+   * Download the latest version of Auto Appraiser, OR:
+   * Export the Auto Appraiser directory using SVN:
 
-* A direct ZIP archive retrieval and manual extraction via GUI file browser.
-* Or a minimal-depth Subversion export for users preferring source-tree granularity:
+     ```bash
+     svn export https://github.com/AlinaWan/kc-dig-tool-configs/trunk/KC-Tool-Suite/auto-appraiser
+     ```
 
-```bash
-svn export https://github.com/AlinaWan/kc-dig-tool-configs/trunk/KC-Tool-Suite/auto-appraiser
-```
+2. **Run the script**
 
-> *Nota Bene:* This approach avoids `.git`-specific metadata pollution and is thus preferable for ephemeral deployments.
+   * Double-click the script to launch the GUI.
 
-### Step 2: Executing the Orchestrator
+3. **Add at least one inclusion zone**
 
-Navigate to the directory containing the `.ahk` script and double-click it. This will:
-
-* Instantiate the GUI runtime.
-* Bind all global and scoped hotkeys (`F6`, modal toggles).
-* Mount inclusion zone data (`inclusions.ini`) into memory.
-* Initialize color detection lookup tables into an in-memory object literal.
-
-The script now enters a passive polling state pending user interaction.
+   * Before using the auto-clicker, you **must define at least one inclusion zone** through the **Inclusions** tab in the GUI.
+   * These zones tell the script where on screen to look for modifier colors.
+   * If no zones are added, the script has nothing to scan and will not function correctly.
 
 ---
 
-## 🧠 Runtime Semantics *(Semantica Temporis Currens)*
+## 🖥️ Using the Script
 
-### Invocation
+### Launching and Toggling
 
-The user activates or deactivates auto-click behavior using the `F6` key. This keybind acts as a global toggle, interfacing with an internal flag (`clicking := true/false`) that gates downstream activity in the polling loop.
-
-### Suspension Conditions
-
-Execution enters a quiescent state under either of the following *conditions sine quibus non*:
-
-1. **Foreground Context Loss**
-   If the Roblox client is no longer the active window (`WinActive` returns false), input suppression is triggered and clicking is paused. This behavior is vital to avoid off-target interaction when switching applications.
-
-2. **Modifier Match Detection**
-   If any active chromatic target is found within any defined *regio inclusionis*, the clicking loop is immediately interrupted by control flow redirection (`return` from polling loop).
+* Press `F6` to start or stop auto-clicking.
+* The script will pause automatically if the Roblox window loses focus or your target modifier is found.
 
 ---
 
-## 🧭 Graphical Interface Taxonomy *(Tabula Interfaciei Graphicae)*
+## 🧭 GUI Overview
 
-The GUI is a tabbed interface constructed using AutoHotkey’s native GUI system (v1), divided into four functional partitions:
+The GUI includes four tabs:
 
-| Tab            | Function                                                                                                                                                                |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Main**       | Aggregates global parameters. Configurable fields include: `clickDelay` (temporal actuation latency measured in milliseconds, defining the interclick Δt within the emission oscillator), `colorTolerance` (per-channel axis-aligned chromatic deviation bound τ, specifying admissibility within a cuboidal RGB₃ manifold centered on the target color vector), and `pollingInterval` (discrete sampling cadence τₚ, dictating the quantized frequency of raster interrogation cycles during the primary event loop). |
-| **Target**     | Constitutes a conjunctive assemblage of binary selector loci coalesced with chromatic hexadecimal vectors, collectively constituting the halting predicate ensemble. The predicate vector space defines the discrete chromatic loci whose detection within the rasterized visual manifold triggers the cessation protocol within the event-driven state machine.                                                                |
-| **Inclusions** | Facilitates the instantiation and parametric delineation of bidimensional Euclidean loci bounded by axis-aligned rectangular manifolds within screen-space topology. These loci delimit the spatial domain of pixel interrogation, thereby constricting the raster sampling function to a finite measure subset, ensuring computational tractability and spatial coherence of chromatic detection operations within the bounded viewport.                                                 |
-| **Debug**      | Implements a synchronous logging conduit yielding temporally-stamped echo artifacts documenting procedural ingress and egress, chromatic predicate satisfactions, inclusion zone intersections, and meta-state transitions. The log stream serves as a forensic telemetry feed for retroactive state-space reconstruction and anomaly analysis within the automated chromatic recognition subroutine. Primarily for post hoc debugging.                       |
+* **Main** – General settings (Click Delay, Color Tolerance, Polling Interval)
+* **Target** – Choose which modifier colors stop clicking
+* **Inclusions** – Define exact screen regions to scan
+* **Debug** – View real-time script messages and actions
 
 ---
 
-## 📌 Inclusion Zones *(De Rectangulis Inclusionis)*
+## 🎯 Inclusion Zones (`inclusions.ini`)
 
-Inclusion zones, stored persistently in `inclusions.ini`, represent absolute-position, fixed-dimension screen-space rectangles. They are the only regions within which pixels are sampled during execution. This design drastically reduces computational complexity from O(screen area) to O(zones × interval), improving efficiency and minimizing false positives.
+Inclusion zones tell the script *where* to look for modifier colors.
 
-### On Precision
+### What Should a Zone Be?
 
-The user is encouraged to exercise *magna diligentia* when defining inclusion regions. If the ROI (region of interest) overlaps with non-relevant UI elements—e.g., borders, background gradients, or shadows—color sampling will likely yield inaccurate results.
-
-**Inclusion zones must be:**
-
-* Precisely aligned to item slots in the hotbar.
-* Consistently sized across sessions.
-* Revalidated if resolution, display scaling, or window size changes.
+Each zone should **closely match the pixel bounds of the hotbar item** you're appraising (e.g., the 6th hotbar slot).
+**Avoid including any pixels outside the item square**, such as beyond the background UI, as they can interfere with detection.  
 
 ![Example Inclusion](example_inclusion.png)
 
+### Default Configuration
+
+The included `inclusions.ini` is pre-set for:
+
+* 1920×1080 resolution
+* Roblox in **windowed mode** on **Windows 11**
+* Targeting the **6th hotbar slot** with a full hotbar
+
+You will need to adjust the zones if you are using:
+
+* A different resolution
+* A different windowed/fullscreen mode
+* A different hotbar slot
+
+### How to Add/Remove Zones
+
+1. Open the GUI and go to the **Inclusions** tab.
+2. Click **Add Inclusion**.
+3. Enter two Cartesian coordinate pairs:
+
+   * **Top-Left (X1, Y1)** – Upper-left corner of the zone
+   * **Bottom-Right (X2, Y2)** – Lower-right corner of the zone
+
+4. Use AutoHotkey's **Window Spy** tool to get exact pixel coordinates.
+5. Click **OK** to save the zone.
+6. To remove a zone, select it from the list and click **Remove Inclusion**.
+
 ---
 
-## 🎯 Detection Model *(De Coloribus Obiectivis)*
+## 🎨 Stop Conditions (Target Tab)
 
-Each modifier type (e.g., `Shiny`, `Titanic`, `Gargantuan`) is assigned:
+The **Target** tab defines which visual modifiers should stop the auto-clicking when detected.
 
-* A detection flag (binary toggle)
-* An associated hexadecimal RGB triplet (e.g., `0xFFF587`), representing the unique color of its in-game icon.
+Each row includes:
 
-### ❗ Condition Exclusivity *(Exclusivitas Conditionum)*
+* **Checkbox** – Enable or disable detection for that modifier.
+* **Hex Color Box** – The exact RGB hex code to detect (e.g., `FFF587` for Shiny).
+
+Detection behavior depends on the **Match Mode** selected in the **Main** tab:
+
+* ✅ **OR Mode** (default):
+  Clicking will stop as soon as **any** enabled color is found in any inclusion zone.
+
+* ✅ **AND Mode**:
+  Clicking will stop **only if all** enabled colors are found in the inclusion zones at the same time.
+
+You can switch between OR and AND using the radio group in the Main tab.
+
+### ❗ Condition Exclusivity
 
 Modifiers are organized into distinct groups: `𝐺 ∈ {Shiny, Ancient, Size, Other}`.
 
-Per the structural constraints of the *Dig* systema ludorum, no item may simultaneously exhibit more than one condition *intra* the same group. Id est, multiple modifiers from the same group never occur simultaneously and will never be detected together (exempli gratia, an entity cannot be both *Gigantic* and *Microscopic*).
+Per the structural constraints of *Dig*, no item may simultaneously exhibit more than one condition *intra* the same group. Id est, multiple modifiers from the same group never occur simultaneously and will never be detected together (exempli gratia, an entity cannot be both *Gigantic* and *Microscopic*).
 
 Thus:
 - **Inter-genus combinationes** (exempli gratia *Shiny + Ancient + Iridescent*) → Validus ✅
@@ -120,99 +137,31 @@ Thus:
 
 Selections must therefore observe *intra-genus* exclusivity. The co-selection of multiple conditions within a single group constitutes a logical nullity and will preclude detection, as such a composite state is *de facto* impossible within the source environment.
 
-### 📐 Inclusion Zone Defaults & Configuration Protocol *(Configuratio Praedefinita et Modificatio Rectangulorum Inclusionis)*
+---
 
-#### 📊 Default Spatial Parameters *(Valoribus Praestitutis)*
+## ⚠️ Notes & Warnings
 
-The bundled configuration artifact `inclusions.ini`—a plaintext INI schema file encoded in UTF-8—contains a precomputed and hardcoded ROI (Region of Interest) mapping optimized for a highly specific execution topology. This default spatial configuration assumes the following system state *sub modo constantiae*:
+* 🕶️ **Dark Modifier Warning**  
+  The color `0x4F4F4F` (the color of the Dark modifier) is nearly identical to the hotbar background. This may cause false detections unless tolerance is tuned carefully.
 
-* **Display resolution:** 1920 horizontal × 1080 vertical pixels (Full HD, 16:9 aspect ratio)
-* **Operating System:** Microsoft Windows 11 (Build 22000+), with compositor active (`dwm.exe`)
-* **Application Window State:** Roblox Client instantiated in **windowed** execution mode (non-fullscreen, with native window chrome visible)
-* **Item Targeting Vector:** Focused exclusively on the **sixth** visual hotbar slot (counting from the primary/leftmost anchor), assuming a **fully populated** hotbar inventory panel.
+* 🧍‍♂️ **Gargantuan/Titanic Conflict**  
+  These modifiers use the **exact same color**, so the script cannot differentiate between them. This is a game limitation, not a script bug.
 
-#### ⚠️ Mutation Contingencies *(Conditiones Mutationis)*
+* 🎚️ **Color Tolerance**  
 
-If any of the aforementioned environmental invariants are violated or otherwise diverge from the default assumptions—whether by user intention or *casus fortuitus*—the default rectangular regions defined in `inclusions.ini` will no longer correspond to their intended pixel loci. This will result in *false negatives*, detection failure, or degenerate behavior.
+  * Lower tolerance = stricter match (less false positives, but may miss minor shifts)
+  * Higher tolerance = more forgiving (but may trigger incorrectly)
 
-You are required to manually redefine inclusion coordinates if:
+* 🖥️ **Resolution & Position Sensitivity**  
+  Inclusion zones use **absolute screen coordinates**.
+  If you change resolution, move the Roblox window, or switch displays, you must reconfigure your zones.
 
-* Your display device operates at a **non-1920×1080 resolution** (e.g., 1366×768, 2560×1440, ultrawide formats, or anything involving non-integer DPI scaling).
-* The Roblox application is executed in **fullscreen** or **borderless fullscreen** modes, which invalidate static coordinate assumptions due to window-to-viewport normalization.
-* You intend to target **any hotbar slot other than the sixth**, including but not limited to slots 1–5 or any slots extending beyond 6.
-
-### 🔧 Inclusion Zone Authoring Workflow *(Procedura Manualis Configurationis Inclusionis)*
-
-To define or modify a rectangular ROI (*Regio Inclusionis*), perform the following exhaustive manual steps via the built-in graphical configuration interface:
-
-1. Invoke the GUI subsystem (if not already active) by executing the primary AHK script.
-
-2. Navigate to the tab labeled **Inclusions**, which contains the `ListView` enumeration of currently registered zones.
-
-3. Click the **Add Inclusion** button to open the coordinate input modal.
-
-4. In the dialog box, provide **two Cartesian coordinate pairs** using **absolute screen-space pixel units**:
-
-   * `X₁, Y₁`: Represents the **top-left vertex** of the inclusion rectangle. This point defines the origin (minimum X, minimum Y) of the region.
-
-   * `X₂, Y₂`: Represents the **bottom-right vertex**. This point defines the closure boundary (maximum X, maximum Y).
-
-   > ⚠ *Nota bene:* Coordinate inputs are **not relative** to the application window or any viewport. They are anchored to the global screen buffer origin (0,0 at top-left of primary monitor).
-
-5. Use AutoHotkey’s built-in **Window Spy** utility to obtain exact coordinate values. This tool provides real-time cursor position tracking across all layered windows and composited surfaces.
-
-6. After entering values, confirm via the **OK** control, which commits the coordinates to memory and persists them to the `inclusions.ini` file.
-
-7. To remove an inclusion zone, highlight the corresponding row in the `ListView` pane and press **Remove Inclusion**, which will:
-
-   * Remove the entry from the in-memory array,
-   * Delete the block from `inclusions.ini`,
-   * Re-index remaining zones to preserve monotonic zone enumeration.
-
-### Modal Matching Semantics
-
-Detection logic is parameterized by the **Match Mode**, selected from the `Main` tab:
-
-* **OR Mode** (*modus disiunctivus*)  
-  Script halts if *any* active modifier color is found in *any* region.
-
-* **AND Mode** (*modus conjunctivus universalis*)  
-  Halts only if *all* active modifier colors are simultaneously matched in a single cycle. Useful for compound criteria.
-
-Mode is controlled via radio button interface bound to a global mode enum.
+* 🎨 **Target Color Codes**  
+  Changes made to the target colors in the GUI do not persist after closing the script. This is intentional as the defaults are already optimized for typical systems.
+  You usually don’t need to change them unless using custom screen filters or displays.
 
 ---
 
-## 🧪 Edge Case Enumeration *(Casuum Limitalium Index)*
+## 📄 License
 
-> *Caveat lector:* The following scenarios are known to produce non-deterministic or degraded behavior.
-
-* **Color Ambiguity:**  
-  `Gargantuan` and `Titanic` use *indistinguishable chromatic encodings*. The script cannot, and will not, differentiate them. This is a hard constraint imposed by Dig's UI layer and not addressable within current bounds of implementation.
-
-* **Dark Modifier Instability:**  
-  The `Dark` modifier uses `0x4F4F4F`, a mid-gray indistinguishable from hotbar background gradients under certain gamma profiles. Try adjusting `colorTolerance` to ≤3 to avoid spectral collision.
-
-* **Resolution Drift:**  
-  Zones are screen-locked. Any change in DPI, resolution, or window positioning invalidates prior zone configs. Always recalibrate if any of these variables mutate.
-
-* **Volatile GUI State:**  
-  Target color selections made via GUI are **not persisted** to disk. They reset on each execution cycle. This is intentional to ensure consistency with baseline configuration. *Fiat lux* if you want to hardcode your preferences.
-
----
-
-## ⚖ License *(Lex Libera)*
-
-Auto Appraiser is made available under the [MIT License](LICENSE), which is to say, you can do almost anything with it—copy, modify, sublicense, deploy commercially—*sub conditionibus* of attribution and warranty disclaimer. For more information, refer to the full license text.
-
----
-
-## 🧠 Final Observations *(Appendix Epilogica)*
-
-This tool was designed under the assumption of *status normalis monitorum*. It does not support environments with active color filters (Night Light, HDR, f.lux, or “Gamer RGB Boost Mode”) which alter on-screen pixel values in post-processing. Such environments render detection unpredictable or fully inert.
-
-For maximum fidelity:
-
-* Use native resolution.
-* Disable all post-processing overlays.
-* Maintain standard luminance and gamma.
+Auto Appraiser is licensed under the [MIT License](LICENSE).
