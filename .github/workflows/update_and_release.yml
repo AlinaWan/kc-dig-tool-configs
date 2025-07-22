@@ -1,0 +1,62 @@
+name: Update Submodule and Release Suite
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag to create/release (e.g. v2025.01.0)'
+        required: true
+        default: 'v2025.01.0'
+      prerelease:
+        description: 'Is this a prerelease?'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout suite repo with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update auto-chiseler submodule to latest main
+        run: |
+          cd KC-Tool-Suite/auto-chiseler
+          git fetch origin main
+          git checkout main
+          git pull origin main
+          cd ../../
+          git add KC-Tool-Suite/auto-chiseler
+
+      - name: Commit and push submodule update if needed
+        run: |
+          if ! git diff --cached --quiet; then
+            git commit -m "🔄 Update auto-chiseler submodule to latest main"
+            git push origin HEAD
+          else
+            echo "No submodule update needed"
+          fi
+
+      - name: Tag the repo
+        run: |
+          git tag ${{ github.event.inputs.tag_name }} || echo "Tag already exists"
+          git push origin ${{ github.event.inputs.tag_name }}
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tag_name }}
+          name: ${{ github.event.inputs.tag_name }}
+          prerelease: ${{ github.event.inputs.prerelease }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
