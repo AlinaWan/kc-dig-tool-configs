@@ -2,7 +2,7 @@
   <h1>Auto Enchanter</h1>
 </div>
 
-> *“Fiat pixelum inquisitionis.”* — Riri, circa 2025
+> *“Per colorum signa salus.”* — Riri, circa 2025
 
 **Auto Enchanter** is an extensible, configuration-bound, pixel-deterministic automation framework constructed atop the procedural runtime facilities provided by AutoHotkey v1.1. Its purpose, ostensibly simple—halt mouse interaction upon detection of a user-selected visual cue in the Roblox software experience [*Dig!*](https://www.roblox.com/games/126244816328678)—is in fact the result of a complex orchestration of stateful GUI interaction, color vector analysis, and mutex-based execution toggling.
 
