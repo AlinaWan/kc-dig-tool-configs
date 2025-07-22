@@ -16,12 +16,12 @@
 
 [🥄 Dig Tool by iamnotbobby](https://github.com/iamnotbobby/dig-tool)  
 
-[🔁 Pip Reroller by Yours Truly, Riri 💝](https://github.com/AlinaWan/pip-reroller)  
-[✨ Auto Appraiser by Riri (with Love)](https://github.com/AlinaWan/kc-dig-tool-configs/tree/main/KC-Tool-Suite/auto-appraiser)
-
 **Configuration Suite** (For Dig Tool):  
 [**⚙️ Configuration Files**](KC-Config-Suite/)  
 [**🚶‍➡️ Movement Patterns**](KC-Config-Suite/Pattern_Suite/)  
+
+**Tool Suite** (Features Auto Chiseler, Appraiser, and Enchanter):  
+[**🛠️ KC Tool Suite**](https://github.com/AlinaWan/kc-dig-tool-configs/tree/main/KC-Tool-Suite/)
 
 [**📖 How to use Dig Tool**](docs/USAGE.md)
 
