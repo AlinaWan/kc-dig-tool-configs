@@ -93,6 +93,14 @@ You will need to adjust the zones if you are using:
 
 ### How to Add/Remove Zones
 
+#### Option 1 (Recommended)
+
+1. Open the GUI and go to the **Inclusions** tab.
+2. Click **Drag to Select Zone**.
+3. Drag the inclusion area on the screen.
+
+#### Option 2 (Manual)
+
 1. Open the GUI and go to the **Inclusions** tab.
 2. Click **Add Inclusion**.
 3. Enter two Cartesian coordinate pairs:
