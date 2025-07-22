@@ -1,2 +1,4 @@
 [submodule "KC-Tool-Suite/auto-chiseler"]
 	branch = main
+	path = KC-Tool-Suite/auto-chiseler
+	url = https://github.com/AlinaWan/auto-chiseler
