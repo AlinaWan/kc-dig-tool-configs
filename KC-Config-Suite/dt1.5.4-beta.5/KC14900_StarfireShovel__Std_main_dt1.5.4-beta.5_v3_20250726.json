@@ -13,7 +13,7 @@
         "zone_smoothing_factor": 1.0,
         "line_exclusion_radius": 0,
         "post_click_blindness": 1,
-        "max_zone_width_percent": 90,
+        "max_zone_width_percent": 65,
         "target_fps": 120,
         "line_detection_offset": 1.0,
         "system_latency": 20,
