@@ -6,7 +6,7 @@
 
 
 
-> *“Praemonitus, praemunitus.”* — Riri, circa 2025
+> *“Sine manu, aperit.”* — Riri, circa 2025
 
 
 
@@ -16,7 +16,7 @@
 
 By leveraging repeated invocation of `ipconfig /release` and `ipconfig /renew`, this tool effectuates momentary network drops (*intermissio retis*), which in turn influence the Roblox client’s crate opening mechanics. Concurrently, a rapid-fire click spam (*cliques rapidus*) ensures interaction continuity during the toggled operation, all managed via a clean, user-centric GUI interface.
 
-> **In simple terms:** it just turns your internet off and on for a fraction of a second (about 1ms) while spam-clicking. This seems to confuse Roblox and makes crate opening faster.
+> **In simple terms:** it just turns your internet off and on for a fraction of a second (about 1ms) while spam-clicking. This makes crate opening faster by allowing you to open multiple sets of crates at the same time.
 
 ---
 
@@ -46,17 +46,17 @@ Before execution, verify the presence of:
 
 1. **Download the script**  
 
-   * Fetch the latest Auto Crate Opener release, or  
+- Fetch the latest Auto Crate Opener release, or  
 
-   * Export the repository via SVN:  
+- Export the repository via SVN:  
 
-   ```bash
-   svn export https://github.com/AlinaWan/kc-dig-tool-configs/trunk/KC-Tool-Suite/auto-crate-opener
-   ```
+```bash
+svn export https://github.com/AlinaWan/kc-dig-tool-configs/trunk/KC-Tool-Suite/auto-crate-opener
+```
 
 2. **Run the script**
 
-   \* Launch by double-clicking the `.ahk` file to bring forth the GUI.
+- Launch by double-clicking the `.ahk` file to bring forth the GUI.
 
 ---
 
