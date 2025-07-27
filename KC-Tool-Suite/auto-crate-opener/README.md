@@ -16,7 +16,7 @@
 
 By leveraging repeated invocation of `ipconfig /release` and `ipconfig /renew`, this tool effectuates momentary network drops (*intermissio retis*), which in turn influence the Roblox client’s crate opening mechanics. Concurrently, a rapid-fire click spam (*cliques rapidus*) ensures interaction continuity during the toggled operation, all managed via a clean, user-centric GUI interface.
 
-
+> **In simple terms:** it just turns your internet off and on for a fraction of a second (about 1ms) while spam-clicking. This seems to confuse Roblox and makes crate opening faster.
 
 ---
 
