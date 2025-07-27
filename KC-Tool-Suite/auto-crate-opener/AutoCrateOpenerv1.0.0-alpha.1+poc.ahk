@@ -40,7 +40,7 @@ clicking := !clicking
 if (clicking) {
     Log("F6 pressed: Starting continuous net drop and autoclick.")
     UpdateStatusBar("Running")
-    SetTimer, ClickSpam, 10       ; click every 10ms
+    SetTimer, ClickSpam, 1       ; click every 1ms
     SetTimer, NetDropLoop, 0      ; start immediately
 } else {
     Log("F6 pressed: Stopping autoclick and net drop.")
