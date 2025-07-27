@@ -14,5 +14,5 @@
 # Log dumps from Pip Reroller
 **/pip_reroller_log_*.txt
 
-# Exclusions config file from Auto Appraiser
-# **/exclusions.ini
+# Auto Crate Opener Proof of Concepts
+KC-Tool-Suite/auto-crate-opener/
