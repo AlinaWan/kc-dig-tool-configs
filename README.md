@@ -59,7 +59,7 @@
 
 <!-- DO NOT EDIT LAST UPDATED TIMESTAMPS, THEY ARE UPDATED AUTOMATICALLY ON PUSH VIA CI -->
 ### Best for Money
-**Voidcrest Shovel**
+**Crescent Shovel**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
 | Null                 | Null                   | Null                   | Null                   | Null             | Null        |
