@@ -64,7 +64,7 @@
 |----------------------|------------------------|------------------------|------------------------|------------------|-------------|
 | Null                 | Null                   | Null                   | Null                   | Null             | Null        |
 
-<sub><sup>Last updated: 2025-07-27</sup></sub>
+<sub><sup>Last updated: 2025-07-31</sup></sub>
 ### Best for Boss Fights
 **Supernova Shovel**
 | Enchant              | Charm 1                | Charm 2                | Charm 3                | Pip Priority     | Hit Count   |
