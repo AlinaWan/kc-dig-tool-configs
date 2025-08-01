@@ -26,7 +26,7 @@
 Gui, +AlwaysOnTop
 Gui, Font, s10, Segoe UI
 
-; Thanks to lecsr and kou15 for retrieving some mutations
+; Thanks to lecsr and kou15 for lending some items to capture their colors
 ; Mutation data. Each entry is [Color (string), Enabled_Checkbox_State (boolean)]
 stopConditions := {}
 stopConditions["Shiny"] := ["0xFFF587", true]
