@@ -70,7 +70,6 @@ stopConditions["Soaked"] := ["0x5C7FDD", false]
 stopConditions["Warped"] := ["0x7755FA", false]
 stopConditions["Wormhole"] := ["0x802DD2", false]
 
-
 ; --- Paging Setup ---
 mutationsPerPage := 6
 currentPage := 1
