@@ -26,7 +26,7 @@
 Gui, +AlwaysOnTop
 Gui, Font, s10, Segoe UI
 
-; Thanks to users lecsr, kou15, and Democracy for lending some items to capture their colors
+; Thanks to my bestie and users lecsr, kou15, and Democracy for lending some items to capture their colors
 ; Mutation data. Each entry is [Color (string), Enabled_Checkbox_State (boolean)]
 stopConditions := {}
 stopConditions["Shiny"] := ["0xFFF587", true]
@@ -61,7 +61,7 @@ stopConditions["Bronze"] := ["0xFA8B60", false]
 stopConditions["Crystallized"] := ["0xACFAE0", false]
 stopConditions["Frozen"] := ["0x9BC5F3", false]
 stopConditions["Funky"] := ["0x2BFDA6", false]
-stopConditions["Honey"] := ["0xFFFFFF", false] ; needs color
+stopConditions["Honey"] := ["0xF9A113", false]
 stopConditions["Moonlit"] := ["0xAD74FE", false]
 stopConditions["Mossy"] := ["0x317E1B", false]
 stopConditions["Sandy"] := ["0xFABA95", false]
