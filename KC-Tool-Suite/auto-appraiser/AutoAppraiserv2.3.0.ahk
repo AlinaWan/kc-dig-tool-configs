@@ -26,7 +26,7 @@
 Gui, +AlwaysOnTop
 Gui, Font, s10, Segoe UI
 
-; Thanks to lecsr and kou15 for lending some items to capture their colors
+; Thanks to users lecsr, kou15, and Democracy for lending some items to capture their colors
 ; Mutation data. Each entry is [Color (string), Enabled_Checkbox_State (boolean)]
 stopConditions := {}
 stopConditions["Shiny"] := ["0xFFF587", true]
@@ -60,15 +60,15 @@ stopConditions["Blazing"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Bronze"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Crystallized"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Frozen"] := ["0x9BC5F3", false]
-stopConditions["Funky"] := ["0xFFFFFF", false] ; needs color
+stopConditions["Funky"] := ["0x2BFDA6", false]
 stopConditions["Honey"] := ["0xFFFFFF", false] ; needs color
-stopConditions["Moonlit"] := ["0xFFFFFF", false] ; needs color
+stopConditions["Moonlit"] := ["0xAD74FE", false]
 stopConditions["Mossy"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Sandy"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Smoky"] := ["0xFFFFFF", false] ; needs color
 stopConditions["Soaked"] := ["0x5C7FDD", false]
-stopConditions["Warped"] := ["0xFFFFFF", false] ; needs color
-stopConditions["Wormhole"] := ["0xFFFFFF", false] ; needs color
+stopConditions["Warped"] := ["0x7755FA", false]
+stopConditions["Wormhole"] := ["0x802DD2", false]
 
 
 ; --- Paging Setup ---
